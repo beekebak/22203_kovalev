@@ -43,6 +43,16 @@ class string{
     char& operator[](size_t index){
         return memory[index];
     }
+    void operator+=(string right_string){
+      if(size + right_string.size > capacity){
+        reallocate(size + right_string.size);
+      }
+      if(size + right_string.size > capacity){
+        return;
+      }
+      memcpy(memory+size, right_string.memory, right_string.size);
+      size += right_string.size;
+    }
   private:
     char* memory = nullptr;
     size_t capacity = 0;
@@ -54,6 +64,15 @@ class string{
         }
         memory = tmp;
         capacity *= 2;
+        memory[capacity] = '\0';
+    }
+    void reallocate(size_t needed_size){
+      char* tmp = (char*) realloc(memory, needed_size+1);
+        if(!tmp){
+          return;
+        }
+        memory = tmp;
+        capacity = needed_size;
         memory[capacity] = '\0';
     }
 };
