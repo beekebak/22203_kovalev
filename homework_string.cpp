@@ -8,6 +8,9 @@ class string{
         memory[initial_capacity] = '\0';
         std::cout << "constructed by size " << capacity << std::endl;
     }
+    string(){
+      string(16);
+    }
     string(const string& other_str): capacity(other_str.capacity), size(other_str.size){
         memory = (char*) malloc(other_str.capacity+1);
         std::strcpy(memory, other_str.memory);
@@ -27,6 +30,18 @@ class string{
         }
         memory[size++] = c; 
         memory[size] = '\0';
+    }
+    void operator=(const string& right_string){
+        if(memory){
+          free(memory);
+        }
+        memory = (char*) malloc(right_string.capacity+1);
+        std::strcpy(memory, right_string.memory);
+        capacity = right_string.capacity;
+        size = right_string.size;
+    }
+    char& operator[](size_t index){
+        return memory[index];
     }
   private:
     char* memory = nullptr;
