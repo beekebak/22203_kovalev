@@ -11,9 +11,13 @@ class string{
     string(){
       string(16);
     }
-    string(const string& other_str): capacity(other_str.capacity), size(other_str.size){
-        memory = (char*) malloc(other_str.capacity+1);
-        std::strcpy(memory, other_str.memory);
+    string(char* text, size_t initial_capacity): size(initial_capacity), capacity(initial_capacity*2) {
+        memory = (char*) malloc(initial_capacity*2+1);
+        strcpy(memory, text);
+        memory[initial_capacity] = '\0';
+    }
+    string(const string& other_str){
+        string(other_str.memory, other_str.size);
         std::cout << "constructed by other_str " << memory << std::endl;
     }
     ~string(){
@@ -31,14 +35,13 @@ class string{
         memory[size++] = c; 
         memory[size] = '\0';
     }
-    void operator=(const string& right_string){
+    string& operator=(const string& right_string){
         if(memory){
           free(memory);
         }
-        memory = (char*) malloc(right_string.capacity+1);
-        std::strcpy(memory, right_string.memory);
-        capacity = right_string.capacity;
-        size = right_string.size;
+        free(this);
+        *this = string(right_string.memory, right_string.size); 
+        return *this;
     }
     char& operator[](size_t index){
         return memory[index];
