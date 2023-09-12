@@ -39,8 +39,11 @@ class string{
         if(memory){
           free(memory);
         }
-        free(this);
-        *this = string(right_string.memory, right_string.size); 
+        size = right_string.size;
+        capacity = right_string.capacity;
+        memory = (char*) malloc(right_string.capacity+1);
+        strcpy(memory, right_string.memory);
+        memory[size] = '\0';
         return *this;
     }
     char& operator[](size_t index){
@@ -81,5 +84,8 @@ class string{
 };
 
 int main(){
+    string str("asdsa", 6);
+    str = str;
+    string a("????", 5);
     return 0;
 }
