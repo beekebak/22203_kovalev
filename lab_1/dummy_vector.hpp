@@ -1,4 +1,5 @@
 #include<iostream>
+#include "pair.hpp"
 
 #ifndef DUMMY_VECTOR_H
 #define DUMMY_VECTOR_H
@@ -7,6 +8,12 @@ template <typename T>
 class dummy_vector{
   public:
     dummy_vector(size_t initial_capacity = 16);
+
+    dummy_vector(const dummy_vector& vector);
+
+    dummy_vector(const dummy_vector&& vector);
+
+    dummy_vector& operator=(const dummy_vector& vector);
     
     void push_back(T input_data);
 
