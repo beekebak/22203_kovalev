@@ -1,13 +1,18 @@
 #include "hash_table.hpp"
-#include "dummy_vector.hpp"
 
 template <typename key, typename value>
-hash_table<key, value>::~hash_table(){}
+hash_table<key, value>::hash_table(){
+    used_size = 0;
+    table = dummy_vector<pair>();
+}
+
+template <typename key, typename value>
+hash_table<key, value>::~hash_table() = default;
 
 template <typename key, typename value>
 void hash_table<key, value>::clear(){
     delete table;
-    table = dummy_vector<pair>;
+    table = dummy_vector<pair>();
     used_size = 0;
 }
 

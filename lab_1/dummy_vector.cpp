@@ -6,11 +6,6 @@ dummy_vector<T>::dummy_vector(size_t initial_capacity): capacity(initial_capacit
 }
 
 template<typename T>
-dummy_vector<T>::~dummy_vector(){
-        delete[] dummy_vector<T>::values;
-    }
-
-template<typename T>
 void dummy_vector<T>::push_back(T input_data){
     if(size == capacity){
         reallocate(capacity*2);
@@ -44,3 +39,5 @@ void dummy_vector<T>::reallocate(size_t new_size){
     values = temp;
     capacity = new_size;
 }
+
+template class dummy_vector<int>;

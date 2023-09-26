@@ -7,8 +7,6 @@ template <typename T>
 class dummy_vector{
   public:
     dummy_vector(size_t initial_capacity = 16);
-
-    ~dummy_vector();
     
     void push_back(T input_data);
 

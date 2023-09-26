@@ -1,8 +1,10 @@
+#include "dummy_vector.hpp"
+
 template <typename key, typename value>
 class hash_table
 {
   public:
-    hash_table();
+    hash_table(); //done
     ~hash_table(); //done
   
     hash_table(const hash_table& b);
@@ -37,7 +39,7 @@ class hash_table
       private:
           key first;
           value second;
-    }
+    };
     dummy_vector<pair> table;
     size_t used_size;
 };
