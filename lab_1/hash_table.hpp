@@ -1,6 +1,5 @@
 #include "dummy_vector.hpp"
 
-template <typename key, typename value>
 class hash_table
 {
   public:
@@ -20,11 +19,11 @@ class hash_table
   
     bool insert(const key& k, const value& v); 
 
-    bool contains(const key& k) const;
+    bool contains(const key& k) const; //smth wrong
 
     value& operator[](const key& k); 
 
-    value& at(const key& k); 
+    value& at(const key& k); //smth wrond
     const value& at(const key& k) const; 
 
     size_t size() const; 
@@ -35,18 +34,18 @@ class hash_table
     friend bool operator!=(const hash_table& a, const hash_table& b);
 
   private:
-    dummy_vector<pair<key, value>> table;
+    dummy_vector table;
     size_t used_size;
 
-    size_t string_hash(std::string string_to_hash, size_t modulo);
+    size_t string_hash(std::string string_to_hash, size_t modulo) const;
 
-    size_t find(key k);
+    size_t find(key k) const;
+
+    pair get_value(const size_t& index) const;
 
     void rehash();
 };
 
-template <typename key, typename value>
-bool operator==(const hash_table<std::string, pair<key,value>>& a, const hash_table<std::string, pair<key,value>>& b);
+bool operator==(const hash_table& a, const hash_table& b);
 
-template <typename key, typename value>
-bool operator!=(const hash_table<std::string, pair<key,value>>& a, const hash_table<std::string, pair<key,value>>& b);
+bool operator!=(const hash_table& a, const hash_table& b);
