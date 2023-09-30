@@ -7,6 +7,10 @@ struct value{
   int weight = 0;
   int height = 0;
 
+  value();
+
+  value(int in_age, int in_weight, int in_height);
+
   operator bool() const;
 };
 

@@ -37,11 +37,7 @@ size_t dummy_vector::get_capacity() const{
 }
 
 void dummy_vector::reallocate(size_t new_size){
-    pair* temp = new pair[new_size];
-    for(int i = 0; i < std::min(capacity, new_size); i++){
-        temp[i] = values[i];
-    }
     delete[] values;
-    values = temp;
+    values = new pair[new_size];
     capacity = new_size;
 }

@@ -3,18 +3,17 @@
 int main(){
     hash_table test;
     hash_table second;
-    std::cout << "oh no";
-    for(int i = 0; i < 6; i++){
-        for(int j = 0; j < 26; j++){
-            test.insert(std::string("test") + std::string(i, 'a'+j), value());
+    hash_table third;
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 11; j++){
+            test.insert(std::string("test") + std::string(i+1, 'a'+j), value(18, 70+i*12+j, 150+i*12+j));
+            std::cout << test[std::string("test") + std::string(i+1, 'a'+j)].weight << std::endl;
         }
     }
-    for(int i = 0; i < 6; i++){
-        for(int j = 25; j >= 0; j--){
-            second.insert(std::string("test") + std::string(i, 'a'+j), value());
+    second = test;
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 11; j++){
+            std::cout << second[std::string("test") + std::string(i+1, 'a'+j)].weight << std::endl;
         }
-    }
-    if(test != second){
-        std::cout << "YES";
     }
 }
