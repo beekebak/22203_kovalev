@@ -1,34 +1,28 @@
 #include "dummy_vector.hpp"
 
-dummy_vector::dummy_vector(size_t initial_capacity): capacity(initial_capacity){
+dummy_vector::dummy_vector(size_t initial_capacity): capacity{initial_capacity}{
     values = new pair[initial_capacity];
 }
 
 
-dummy_vector::dummy_vector(const dummy_vector& vector):size{vector.size}{
-    for(int i = 0; i < size; i++){
+dummy_vector::dummy_vector(const dummy_vector& vector):capacity{vector.capacity}{
+    values = new pair[vector.capacity];
+    for(int i = 0; i < capacity; i++){
         values[i] = (vector.values)[i];
     }
 } 
 
 dummy_vector& dummy_vector::operator=(const dummy_vector& vector){
-    size = vector.size;
+    capacity = vector.capacity;
     delete[] values;
-    values = new pair[size];
-    for(int i = 0; i < size; i++){
+    values = new pair[capacity];
+    for(int i = 0; i < capacity; i++){
         values[i] = (vector.values)[i];
     }
     return *this;
 }
 
-dummy_vector::dummy_vector(const dummy_vector&& vector):size{vector.size}, values{vector.values}{} 
-
-void dummy_vector::push_back(pair input_data){
-    if(size == capacity){
-        reallocate(capacity*2);
-    }
-    values[size++] = input_data;
-}
+dummy_vector::dummy_vector(const dummy_vector&& vector):capacity{vector.capacity}, values{vector.values}{} 
 
 const pair& dummy_vector::get_const_value(size_t index) const{
     return values[index];
@@ -38,13 +32,8 @@ pair& dummy_vector::operator[](size_t index){
     return values[index];
 }
 
-void dummy_vector::resize(size_t new_size){
-    if(new_size < 1) throw "prohibited size";
-    reallocate(new_size);
-}
-
-size_t dummy_vector::get_size() const{
-    return size;
+size_t dummy_vector::get_capacity() const{
+    return capacity;
 }
 
 void dummy_vector::reallocate(size_t new_size){

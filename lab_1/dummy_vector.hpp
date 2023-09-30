@@ -13,22 +13,17 @@ class dummy_vector{
     dummy_vector(const dummy_vector&& vector);
 
     dummy_vector& operator=(const dummy_vector& vector);
-    
-    void push_back(pair input_data);
 
     const pair& get_const_value(size_t index) const;
 
     pair& operator[](size_t index);
 
-    void resize(size_t new_size);
-
-    size_t get_size() const;
-
-  private:
-    pair* values = nullptr;
-    size_t size = 0;
-    size_t capacity = 0;
+    size_t get_capacity() const;
 
     void reallocate(size_t new_size);
+
+  private:
+    size_t capacity = 0;
+    pair* values = nullptr;
 };
 #endif

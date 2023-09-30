@@ -34,14 +34,14 @@ bool hash_table::erase(const key& k){
 }
 
 bool hash_table::insert(const key& k, const value& v){
-    if(static_cast<double>(table.get_size()) * 0.75 <static_cast<double>(used_size)){
+    if(static_cast<double>(table.get_capacity()) * 0.75 <static_cast<double>(used_size)){
         rehash();
     } 
-    size_t index = string_hash(static_cast<std::string>(k), table.get_size());
-    for(int i = 0; i < table.get_size(); i++){
-        if(!table[(index+i) % table.get_size()]){
+    size_t index = string_hash(static_cast<std::string>(k), table.get_capacity());
+    for(int i = 0; i < table.get_capacity(); i++){
+        if(!table[(index+i) % table.get_capacity()]){
             pair tmp(k,v);
-            table[(index+i) % table.get_size()] = tmp;
+            table[(index+i) % table.get_capacity()] = tmp;
             used_size++;
             return true;
         }
@@ -67,11 +67,11 @@ value& hash_table::operator[](const key& k){
         return table[index].second;
     }
     catch(std::string error){}
-    for(int i = 0; i < table.get_size(); i++){
-        if(!table[(index+i) % table.get_size()]){
+    for(int i = 0; i < table.get_capacity(); i++){
+        if(!table[(index+i) % table.get_capacity()]){
             value tmp;
-            table[(index+i) % table.get_size()].second = tmp;
-            return table[(index+i) % table.get_size()].second;
+            table[(index+i) % table.get_capacity()].second = tmp;
+            return table[(index+i) % table.get_capacity()].second;
         }
     }
     return table[0].second;
@@ -103,16 +103,16 @@ size_t hash_table::string_hash(std::string string_to_hash, size_t modulo) const{
     for(auto const &c:string_to_hash){
         hash_code = ((hash_code << 5) + hash_code) + c;
     }
-    return hash_code % table.get_size();
+    return hash_code % modulo;
 }
 
 size_t hash_table::find(const key k) const{
-    size_t index = string_hash(static_cast<std::string>(k), table.get_size());
-    for(int i = 0; i < table.get_size(); i++){
-        if(table.get_const_value((index+i) % table.get_size())){
+    size_t index = string_hash(static_cast<std::string>(k), table.get_capacity());
+    for(int i = 0; i < table.get_capacity(); i++){
+        if(table.get_const_value((index+i) % table.get_capacity())){
             throw "element not found";
         }
-        else if(table.get_const_value((index+i) % table.get_size()).first == k){
+        else if(table.get_const_value((index+i) % table.get_capacity()).first == k){
             return i;
         }
     }
@@ -120,14 +120,13 @@ size_t hash_table::find(const key k) const{
 }
 
 void hash_table::rehash(){
-    dummy_vector temp(2*table.get_size());
-    for(int i = 0; i < table.get_size(); i++){
-        if(!table[i]) continue;
-        size_t new_index = string_hash(table[i].first, 2*table.get_size());
-        temp[new_index] = table[i];
+    dummy_vector temp(table);
+    table.reallocate(table.get_capacity()*2);
+    for(int i = 0; i < temp.get_capacity(); i++){
+        if(!temp[i]) continue;
+        size_t new_index = string_hash(table[i].first, 2*temp.get_capacity());
+        table[new_index] = temp[i];
     }
-    delete &table;
-    table = temp;
 }
 
 
