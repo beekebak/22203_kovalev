@@ -1,5 +1,6 @@
 #include <iostream>
 #include "utility.hpp"
+#include <algorithm>
 
 #ifndef DUMMY_VECTOR_H
 #define DUMMY_VECTOR_H
@@ -10,7 +11,7 @@ class dummy_vector{
 
     dummy_vector(const dummy_vector& vector);
 
-    dummy_vector(const dummy_vector&& vector);
+    dummy_vector(dummy_vector&& vector);
 
     dummy_vector& operator=(const dummy_vector& vector);
 
@@ -21,6 +22,8 @@ class dummy_vector{
     size_t get_capacity() const;
 
     void reallocate(size_t new_size);
+
+    void swap(dummy_vector& other);
 
   private:
     size_t capacity = 0;

@@ -6,10 +6,10 @@ class hash_table
     hash_table(); //seems to work
     ~hash_table(); //seems to work
   
-    hash_table(const hash_table& b); 
-    //hash_table(const hash_table&& b); ????
+    hash_table(const hash_table& b); //seems to work
+    hash_table(hash_table&& b); //seems to work
 
-    void swap(hash_table& b); //not done yet
+    void swap(hash_table& b); //seems to work
 
     hash_table& operator=(const hash_table& b); //seems to work
 
@@ -19,18 +19,16 @@ class hash_table
   
     bool insert(const key& k, const value& v); //seems to work
 
-    bool contains(const key& k) const; //smth wrong
+    bool contains(const key& k) const; //seems to work
 
     value& operator[](const key& k); //seems to work
 
-    value& at(const key& k); //smth wrond
-    const value& at(const key& k) const; 
+    value& at(const key& k); //seems to work
+    const value& at(const key& k) const; //seems to work
 
     size_t size() const; //seems to work
 
     bool empty() const; //seems to work
-
-    pair get_by_index(size_t idx);
 
     friend bool operator==(const hash_table& a, const hash_table& b); //seems to work
     friend bool operator!=(const hash_table& a, const hash_table& b); //seems to work

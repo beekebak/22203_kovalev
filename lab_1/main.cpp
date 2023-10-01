@@ -3,17 +3,13 @@
 int main(){
     hash_table test;
     hash_table second;
-    hash_table third;
-    for(int i = 0; i < 3; i++){
-        for(int j = 0; j < 11; j++){
-            test.insert(std::string("test") + std::string(i+1, 'a'+j), value(18, 70+i*12+j, 150+i*12+j));
-            std::cout << test[std::string("test") + std::string(i+1, 'a'+j)].weight << std::endl;
-        }
+    test[std::string("abgriz")] = value(1,1,1);
+    second[std::string("abgriz")] = value(11,12,13);
+    second[std::string("arbuz")] = value(4,15,61);
+    if(test.contains(std::string("arbuz"))){
+        std::cout << "YES";
     }
-    second = test;
-    for(int i = 0; i < 3; i++){
-        for(int j = 0; j < 11; j++){
-            std::cout << second[std::string("test") + std::string(i+1, 'a'+j)].weight << std::endl;
-        }
+    else{
+        std::cout << "NO";
     }
 }

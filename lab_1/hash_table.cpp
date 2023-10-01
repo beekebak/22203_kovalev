@@ -7,7 +7,15 @@ hash_table::~hash_table() = default;
 
 hash_table::hash_table(const hash_table& b):table{b.table}, used_size{b.used_size}{}
 
-//hash_table::hash_table(const hash_table&& b):table{b.table}, used_size{b.used_size}{} ?????
+hash_table::hash_table(hash_table&& b):table{b.table}, used_size{b.used_size}{
+    b.table = dummy_vector();
+    b.used_size = 0;
+} 
+
+void hash_table::swap(hash_table& b){
+    std::swap(b.used_size, used_size);
+    table.swap(b.table);
+}
 
 hash_table& hash_table::operator=(const hash_table& b){
     used_size = b.used_size;
@@ -48,8 +56,7 @@ bool hash_table::insert(const key& k, const value& v){
     return false;
 }
 
-/*template <typename key, typename value>
-bool hash_table<key, value>::contains(const key& k) const{
+bool hash_table::contains(const key& k) const{
     try{
         size_t index = find(k);
         return true;
@@ -57,7 +64,7 @@ bool hash_table<key, value>::contains(const key& k) const{
     catch(std::string error){
         return false;
     }
-}*/
+}
 
 value& hash_table::operator[](const key& k){ 
     size_t index;
@@ -66,6 +73,7 @@ value& hash_table::operator[](const key& k){
         return table[index].second;
     }
     catch(std::string error){}
+    index = string_hash(k, table.get_capacity());
     if(static_cast<double>(table.get_capacity()) * 0.75 <static_cast<double>(used_size)){
         rehash();
     }
@@ -92,10 +100,10 @@ value& hash_table::at(const key& k){
     return table[find(k)].second;
 }
 
-/*template <typename key, typename value>
-const value& hash_table<key, value>::at(const key& k) const{
-    return table[find(k)].second;;
-}*/
+
+const value& hash_table::at(const key& k) const{
+    return table.get_const_value(find(k)).second;
+}
 
 bool hash_table::empty() const{
     return used_size == 0;
@@ -143,7 +151,8 @@ bool operator==(const hash_table& a, const hash_table& b){
         pair temp = a.get_value(i);
         if(temp){
             try{
-                b.find(temp.first);
+                size_t idx = b.find(temp.first);
+                if(b.get_value(idx) != temp) return false;
             }
             catch(std::string error){
                 return false;
@@ -155,8 +164,4 @@ bool operator==(const hash_table& a, const hash_table& b){
 
 bool operator!=(const hash_table& a, const hash_table& b){
     return !(a==b);
-}
-
-pair hash_table::get_by_index(size_t idx){
-    return table[idx];
 }

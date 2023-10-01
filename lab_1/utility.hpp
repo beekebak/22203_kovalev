@@ -12,7 +12,13 @@ struct value{
   value(int in_age, int in_weight, int in_height);
 
   operator bool() const;
+
+  friend bool operator==(const value& a, const value& b); 
+  friend bool operator!=(const value& a, const value& b); 
 };
+
+bool operator==(const value& a, const value& b);
+bool operator!=(const value& a, const value& b);
 
 struct pair{
   public:
@@ -26,4 +32,10 @@ struct pair{
     operator bool() const;
 
     pair& operator=(pair& other);
+
+    friend bool operator==(const pair& a, const pair& b); 
+    friend bool operator!=(const pair& a, const pair& b); 
 };
+
+bool operator==(const pair& a, const pair& b);
+bool operator!=(const pair& a, const pair& b);

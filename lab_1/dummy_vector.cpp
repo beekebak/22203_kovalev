@@ -22,7 +22,10 @@ dummy_vector& dummy_vector::operator=(const dummy_vector& vector){
     return *this;
 }
 
-dummy_vector::dummy_vector(const dummy_vector&& vector):capacity{vector.capacity}, values{vector.values}{} 
+dummy_vector::dummy_vector(dummy_vector&& vector):capacity{vector.capacity}, values{vector.values}{
+    vector.values = nullptr;
+    vector.capacity = 0;
+} 
 
 const pair& dummy_vector::get_const_value(size_t index) const{
     return values[index];
@@ -40,4 +43,9 @@ void dummy_vector::reallocate(size_t new_size){
     delete[] values;
     values = new pair[new_size];
     capacity = new_size;
+}
+
+void dummy_vector::swap(dummy_vector& other){
+    std::swap(capacity, other.capacity);
+    std::swap(values, other.values);
 }
