@@ -1,15 +1,12 @@
 #include "hash_table.hpp"
+#include <gtest/gtest.h>
 
-int main(){
-    hash_table test;
-    hash_table second;
-    test[std::string("abgriz")] = value(1,1,1);
-    second[std::string("abgriz")] = value(11,12,13);
-    second[std::string("arbuz")] = value(4,15,61);
-    if(test.contains(std::string("arbuz"))){
-        std::cout << "YES";
-    }
-    else{
-        std::cout << "NO";
-    }
+TEST(hash_table_test, Constructors){
+    hash_table first;
+    ASSERT_TRUE(first.empty()) << "YAY";
+}
+
+int main(int argc, char** argv){
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

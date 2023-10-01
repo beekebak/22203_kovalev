@@ -7,7 +7,7 @@ dummy_vector::dummy_vector(size_t initial_capacity): capacity{initial_capacity}{
 
 dummy_vector::dummy_vector(const dummy_vector& vector):capacity{vector.capacity}{
     values = new pair[vector.capacity];
-    for(int i = 0; i < capacity; i++){
+    for(size_t i = 0; i < capacity; i++){
         values[i] = (vector.values)[i];
     }
 } 
@@ -16,7 +16,7 @@ dummy_vector& dummy_vector::operator=(const dummy_vector& vector){
     capacity = vector.capacity;
     delete[] values;
     values = new pair[capacity];
-    for(int i = 0; i < capacity; i++){
+    for(size_t i = 0; i < capacity; i++){
         values[i] = (vector.values)[i];
     }
     return *this;

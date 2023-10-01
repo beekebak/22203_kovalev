@@ -45,7 +45,7 @@ bool hash_table::insert(const key& k, const value& v){
         rehash();
     } 
     size_t index = string_hash(static_cast<std::string>(k), table.get_capacity());
-    for(int i = 0; i < table.get_capacity(); i++){
+    for(size_t i = 0; i < table.get_capacity(); i++){
         if(!table[(index+i) % table.get_capacity()]){
             pair tmp(k,v);
             table[(index+i) % table.get_capacity()] = tmp;
@@ -77,7 +77,7 @@ value& hash_table::operator[](const key& k){
     if(static_cast<double>(table.get_capacity()) * 0.75 <static_cast<double>(used_size)){
         rehash();
     }
-    for(int i = 0; i < table.get_capacity(); i++){
+    for(size_t i = 0; i < table.get_capacity(); i++){
         if(!table[(index+i) % table.get_capacity()]){
             table[(index+i) % table.get_capacity()].first = k;
             table[(index+i) % table.get_capacity()].second = value();
@@ -119,7 +119,7 @@ size_t hash_table::string_hash(std::string string_to_hash, size_t modulo) const{
 
 size_t hash_table::find(const key k) const{
     size_t index = string_hash(static_cast<std::string>(k), table.get_capacity());
-    for(int i = 0; i < table.get_capacity(); i++){
+    for(size_t i = 0; i < table.get_capacity(); i++){
         if(!table.get_const_value((index+i) % table.get_capacity())){
             throw std::string("element not found");
         }
@@ -133,10 +133,10 @@ size_t hash_table::find(const key k) const{
 void hash_table::rehash(){
     dummy_vector temp(table);
     table.reallocate(table.get_capacity()*2);
-    for(int i = 0; i < temp.get_capacity(); i++){
+    for(size_t i = 0; i < temp.get_capacity(); i++){
         if(!temp[i]) continue;
         size_t new_index = string_hash(temp[i].first, table.get_capacity());
-        for(int j = 0; j < table.get_capacity(); j++){
+        for(size_t j = 0; j < table.get_capacity(); j++){
             if(table[(new_index+j)%table.get_capacity()]) continue;
             table[(new_index+j)%table.get_capacity()] = temp[i];
             break;
@@ -147,7 +147,7 @@ void hash_table::rehash(){
 
 bool operator==(const hash_table& a, const hash_table& b){
     if(a.used_size != b.used_size) return false;
-    for(int i = 0; i < a.size(); i++){
+    for(size_t i = 0; i < a.size(); i++){
         pair temp = a.get_value(i);
         if(temp){
             try{

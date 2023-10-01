@@ -1,7 +1,12 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.20)
 
-project(lab_1 VERSION 0.1.0 LANGUAGES C CXX)
+project("lab_1")
 
-add_executable(lab_1 main.cpp dummy_vector.cpp hash_table.cpp utility.cpp)
+set(CMAKE_CXX_STANDARD 17)
+set(GOOGLETEST_VERSION 1.14.0)
 
-target_include_directories(lab_1 PRIVATE lab1)
+enable_testing()
+include(googletest)
+add_subdirectory(googletest)
+add_executable(main main.cpp hash_table.cpp dummy_vector.cpp)
+target_link_libraries(main gtest_main gmock_main)
