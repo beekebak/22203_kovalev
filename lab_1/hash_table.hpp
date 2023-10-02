@@ -37,6 +37,8 @@ class hash_table
     dummy_vector table;
     size_t used_size = 0;
 
+    //make a shrink metod?
+
     size_t string_hash(std::string string_to_hash, size_t modulo) const;
 
     size_t find(key k) const;
