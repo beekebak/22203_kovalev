@@ -19,29 +19,54 @@ TEST(hash_table_test, Constructors){
     ASSERT_TRUE(sixth == third);
 }
 
-/*TEST(hash_table_test, presence&adding operators){
-    hash_table first_t2;
-    for(int i = 0; i < 1e4; i++){
-        ASSERT_TRUE(first_t2.insert(std::to_string(i), value(i,i,i)));
-        ASSERT_TRUE(first_t2.contains(value(i,i,i)));
-        value temp = first_t2[std::to_string(i)];
-        ASSERT_TRUE(temp == first_t2.at(value(i,i,i)));
-        first_t2[std::to_string(i)] = value(1,2,3);
-        temp = first_t2[std::to_string(i)];
+TEST(hash_table_test, presence_insertion_operators){
+    hash_table first;
+    value temp;
+    for(int i = 1; i < 1e3; i++){
+        temp = value(i,i,i);
+        ASSERT_TRUE(first.insert(std::to_string(i), temp));
+        ASSERT_TRUE(first.contains(std::to_string(i)));
+        value other_temp = first[std::to_string(i)];
+        ASSERT_TRUE(other_temp == first.at(std::to_string(i)));
+        first[std::to_string(i)] = value(1,2,3);
+        temp = first[std::to_string(i)];
         ASSERT_TRUE(temp == value(1,2,3));
     }
-    const hash_table second_t2;
-    ASSERT_ANY_THROW(second.at("arbuz"));
-    const hash_table third(first_t2);
+    const hash_table second;
+    ASSERT_ANY_THROW(second.at(std::string("arbuz")));
+    const hash_table third(first);
     ASSERT_NO_THROW(third.at(std::to_string(1)));
-    for(int i = 0; i < 1e4; i++){
-        ASSERT_TRUE(first_t2.erase(std::to_string(i)));
-        ASSERT_ANY_THROW(first_t2.at(std::to_string(i)));
-        ASSERT_FALSE(first_t2.contains(std::to_string(i)));
-        temp = first_t2[std::to_string(i)];
-        ASSERT_NO_THROW(first_t2.at(std::to_string(i)));
+    for(int i = 1; i < 1e3; i++){
+        ASSERT_TRUE(first.erase(std::to_string(i)));
+        ASSERT_ANY_THROW(first.at(std::to_string(i)));
+        ASSERT_FALSE(first.contains(std::to_string(i)));
     }
-}*/
+}
+
+TEST(hash_table_test, size_and_swap){
+    hash_table first;
+    value temp;
+    ASSERT_EQ(first.size(), 0);
+    ASSERT_TRUE(first.empty());
+    for(int i = 1; i < 1e3; i++){
+        temp = value(i,i,i);
+        first.insert(std::to_string(i), temp);
+    }
+    ASSERT_EQ(first.size(), 1000-1);
+    hash_table second;
+    second.swap(first);
+    ASSERT_EQ(first.size(), 0);
+    ASSERT_EQ(second.size(), 1000-1);
+    for(int i = 1; i < 1e3; i++){
+        ASSERT_TRUE(second.contains(std::to_string(i)));
+    }
+    second.clear();
+    ASSERT_TRUE(first.empty());
+    ASSERT_EQ(second.size(), 0);
+    for(int i = 1; i < 1e3; i++){
+        ASSERT_FALSE(second.contains(std::to_string(i)));
+    }
+}
 
 int main(int argc, char** argv){
     ::testing::InitGoogleTest(&argc, argv);

@@ -59,6 +59,7 @@ bool hash_table::insert(const key& k, const value& v){
 bool hash_table::contains(const key& k) const{
     try{
         size_t index = find(k);
+        if(!table.get_const_value(index).second) return false;
         return true;
     }
     catch(std::string error){
@@ -97,12 +98,14 @@ size_t hash_table::size() const{
 }
 
 value& hash_table::at(const key& k){
-    return table[find(k)].second;
+    if(table[find(k)].second) return table[find(k)].second;
+    else throw("no such element");
 }
 
 
 const value& hash_table::at(const key& k) const{
-    return table.get_const_value(find(k)).second;
+    if(table.get_const_value(find(k)).second) return table.get_const_value(find(k)).second;
+    else throw("no such element");
 }
 
 bool hash_table::empty() const{
