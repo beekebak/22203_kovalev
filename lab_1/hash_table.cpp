@@ -31,8 +31,9 @@ void hash_table::clear(){
 bool hash_table::erase(const key& k){
     try{
         size_t idx = find(k);
-        value tmp;
-        table[idx].second = tmp;
+        pair tmp;
+        table[idx] = tmp;
+        used_size--;
         return true;
     }
     catch(std::string error){
@@ -59,7 +60,6 @@ bool hash_table::insert(const key& k, const value& v){
 bool hash_table::contains(const key& k) const{
     try{
         size_t index = find(k);
-        if(!table.get_const_value(index).second) return false;
         return true;
     }
     catch(std::string error){
@@ -98,14 +98,13 @@ size_t hash_table::size() const{
 }
 
 value& hash_table::at(const key& k){
-    if(table[find(k)].second) return table[find(k)].second;
-    else throw("no such element");
+    return table[find(k)].second;
 }
 
 
 const value& hash_table::at(const key& k) const{
-    if(table.get_const_value(find(k)).second) return table.get_const_value(find(k)).second;
-    else throw("no such element");
+    return table.get_const_value(find(k)).second;
+
 }
 
 bool hash_table::empty() const{
@@ -121,12 +120,9 @@ size_t hash_table::string_hash(std::string string_to_hash, size_t modulo) const{
 }
 
 size_t hash_table::find(const key k) const{
-    size_t index = string_hash(static_cast<std::string>(k), table.get_capacity());
+    size_t index = string_hash(k, table.get_capacity());
     for(size_t i = 0; i < table.get_capacity(); i++){
-        if(!table.get_const_value((index+i) % table.get_capacity())){
-            throw std::string("element not found");
-        }
-        else if(table.get_const_value((index+i) % table.get_capacity()).first == k){
+        if(table.get_const_value((index+i) % table.get_capacity()).first == k){
             return (index+i) % table.get_capacity();
         }
     }

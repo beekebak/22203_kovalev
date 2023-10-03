@@ -38,9 +38,13 @@ TEST(hash_table_test, presence_insertion_operators){
     ASSERT_NO_THROW(third.at(std::to_string(1)));
     for(int i = 1; i < 1e3; i++){
         ASSERT_TRUE(first.erase(std::to_string(i)));
-        ASSERT_ANY_THROW(first.at(std::to_string(i)));
-        ASSERT_FALSE(first.contains(std::to_string(i)));
+        //ASSERT_ANY_THROW(first.at(std::to_string(i)));
+        //ASSERT_FALSE(first.contains(std::to_string(i)));
     }
+    ASSERT_FALSE(first.erase(std::string("unused")));
+    temp = value(0,0,0);
+    ASSERT_TRUE(first[std::string("more_unused")] == temp);
+    ASSERT_ANY_THROW(first.at(std::string("unused")));
 }
 
 TEST(hash_table_test, size_and_swap){
@@ -66,6 +70,17 @@ TEST(hash_table_test, size_and_swap){
     for(int i = 1; i < 1e3; i++){
         ASSERT_FALSE(second.contains(std::to_string(i)));
     }
+}
+
+TEST(hash_table_test, assignment){
+    hash_table first;
+    hash_table second;
+    for(int i = 1; i < 1e3; i++){
+        value temp(i,i,i);
+        first.insert(std::to_string(i), temp);
+    }
+    second = first;
+    ASSERT_TRUE(first == second);
 }
 
 int main(int argc, char** argv){

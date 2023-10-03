@@ -4,7 +4,7 @@ project("lab_1")
 
 set(CMAKE_CXX_STANDARD 17)
 set(GOOGLETEST_VERSION 1.14.0)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
 
 enable_testing()
 
