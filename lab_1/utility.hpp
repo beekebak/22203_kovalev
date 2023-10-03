@@ -24,10 +24,11 @@ struct pair{
   public:
     key first = "";
     value second;
+    bool exist = false;
 
     pair() = default;
 
-    pair(key k, value v);
+    pair(key k, value v, bool existance);
 
     operator bool() const;
 

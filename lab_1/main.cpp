@@ -38,8 +38,8 @@ TEST(hash_table_test, presence_insertion_operators){
     ASSERT_NO_THROW(third.at(std::to_string(1)));
     for(int i = 1; i < 1e3; i++){
         ASSERT_TRUE(first.erase(std::to_string(i)));
-        //ASSERT_ANY_THROW(first.at(std::to_string(i)));
-        //ASSERT_FALSE(first.contains(std::to_string(i)));
+        ASSERT_ANY_THROW(first.at(std::to_string(i)));
+        ASSERT_FALSE(first.contains(std::to_string(i)));
     }
     ASSERT_FALSE(first.erase(std::string("unused")));
     temp = value(0,0,0);

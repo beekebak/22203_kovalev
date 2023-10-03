@@ -42,13 +42,13 @@ bool hash_table::erase(const key& k){
 }
 
 bool hash_table::insert(const key& k, const value& v){
-    if(static_cast<double>(table.get_capacity()) * 0.75 <static_cast<double>(used_size)){
+    if(static_cast<double>(table.get_capacity()) * 0.75 < static_cast<double>(used_size)){
         rehash();
     } 
     size_t index = string_hash(static_cast<std::string>(k), table.get_capacity());
     for(size_t i = 0; i < table.get_capacity(); i++){
         if(!table[(index+i) % table.get_capacity()]){
-            pair tmp(k,v);
+            pair tmp(k,v,true);
             table[(index+i) % table.get_capacity()] = tmp;
             used_size++;
             return true;
@@ -80,8 +80,7 @@ value& hash_table::operator[](const key& k){
     }
     for(size_t i = 0; i < table.get_capacity(); i++){
         if(!table[(index+i) % table.get_capacity()]){
-            table[(index+i) % table.get_capacity()].first = k;
-            table[(index+i) % table.get_capacity()].second = value();
+            table[(index+i) % table.get_capacity()] = pair(k, value(), true);
             used_size++;
             return table[(index+i) % table.get_capacity()].second;
         }
