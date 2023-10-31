@@ -1,13 +1,15 @@
-#include <iostream>
-#include "utility.hpp"
+#pragma once 
+
 #include <algorithm>
+#include <iostream>
 
-#ifndef DUMMY_VECTOR_H
-#define DUMMY_VECTOR_H
+#include "utility.hpp"
 
-class dummy_vector{
+class dummy_vector {
   public:
     dummy_vector(size_t initial_capacity = 16);
+
+    ~dummy_vector();
 
     dummy_vector(const dummy_vector& vector);
 
@@ -29,4 +31,3 @@ class dummy_vector{
     size_t capacity = 0;
     pair* values = nullptr;
 };
-#endif

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "dummy_vector.hpp"
 
 class hash_table
@@ -108,7 +110,7 @@ class hash_table
     /**
      * @brief compares two hash_tables
      * 
-     * Negatiation of operator== method.
+     * negation of operator== method.
      * Compares two tables sizes. If don't match returns true.
      * If match, for each element if first table looks for the same in second table.
      * If every element has it's match returns false else true.
@@ -117,13 +119,25 @@ class hash_table
     */
     friend bool operator!=(const hash_table& a, const hash_table& b); 
 
+    size_t get_all_size(){
+      return table.get_capacity();
+    }
+
+    pair get_by_index(size_t index){
+      return table[index];
+    }
+
+    size_t string_hash(std::string string_to_hash, size_t modulo) const;
+
   private:
     dummy_vector table;
     size_t used_size = 0;
 
-    size_t string_hash(std::string string_to_hash, size_t modulo) const;
+    //size_t string_hash(std::string string_to_hash, size_t modulo) const;
 
     size_t find(key k) const;
+
+    void fix_claster(size_t k);
 
     pair get_value(const size_t& index) const;
 

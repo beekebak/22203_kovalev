@@ -76,13 +76,14 @@ TEST(hash_table_test, assignment){
     hash_table first;
     hash_table second;
     for(int i = 1; i < 1e3; i++){
-        value temp(i,i,i);
+        value temp(i, i, i);
         first.insert(std::to_string(i), temp);
     }
     second = first;
     ASSERT_TRUE(first == second);
 }
 
+void foo(){return;}
 int main(int argc, char** argv){
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

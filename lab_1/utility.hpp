@@ -1,15 +1,15 @@
+#pragma once
+
 #include <string>
 
 typedef std::string key;
 
-struct value{
-  int age = 0;
-  int weight = 0;
-  int height = 0;
+struct value {
+  int age;
+  int weight;
+  int height;
 
-  value();
-
-  value(int in_age, int in_weight, int in_height);
+  value(int in_age=0, int in_weight=0, int in_height=0);
 
   operator bool() const;
 
@@ -20,19 +20,16 @@ struct value{
 bool operator==(const value& a, const value& b);
 bool operator!=(const value& a, const value& b);
 
-struct pair{
+struct pair {
   public:
     key first = "";
     value second;
-    bool exist = false;
 
     pair() = default;
 
-    pair(key k, value v, bool existance);
+    pair(key k, value v);
 
     operator bool() const;
-
-    pair& operator=(pair& other);
 
     friend bool operator==(const pair& a, const pair& b); 
     friend bool operator!=(const pair& a, const pair& b); 
