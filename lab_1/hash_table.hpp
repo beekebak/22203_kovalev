@@ -136,13 +136,15 @@ class hash_table
 
     //size_t string_hash(std::string string_to_hash, size_t modulo) const;
 
-    size_t find(key k) const;
+    int find(key k) const;
 
     void fix_claster(size_t k);
 
     pair get_value(const size_t& index) const;
 
     void rehash();
+
+    class no_such_element{};
 };
 
 bool operator==(const hash_table& a, const hash_table& b);
