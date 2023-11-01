@@ -17,13 +17,15 @@ class dummy_vector {
 
     dummy_vector& operator=(const dummy_vector& vector);
 
-    const pair& get_const_value(size_t index) const;
+    dummy_vector& operator=(dummy_vector&& vector);
 
     pair& operator[](size_t index);
 
+    const pair& dummy_vector::operator[](size_t index) const;
+
     size_t get_capacity() const;
 
-    void reallocate(size_t new_size);
+    void make_bigger(size_t new_size);
 
     void swap(dummy_vector& other);
 

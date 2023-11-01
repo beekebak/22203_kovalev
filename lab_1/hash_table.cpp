@@ -42,8 +42,7 @@ bool hash_table::erase(const key& k){
 
 bool hash_table::insert(const key& k, const value& v){
     // no copypasta
-    // 0.75 --->>> named constant
-    if(static_cast<double>(table.get_capacity()) * 0.75 < static_cast<double>(used_size)){
+    if(static_cast<double>(table.get_capacity()) * fill_factor < static_cast<double>(used_size)){
         rehash();
     } 
     size_t index = string_hash(static_cast<std::string>(k), table.get_capacity());
@@ -90,7 +89,7 @@ value& hash_table::operator[](const key& k){
 }
 
 pair hash_table::get_value(const size_t& index) const{
-    return table.get_const_value(index);
+    return table[index];
 }
 
 size_t hash_table::size() const{
@@ -102,18 +101,18 @@ value& hash_table::at(const key& k){
 }
 
 const value& hash_table::at(const key& k) const{
-    return table.get_const_value(find(k)).second;
+    return table[find(k)].second;
 }
 
 bool hash_table::empty() const{
     return used_size == 0;
 }
 
-// ????
-// ????
+// https://stackoverflow.com/questions/7666509/hash-function-for-string
+// djb2 algorithm
 size_t hash_table::string_hash(std::string string_to_hash, size_t modulo) const{
     size_t hash_code = 5381;
-    for(char c : string_to_hash){
+    for(char c:string_to_hash){
         hash_code = ((hash_code << 5) + hash_code) + c;
     }
     return hash_code % modulo;
@@ -122,10 +121,10 @@ size_t hash_table::string_hash(std::string string_to_hash, size_t modulo) const{
 size_t hash_table::find(const key k) const{
     size_t index = string_hash(k, table.get_capacity());
     for(size_t i = 0; i < table.get_capacity(); i++){
-        if(table.get_const_value((index+i) % table.get_capacity()).first == k){
+        if(table[(index+i) % table.get_capacity()].first == k){
             return (index+i) % table.get_capacity();
         }
-        else if(!table.get_const_value((index+i) % table.get_capacity())){
+        else if(!table[(index+i) % table.get_capacity()]){
             throw std::string("element not found");
         }
     }
@@ -134,9 +133,7 @@ size_t hash_table::find(const key k) const{
 
 void hash_table::fix_claster(size_t idx){
     for(size_t i = 1; i < table.get_capacity(); i++){
-        //std::cout << i+index << ' ';
         if(!table[(i+idx) % table.get_capacity()]){
-            //std::cout << std::endl;
             return;
         }
         if(string_hash(table[(i+idx) % table.get_capacity()].first, table.get_capacity()) <= idx){
@@ -145,12 +142,11 @@ void hash_table::fix_claster(size_t idx){
             i = 0;
         }
     }
-    //std::cout << std::endl;
 }
 
 void hash_table::rehash(){
     dummy_vector temp(table);
-    table.reallocate(table.get_capacity()*2);
+    table.make_bigger(table.get_capacity()*2);
     for(size_t i = 0; i < temp.get_capacity(); i++){
         if(!temp[i]) continue;
         size_t new_index = string_hash(temp[i].first, table.get_capacity());

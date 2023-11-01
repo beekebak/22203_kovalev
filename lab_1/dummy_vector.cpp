@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "dummy_vector.hpp"
 
 dummy_vector::dummy_vector(size_t initial_capacity): capacity{initial_capacity}{
@@ -10,34 +11,31 @@ dummy_vector::~dummy_vector(){
 
 dummy_vector::dummy_vector(const dummy_vector& vector):capacity{vector.capacity}{
     values = new pair[vector.capacity];
-    // std::copy
-    for(size_t i = 0; i < capacity; i++){
-        values[i] = (vector.values)[i];
-    }
+    std::copy(vector.values, vector.values+capacity, values);
 } 
 
 dummy_vector& dummy_vector::operator=(const dummy_vector& vector){
-    //if (this) ??????????
+    if(this == &vector) return *this;
     capacity = vector.capacity;
     delete[] values;
     values = new pair[capacity];
-
-    // std copy ?????
-    for(size_t i = 0; i < capacity; i++){
-        values[i] = (vector.values)[i];
-    }
+    std::copy(vector.values, vector.values+capacity, values);
     return *this;
 }
 
-dummy_vector::dummy_vector(dummy_vector&& vector)  :capacity{vector.capacity}, values{vector.values}{
-
-    //!!!
+dummy_vector::dummy_vector(dummy_vector&& vector):capacity{vector.capacity}, values{vector.values}{
     vector.values = nullptr;
     vector.capacity = 0;
 } 
 
-// ???????????????????????????????????????????????????????????????
-const pair& dummy_vector::get_const_value(size_t index) const{
+dummy_vector& dummy_vector::operator=(dummy_vector&& vector){
+    if(this != &vector){
+        std::swap(vector, *this);
+    }
+    return *this;
+}
+
+const pair& dummy_vector::operator[](size_t index) const{
     return values[index];
 }
 
@@ -49,8 +47,7 @@ size_t dummy_vector::get_capacity() const{
     return capacity;
 }
 
-void dummy_vector::reallocate(size_t new_size){
-    /// copy data?!?!?!?!??!?!?!?!
+void dummy_vector::make_bigger(size_t new_size){
     delete[] values;
     values = new pair[new_size];
     capacity = new_size;
