@@ -30,7 +30,9 @@ dummy_vector::dummy_vector(dummy_vector&& vector):capacity{vector.capacity}, val
 
 dummy_vector& dummy_vector::operator=(dummy_vector&& vector){
     if(this != &vector){
-        std::swap(vector, *this);
+        delete[] values;
+        values = vector.values;
+        capacity = vector.capacity;
     }
     return *this;
 }

@@ -83,7 +83,6 @@ TEST(hash_table_test, assignment){
     ASSERT_TRUE(first == second);
 }
 
-void foo(){return;}
 int main(int argc, char** argv){
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

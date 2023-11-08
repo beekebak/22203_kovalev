@@ -127,14 +127,12 @@ class hash_table
       return table[index];
     }
 
-    size_t string_hash(std::string string_to_hash, size_t modulo) const;
-
   private:
     dummy_vector table;
     size_t used_size = 0;
     static const inline double fill_factor = 0.75;
 
-    //size_t string_hash(std::string string_to_hash, size_t modulo) const;
+    size_t string_hash(std::string string_to_hash, size_t modulo) const;
 
     int find(key k) const;
 

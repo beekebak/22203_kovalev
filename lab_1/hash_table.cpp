@@ -65,18 +65,9 @@ value& hash_table::operator[](const key& k){
     size_t index;
     index = find(k);
     if(index != element_not_found) return table[index].second;
-    index = string_hash(k, table.get_capacity());
-    if(static_cast<double>(table.get_capacity()) * 0.75 <static_cast<double>(used_size)){
-        rehash();
-    }
-    for(size_t i = 0; i < table.get_capacity(); i++){
-        if(!table[(index+i) % table.get_capacity()]){
-            table[(index+i) % table.get_capacity()] = pair(k, value());
-            used_size++;
-            return table[(index+i) % table.get_capacity()].second;
-        }
-    }
-    return table[0].second;
+    insert(k, value(0,0,0));
+    index = find(k);
+    return table[index].second;
 }
 
 pair hash_table::get_value(const size_t& index) const{
@@ -88,12 +79,14 @@ size_t hash_table::size() const{
 }
 
 value& hash_table::at(const key& k){
-    if(table[find(k)].second) return table[find(k)].second;
+    int idx = find(k);
+    if(idx != element_not_found && table[idx].second) return table[idx].second;
     else throw no_such_element();
 }
 
 const value& hash_table::at(const key& k) const{
-    if(table[find(k)].second) return table[find(k)].second;
+    int idx = find(k);
+    if(idx != element_not_found && table[idx].second) return table[idx].second;
     else throw no_such_element();
 }
 
