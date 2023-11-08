@@ -33,6 +33,8 @@ dummy_vector& dummy_vector::operator=(dummy_vector&& vector){
         delete[] values;
         values = vector.values;
         capacity = vector.capacity;
+        vector.values = nullptr;
+        vector.capacity = 0;
     }
     return *this;
 }
