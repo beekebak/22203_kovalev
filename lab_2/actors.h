@@ -1,6 +1,7 @@
 #include<vector>
 #include<random>
 #include<memory>
+#include<stdexcept>
 #include"card.h"
 #include"strategy.h"
 
@@ -8,55 +9,68 @@
 #define ACTORS_H
 
 namespace dealers{
-    template <typename T>
+    template <typename T, int deck_count>
     class dealer{
       public:
-        virtual T get_card() = 0;
-        virtual ~dealer();
-      protected:
+        dealer():deck(52, deck_count){
+            auto rd = std::random_device();
+            rng = std::mt19937(rd());
+        }
+        T get_card(){
+            int idx = rng()%52;
+            for(int i = 0; deck[idx] == 0 && i < 52; i++){
+                idx = (idx + 1) % 52;
+            }
+            if(deck[idx] == 0) throw std::range_error("no more cards");
+        }
+      private:
+        std::vector<int> deck;
         std::mt19937 rng; //random number generator;
     };
 
-    class numbers_dealer:public dealer<int>{
+    template <>
+    class dealer<int, 0>{
       public:
-        numbers_dealer();
-        virtual int get_card() override;
-    };
-
-    class cards_dealer:public dealer<card>{
-      public:
-        cards_dealer(int deck_count=1);
-        virtual card get_card() override;
+        dealer(){
+            auto rd = std::random_device();
+            rng = std::mt19937(rd());
+        }
+        int get_card(){return rng()%10+1;}
       private:
-        std::vector<int> deck;
+        std::mt19937 rng; //random number generator;
     };
 }
 
 namespace players{
     template<typename T, typename V>
-    class player{
+    class player{}; //don't know how to forbid
+
+    template<typename T>
+    class player<T, deck>{
       public:
-        virtual int show_score()=0;
-        virtual state play_next_move(T opponent_card)=0;
-        void recieve_card(T);
-        virtual ~player();
-      protected:
+        int get_score(){return state.max_score;}
+        std::string get_strategy_name(){return strat->get_name();}
+        int get_last_card_score(){return players_deck.back().get_denomination_value();}
+        enum state play_next_move(T opponent_card){return strat->make_choice(state, opponent_card);}
+        void recieve_card(T card){players_deck.push_back(card);}
+      private:
+        std::unique_ptr<strategy<T, deck>> strat;
         std::vector<T> players_deck;
-        V state;
+        deck state;
     };
-    class numbers_player : public player<int, int>{
+
+    template<>
+    class player<int, int>{
       public:
-        int show_score() override;
-        enum state play_next_move(int opponent_card) override;
+        int show_score(){return state;}
+        std::string get_strategy_name(){return strat->get_name();}
+        int get_last_card_score(){return players_deck.back();}
+        enum state play_next_move(int opponent_card){return strat->make_choice(state, opponent_card);};
+        void recieve_card(int card){players_deck.push_back(card);}
       private:
-        std::unique_ptr<numbers_strategy> strat;
-    };
-    class cards_player : public player<card, deck>{
-      public:
-        int show_score() override;
-        enum state play_next_move(card opponent_card) override;
-      private:
-        std::unique_ptr<card_strategy> strat;
+        std::unique_ptr<strategy<int, int>> strat;
+        std::vector<int> players_deck;
+        int state;
     };
 }
 
