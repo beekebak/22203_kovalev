@@ -9,68 +9,100 @@
 #define ACTORS_H
 
 namespace dealers{
-    template <typename T, int deck_count>
-    class dealer{
+    template <typename CardType, int deck_count, int deck_size>
+    class Dealer{
       public:
-        dealer():deck(52, deck_count){
+        Dealer():deck_(deck_size, deck_count){
             auto rd = std::random_device();
-            rng = std::mt19937(rd());
+            rng_ = std::mt19937(rd());
         }
-        T get_card(){
-            int idx = rng()%52;
-            for(int i = 0; deck[idx] == 0 && i < 52; i++){
-                idx = (idx + 1) % 52;
+        CardType GiveCard(){
+            int idx = rng_() % deck_size;
+            for(int i = 0; deck_[idx] == 0 && i < deck_size; i++){
+                idx = (idx + 1) % deck_size;
             }
-            if(deck[idx] == 0) throw std::range_error("no more cards");
+            if(deck_[idx] == 0) throw std::range_error("no more cards");
         }
       private:
-        std::vector<int> deck;
-        std::mt19937 rng; //random number generator;
+        std::vector<int> deck_;
+        std::mt19937 rng_;
     };
 
-    template <>
-    class dealer<int, 0>{
+    template <int deck_size>
+    class Dealer<int, 0, deck_size>{
       public:
-        dealer(){
+        Dealer(){
             auto rd = std::random_device();
-            rng = std::mt19937(rd());
+            rng_ = std::mt19937(rd());
         }
-        int get_card(){return rng()%10+1;}
+        int GiveCard(){return rng_() % deck_size + 1;}
       private:
-        std::mt19937 rng; //random number generator;
+        std::mt19937 rng_;
     };
 }
 
 namespace players{
-    template<typename T, typename V>
-    class player{}; //don't know how to forbid
+    template<typename CardType, typename DeckType>
+    class Player;
 
-    template<typename T>
-    class player<T, deck>{
+    template<typename CardType>
+    class Player<CardType, Deck>{
       public:
-        int get_score(){return state.max_score;}
-        std::string get_strategy_name(){return strat->get_name();}
-        int get_last_card_score(){return players_deck.back().get_denomination_value();}
-        enum state play_next_move(T opponent_card){return strat->make_choice(state, opponent_card);}
-        void recieve_card(T card){players_deck.push_back(card);}
+        Player(Strategy<CardType, Deck>* strategy) : strategy_(strategy){}
+        Player() = default;
+        Player(Player&&) = default;
+        ~Player() = default;
+        int ShowScore(){return state_.max_score;}
+        std::string get_strategy_name(){
+            return strategy_->GetName();
+        }
+        int GetFirstCardScore(){
+            return players_deck_[0].GetDenominationValue();
+        }
+        int GetLastCardScore(){
+            return players_deck_.back().GetDenominationValue();
+        }
+        enum State PlayNextMove(CardType opponent_card){
+            return strategy_->MakeChoice(state_, opponent_card);
+        }
+        void RecieveCard(CardType card){
+            players_deck_.push_back(card);
+        }
       private:
-        std::unique_ptr<strategy<T, deck>> strat;
-        std::vector<T> players_deck;
-        deck state;
+        std::unique_ptr<Strategy<CardType, Deck>> strategy_;
+        std::vector<CardType> players_deck_;
+        Deck state_;
     };
 
     template<>
-    class player<int, int>{
+    class Player<int, int>{
       public:
-        int show_score(){return state;}
-        std::string get_strategy_name(){return strat->get_name();}
-        int get_last_card_score(){return players_deck.back();}
-        enum state play_next_move(int opponent_card){return strat->make_choice(state, opponent_card);};
-        void recieve_card(int card){players_deck.push_back(card);}
+        Player(Strategy<int, int>* strategy) : strategy_(strategy){}
+        Player() = default;
+        Player(Player&&) = default;
+        ~Player() = default;
+        int ShowScore(){
+            return state_;
+        }
+        std::string GetStrategyName(){
+            return strategy_->GetName();
+        }
+        int GetFirstCardScore(){
+            return players_deck_[0];
+        }
+        int GetLastCardScore(){
+            return players_deck_.back();
+        }
+        enum State PlayNextMove(int opponent_card){
+            return strategy_->MakeChoice(state_, opponent_card);
+        }
+        void RecieveCard(int card){
+            players_deck_.push_back(card);
+        }
       private:
-        std::unique_ptr<strategy<int, int>> strat;
-        std::vector<int> players_deck;
-        int state;
+        std::unique_ptr<Strategy<int, int>> strategy_;
+        std::vector<int> players_deck_;
+        int state_ = 0;
     };
 }
 

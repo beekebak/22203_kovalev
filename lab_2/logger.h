@@ -6,29 +6,48 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
+const int kNoWinner = -1;
 
-struct logger{
-    void print_result();
+template<typename CardType, typename DeckType>
+struct Logger{
+    virtual void PrintGameResult(int winner_number,
+                                 std::string table_string_representation) = 0;
+    virtual void PrintMoveLog(players::Player<CardType,DeckType> player,
+                              State move_result) = 0;
+    virtual void PrintMatchStartMessage(players::Player<CardType,DeckType> first,
+                                   players::Player<CardType,DeckType> second) = 0;
+    virtual void PrintMatchResult(int player_number) = 0;
 };
 
-template<typename T, typename V>
-struct verbose_logger: public logger{
-    void print_move_log(players::player<T,V>){
-        std::cout <<
+template<typename CardType, typename DeckType>
+struct VerboseLogger: public Logger<CardType, DeckType>{
+    void PrintMoveLog(players::Player<CardType, DeckType> player,
+                      State move_result) override{
+        if(move_result == State::kTakeMore)
+            std::cout << player.ShowScore() << " последняя "
+            << player.GetLastCardScore() << std::endl;
+        else std::cout << "не брал карт" << std::endl;
     }
-    void match_start_message(strategy<T,V> first, strategy<T,V> second){
-
+    void PrintMatchStartMessage(players::Player<CardType,DeckType> first,
+                                players::Player<CardType,DeckType> second) override{
+        std::cout << "start" << std::endl;
     }
-    void match_end_message(std::string msg){
-
+    void PrintMatchResult(int player_number) override{
+        if(player_number == kNoWinner){
+            std:: cout << "Ничья." << std::endl;
+        }
+        else{
+            std::cout << "Игрок " << player_number << " победил." << std::endl;
+        }
+    }
+    void PrintGameResult(int winner_number,
+                         std::string table_string_representation) override{
+        std::cout << "Победил игрок " << winner_number << std::endl;
+        std::cout << table_string_representation;
     }
 };
 
-template<typename T, typename V>
-struct tournament_logger: public verbose_logger<T,V>{
-
-};
-
-struct silent_logger: public logger{};
+template<typename CardType, typename DeckType>
+struct TournamentLogger: public Logger<CardType, DeckType>{};
 
 #endif // LOGGER_H

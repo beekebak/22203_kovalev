@@ -3,56 +3,94 @@
 #ifndef STRATEGY_H
 #define STRATEGY_H
 
-enum class state{take_more, stop, lose};
+enum class State{
+    kTakeMore,
+    kStop,
+    kLose
+};
 
-template <typename T, typename V>
-class strategy{
+template <typename CardType, typename DeckType>
+class Strategy{
   public:
-    strategy(std::string given_name):name{given_name} {}
-    std::string get_name(){return name;}
-    state virtual make_choice(T sum, V opponents_card) = 0;
-    virtual ~strategy();
+    Strategy(std::string given_name = "unstated"):name_{given_name} {}
+    std::string GetName(){
+        return name_;
+    }
+    State virtual MakeChoice(DeckType sum, CardType opponents_card) = 0;
+    virtual ~Strategy();
   protected:
-    void change_state(state& old_state, state new_state){
+    void ChangeState(State& old_state, State new_state){
         switch(old_state){
-          case state::lose:
+          case State::kLose:
             old_state = new_state;
             break;
-          case state::take_more:
-            old_state = new_state == state::stop ? new_state : old_state;
+          case State::kTakeMore:
+            old_state = new_state == State::kStop ? new_state : old_state;
             break;
-          case state::stop: break;
+          case State::kStop: break;
         }
     }
-    void change_max_score(int& old_max_score, int new_max_score){
-        if(new_max_score <= 21 && old_max_score < new_max_score) old_max_score = new_max_score;
+    void ChangeMaxScore(int& old_max_score, int new_max_score){
+        if(new_max_score <= 21 && old_max_score < new_max_score){
+            old_max_score = new_max_score;
+        }
     }
-    std::string name = "unstated";
+    std::string name_;
 };
 
-class ge16_plain : public strategy<int, int>{
+class G16Plain : public Strategy<int, int>{
   public:
-    ge16_plain(): strategy<int, int>(">=16"){};
-    state virtual make_choice(int sum, int opponents_card) override;
+    G16Plain(): Strategy<int, int>(">=16"){};
+    State virtual MakeChoice(int sum, int opponents_card) override{
+        State answer = State::kLose;
+        if(sum > 21){
+            Strategy<int, int>::ChangeState(answer, State::kLose);
+        }
+        else if(sum > 15){
+            Strategy<int, int>::ChangeState(answer, State::kStop);
+        }
+        else{
+            Strategy<int, int>::ChangeState(answer, State::kTakeMore);
+        }
+        return answer;
+    }
 };
 
-class ge18_plain : public strategy<int, int>{
+class G18Plain : public Strategy<int, int>{
   public:
-    ge18_plain(): strategy<int, int>(">=18"){};
-    state virtual make_choice(int sum, int opponents_card) override;
+    G18Plain(): Strategy<int, int>(">=18"){};
+    State virtual MakeChoice(int sum, int opponents_card) override{
+        State answer = State::kLose;
+        if(sum > 21){
+            Strategy<int, int>::ChangeState(answer, State::kLose);
+        }
+        else if(sum > 17){
+            Strategy<int, int>::ChangeState(answer, State::kStop);
+        }
+        else{
+            Strategy<int, int>::ChangeState(answer, State::kTakeMore);
+        }
+        return answer;
+    }
 };
 
-template <typename T>
-class ge17_card : public strategy<T, deck>{
+template <typename CardType>
+class G17Card : public Strategy<CardType, Deck>{
   public:
-    ge17_card: strategy<T, deck>(">=17");
-    state virtual make_choice(deck deck_state, card opponents_card) override{
-        state answer = state::lose;
+    G17Card(): Strategy<CardType, Deck>(">=17"){};
+    State virtual MakeChoice(Deck deck_state, CardType opponents_card) override{
+        State answer = State::kLose;
         for(int i = 0; i < deck_state.ace_count; i++){
-            strategy<T, deck>::change_max_score(deck_state.max_score, deck_state.points - i*10);
-            if(deck_state.max_score > 21) strategy<T, deck>::change_state(answer, state::lose);
-            else if(deck_state.max_score > 16) strategy<T, deck>::change_state(answer, state::stop);
-            else strategy<T, deck>::change_state(answer, state::take_more);
+            Strategy<CardType, Deck>::ChangeMaxScore(deck_state.max_score, deck_state.points - i*10);
+            if(deck_state.max_score > 21){
+                Strategy<CardType, Deck>::ChangeState(answer, State::kLose);
+            }
+            else if(deck_state.max_score > 16){
+                Strategy<CardType, Deck>::ChangeState(answer, State::kStop);
+            }
+            else{
+                Strategy<CardType, Deck>::ChangeState(answer, State::kTakeMore);
+            }
         }
         return answer;
     }
