@@ -1,4 +1,5 @@
 #include <vector>
+#include <functional>
 #include "factory.h"
 #include "strategy.h"
 #include "card.h"
@@ -30,10 +31,11 @@ void InitializeIntFactory(Factory<Strategy<int, int>, std::string, std::function
 int main(int argc, char* argv[]){
     Factory<Strategy<Card, Deck>, std::string, std::function<Strategy<Card, Deck>*()>> StrategyFactory;
     InitializeCardFactory(StrategyFactory);
-    std::vector<players::Player<Card, Deck>> players;
-    players.push_back(players::Player<Card, Deck>(StrategyFactory.CreateObject(">=17")));
-    players.push_back(players::Player<Card, Deck>(StrategyFactory.CreateObject(">=17")));
-    Game<Card, Deck> game(players, new VerboseLogger<Card, Deck>);
+    std::vector<players::Player<Card, Deck>> players__;
+    players__.emplace_back(players::Player<Card, Deck>(StrategyFactory.CreateObject(">=17")));
+    players__.emplace_back(players::Player<Card, Deck>(StrategyFactory.CreateObject(">=17")));
+    players__.emplace_back(players::Player<Card, Deck>(StrategyFactory.CreateObject(">=17")));
+    players__.emplace_back(players::Player<Card, Deck>(StrategyFactory.CreateObject(">=17")));
+    Game<Card, Deck> game(players__);
     game.OrganizeTournament();
-    game.ProcessEndgame();
 }
