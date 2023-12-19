@@ -42,7 +42,7 @@ class Match
                 throw BadStateException();
             }
             else if(first_score > second_score){
-                return MatchResult::kP2Win;
+                return MatchResult::kP1Win;
             }
             else if(first_score == second_score){
                 return MatchResult::kDraw;

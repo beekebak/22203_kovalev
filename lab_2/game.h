@@ -19,7 +19,7 @@ class Game{
   public:
     Game(std::vector<players::Player<CardType, DeckType>>& players,
          Logger<CardType, DeckType>* logger, MatchType type):
-          logger_{std::unique_ptr<Logger<CardType,DeckType>>(logger)}, game_type_{type}{
+         logger_{std::unique_ptr<Logger<CardType,DeckType>>(logger)}, game_type_{type}{
         for(int i = 0; i < players.size(); i++){
             players_set_.emplace_back(players[i]);
             result_table_.table.push_back(0);
@@ -65,7 +65,7 @@ class Game{
   private:
     MatchType game_type_;
     int deck_count_ = 1;
-    int deck_size_ = 52;
+    int deck_size_ = 10;
     std::vector<players::Player<CardType, DeckType>> players_set_;
     std::unique_ptr<Logger<CardType,DeckType>> logger_;
     struct ResultTable{
@@ -86,7 +86,7 @@ class Game{
         logger_->PrintMatchStartMessage(first, second);
         Match<CardType, DeckType> match =
             Match<CardType, DeckType>(first, second,
-                                      dealers::Dealer<CardType>(deck_size_, deck_count_),
+                                      dealers::Dealer<CardType>(),
                                       logger_->Clone(), game_type_, first_number,
                                       second_number);
         return match.play();

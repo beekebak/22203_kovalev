@@ -1,9 +1,9 @@
-#include<vector>
-#include<random>
-#include<memory>
-#include<stdexcept>
-#include"card.h"
-#include"strategy.h"
+#include <vector>
+#include <random>
+#include <memory>
+#include <stdexcept>
+#include "card.h"
+#include "strategy.h"
 
 #ifndef ACTORS_H
 #define ACTORS_H
@@ -12,7 +12,7 @@ namespace dealers{
     template <typename CardType>
     class Dealer{
       public:
-        Dealer(int deck_size=52, int deck_count=1):deck_(std::vector<int>(deck_size, deck_count)){
+        Dealer():deck_(std::vector<int>(Config::GetInstance().deck_size_, Config::GetInstance().deck_count_)){
             auto rd = std::random_device();
             rng_ = std::mt19937(rd());
         }
@@ -36,16 +36,15 @@ namespace dealers{
     template <>
     class Dealer<int>{
       public:
-        Dealer(int deck_size = 10): deck_size_(deck_size){
+        Dealer(){
             auto rd = std::random_device();
             rng_ = std::mt19937(rd());
         }
         Dealer(Dealer&) = default;
         Dealer(Dealer&&) = default;
         ~Dealer() = default;
-        int GiveCard(){return rng_() % deck_size_ + 1;}
+        int GiveCard(){return rng_() % Config::GetInstance().deck_size_ + 1;}
       private:
-        int deck_size_;
         std::mt19937 rng_;
     };
 }
@@ -94,7 +93,7 @@ namespace players{
       public:
         Player(Strategy<int, int>* strategy) : strategy_(strategy){}
         Player() = default;
-        Player(Player& other) : state_(other.state_), players_deck_(other.players_deck_),
+        Player(const Player& other) : state_(other.state_), players_deck_(other.players_deck_),
                                 strategy_(other.strategy_->Clone()) {}
         Player(Player&&) = default;
         ~Player() = default;
