@@ -16,7 +16,14 @@ struct Logger{
                               State move_result) = 0;
     virtual void PrintMatchStartMessage(players::Player<CardType,DeckType>& first,
                                    players::Player<CardType,DeckType>& second) = 0;
-    virtual void PrintMatchResult(int player_number) = 0;
+    void PrintMatchResult(int player_number){
+        if(player_number == kNoWinner){
+            std::cout << "Ничья." << std::endl;
+        }
+        else{
+            std::cout << "Игрок " << player_number << " победил." << std::endl;
+        }
+    }
     virtual ~Logger() {}
     auto Clone() const {
         return std::unique_ptr<Logger>(CloneImpl());
@@ -28,6 +35,40 @@ struct Logger{
 template<typename CardType, typename DeckType>
 struct VerboseLogger: public Logger<CardType, DeckType>{
     void PrintGameResult(int winner_number,
+                         std::string table_string_representation) override{}
+    void PrintMoveLog(int number, players::Player<CardType, DeckType>& player,
+                      State move_result) override{
+        if(move_result == State::kTakeMore)
+            std::cout << "Игрок " << number << " " << player.ShowScore() << " последняя "
+            << player.GetLastCardScore() << std::endl;
+        else std::cout << "Игрок " << number << " " << "не брал карт" << std::endl;
+    }
+    void PrintMatchStartMessage(players::Player<CardType,DeckType>& first,
+                                players::Player<CardType,DeckType>& second) override{
+        std::cout << "Стратегия первого игрока " << first.GetStrategyName() << std::endl;
+        std::cout << "Стратегия второго игрока " << second.GetStrategyName() << std::endl;
+    }
+    virtual VerboseLogger* CloneImpl() const override{
+        return new VerboseLogger(*this);
+    }
+};
+
+template<typename CardType, typename DeckType>
+struct SilentLogger: Logger<CardType, DeckType>{
+    void PrintGameResult(int winner_number,
+                         std::string table_string_representation) override{}
+    void PrintMoveLog(int number, players::Player<CardType, DeckType>& player,
+                      State move_result) override{}
+    void PrintMatchStartMessage(players::Player<CardType,DeckType>& first,
+                                players::Player<CardType,DeckType>& second) override{}
+    virtual SilentLogger* CloneImpl() const override{
+        return new SilentLogger(*this);
+    }
+};
+
+template<typename CardType, typename DeckType>
+struct TournamentLogger: public Logger<CardType, DeckType>{
+    void PrintGameResult(int winner_number,
                          std::string table_string_representation) override{
         if(winner_number == kNoWinner){
             std::cout << "Ничья в игре." << std::endl;
@@ -38,30 +79,12 @@ struct VerboseLogger: public Logger<CardType, DeckType>{
         std::cout << table_string_representation << std::endl;
     }
     void PrintMoveLog(int number, players::Player<CardType, DeckType>& player,
-                      State move_result) override{
-        if(move_result == State::kTakeMore)
-            std::cout << "игрок" << number << " " << player.ShowScore() << " последняя "
-            << player.GetLastCardScore() << std::endl;
-        else std::cout << "не брал карт" << std::endl;
-    }
+                      State move_result) override{}
     void PrintMatchStartMessage(players::Player<CardType,DeckType>& first,
-                                players::Player<CardType,DeckType>& second) override{
-        std::cout << "start" << std::endl;
-    }
-    void PrintMatchResult(int player_number) override{
-        if(player_number == kNoWinner){
-            std::cout << "Ничья." << std::endl;
-        }
-        else{
-            std::cout << "Игрок " << player_number << " победил." << std::endl;
-        }
-    }
-    virtual VerboseLogger* CloneImpl() const override{
-        return new VerboseLogger(*this);
+                                players::Player<CardType,DeckType>& second) override{}
+    virtual TournamentLogger* CloneImpl() const override{
+        return new TournamentLogger(*this);
     }
 };
-
-template<typename CardType, typename DeckType>
-struct TournamentLogger: public Logger<CardType, DeckType>{};
 
 #endif // LOGGER_H

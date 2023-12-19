@@ -17,8 +17,9 @@ enum class Winner{
 template <typename CardType, typename DeckType>
 class Game{
   public:
-    Game(std::vector<players::Player<CardType, DeckType>>& players):
-          logger_(std::unique_ptr<Logger<CardType,DeckType>>(new VerboseLogger<CardType, DeckType>)){
+    Game(std::vector<players::Player<CardType, DeckType>>& players,
+         Logger<CardType, DeckType>* logger, MatchType type):
+          logger_{std::unique_ptr<Logger<CardType,DeckType>>(logger)}, game_type_{type}{
         for(int i = 0; i < players.size(); i++){
             players_set_.emplace_back(players[i]);
             result_table_.table.push_back(0);
@@ -42,10 +43,9 @@ class Game{
     }
 
     void OrganizeTournament(){
-        //std::cout << players_set_.size();
         for(int i = 0; i < players_set_.size(); i++){
             for(int j = i+1; j < players_set_.size(); j++){
-                MatchResult result = StartNewMatch(players_set_[i], players_set_[j]);
+                MatchResult result = StartNewMatch(players_set_[i], players_set_[j], i+1, j+1);
                 if(result == MatchResult::kP1Win){
                     result_table_.table[i]++;
                     logger_->PrintMatchResult(i+1);
@@ -63,6 +63,7 @@ class Game{
     }
 
   private:
+    MatchType game_type_;
     int deck_count_ = 1;
     int deck_size_ = 52;
     std::vector<players::Player<CardType, DeckType>> players_set_;
@@ -80,11 +81,14 @@ class Game{
     ResultTable result_table_;
 
     MatchResult StartNewMatch(players::Player<CardType, DeckType>& first,
-                              players::Player<CardType, DeckType>& second){
+                              players::Player<CardType, DeckType>& second,
+                              int first_number, int second_number){
         logger_->PrintMatchStartMessage(first, second);
         Match<CardType, DeckType> match =
             Match<CardType, DeckType>(first, second,
-                                      dealers::Dealer<CardType>(deck_size_, deck_count_), logger_->Clone());
+                                      dealers::Dealer<CardType>(deck_size_, deck_count_),
+                                      logger_->Clone(), game_type_, first_number,
+                                      second_number);
         return match.play();
     }
 };

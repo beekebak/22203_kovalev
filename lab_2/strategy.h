@@ -93,15 +93,19 @@ class G17Card : public Strategy<CardType, Deck>{
         State answer = State::kLose;
         for(int i = 0; i <= deck_state.ace_count; i++){
             Strategy<CardType, Deck>::ChangeMaxScore(deck_state.max_score, deck_state.points - i*10);
-            if(deck_state.max_score > 21){
+            if(deck_state.max_score - i*10 > 21){
                 Strategy<CardType, Deck>::ChangeState(answer, State::kLose);
             }
-            else if(deck_state.max_score > 16){
+            else if(deck_state.max_score - i*10 > 16){
                 Strategy<CardType, Deck>::ChangeState(answer, State::kStop);
             }
             else{
                 Strategy<CardType, Deck>::ChangeState(answer, State::kTakeMore);
             }
+        }
+        for(int i = 1; i <= deck_state.ace_count && deck_state.max_score > 21; i++){
+            deck_state.max_score -= 10;
+            deck_state.ace_count--;
         }
         return answer;
     }
