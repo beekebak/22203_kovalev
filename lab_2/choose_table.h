@@ -16,6 +16,7 @@ class ChooseTable{
   public:
     ChooseTable(std::string path){
         std::ifstream input_file;
+        input_file.exceptions(std::ifstream::badbit);
         input_file.open(path);
         table_ = nlohmann::json::parse(input_file);
     }
