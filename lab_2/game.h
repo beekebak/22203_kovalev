@@ -1,10 +1,12 @@
 #include <vector>
-#include "actors.h"
+#include "player.h"
+#include "dealer.h"
 #include "card.h"
 #include "logger.h"
 #include "match.h"
 #include "strategy.h"
 #include "factory.h"
+#include "game_config.h"
 
 #ifndef GAME_H
 #define GAME_H
@@ -17,80 +19,26 @@ enum class Winner{
 template <typename CardType, typename DeckType>
 class Game{
   public:
-    Game(std::vector<players::Player<CardType, DeckType>>& players,
-         Logger<CardType, DeckType>* logger, MatchType type):
-         logger_{std::unique_ptr<Logger<CardType,DeckType>>(logger)}, game_type_{type}{
-        for(int i = 0; i < players.size(); i++){
-            players_set_.emplace_back(players[i]);
-            result_table_.table.push_back(0);
-            std::cout << std::endl;
-        }
-    }
-
-    void ProcessEndgame(){
-        int winner_index = 0;
-        int max_score = result_table_.table[0];
-        for(int i = 1; i < result_table_.table.size(); i++){
-            if(result_table_.table[i] > max_score){
-                max_score = result_table_.table[i];
-                winner_index = i;
-            }
-            else if(result_table_.table[i] == max_score){
-                winner_index = kNoWinner;
-            }
-        }
-        logger_->PrintGameResult(winner_index, result_table_.ToString());
-    }
-
-    void OrganizeTournament(){
-        for(int i = 0; i < players_set_.size(); i++){
-            for(int j = i+1; j < players_set_.size(); j++){
-                MatchResult result = StartNewMatch(players_set_[i], players_set_[j], i+1, j+1);
-                if(result == MatchResult::kP1Win){
-                    result_table_.table[i]++;
-                    logger_->PrintMatchResult(i+1);
-                }
-                else if(result == MatchResult::kP2Win){
-                    result_table_.table[j]++;
-                    logger_->PrintMatchResult(j+1);
-                }
-                else{
-                    logger_->PrintMatchResult(kNoWinner);
-                }
-            }
-        }
-        ProcessEndgame();
-    }
-
+    Game(std::vector<Player<CardType, DeckType>>& players,
+           Logger<CardType, DeckType>* logger, MatchType type, GameConfig& config);
+    void ProcessEndgame();
+    void OrganizeTournament();
   private:
     MatchType game_type_;
     int deck_count_ = 1;
     int deck_size_ = 10;
-    std::vector<players::Player<CardType, DeckType>> players_set_;
+    std::vector<Player<CardType, DeckType>> players_set_;
     std::unique_ptr<Logger<CardType,DeckType>> logger_;
+    GameConfig config_;
     struct ResultTable{
         std::vector<int> table;
-        std::string ToString(){
-            std::string representation = "";
-            for(int i = 0; i < table.size(); i++){
-                representation += "Player "  + std::to_string(i+1) + ": " + std::to_string(table[i]) + "\n";
-            }
-            return representation;
-        };
+        std::string ToString();
     };
     ResultTable result_table_;
-
-    MatchResult StartNewMatch(players::Player<CardType, DeckType>& first,
-                              players::Player<CardType, DeckType>& second,
-                              int first_number, int second_number){
-        logger_->PrintMatchStartMessage(first, second);
-        Match<CardType, DeckType> match =
-            Match<CardType, DeckType>(first, second,
-                                      dealers::Dealer<CardType>(),
-                                      logger_->Clone(), game_type_, first_number,
-                                      second_number);
-        return match.play();
-    }
+    MatchResult StartNewMatch(Player<CardType, DeckType>& first,
+                              Player<CardType, DeckType>& second,
+                              int first_number, int second_number);
+    void InitializeLoadableStrategies();
 };
 
 #endif // GAME_H

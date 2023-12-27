@@ -1,4 +1,5 @@
-#include "actors.h"
+#include "player.h"
+#include "dealer.h"
 #include "logger.h"
 
 #ifndef MATCH_H
@@ -19,76 +20,22 @@ template<typename CardType, typename DeckType>
 class Match
 {
   public:
-    Match(players::Player<CardType, DeckType> f,
-          players::Player<CardType, DeckType> s,
-          dealers::Dealer<CardType> d,
+    Match(Player<CardType, DeckType> f,
+          Player<CardType, DeckType> s,
+          Dealer<CardType> d,
           std::unique_ptr<Logger<CardType, DeckType>> l,
-          MatchType type, int first_number, int second_number):
-          first_{f}, second_{s}, dealer_{d}, logger_{l->Clone()},
-          match_type_{type}, first_player_number_{first_number},
-          second_player_number_{second_number} {}
-
-    MatchResult DetermineWinner(State first_state, State second_state, int first_score, int second_score){
-        switch(first_state){
-          case State::kLose:
-            if(second_state == State::kLose) return MatchResult::kDraw;
-            else return MatchResult::kP2Win;
-            break;
-          case State::kStop:
-            if(second_state == State::kLose){
-                return MatchResult::kP1Win;
-            }
-            else if(second_state == State::kTakeMore){
-                throw BadStateException();
-            }
-            else if(first_score > second_score){
-                return MatchResult::kP1Win;
-            }
-            else if(first_score == second_score){
-                return MatchResult::kDraw;
-            }
-            else if(first_score < second_score){
-                return MatchResult::kP2Win;
-            }
-            break;
-          case State::kTakeMore:
-            throw BadStateException();
-        }
-    }
-
-    MatchResult play(){
-        enum State first_res{State::kTakeMore};
-        enum State second_res{State::kTakeMore};
-        first_.RecieveCard(dealer_.GiveCard());
-        logger_->PrintMoveLog(first_player_number_, first_, first_res);
-        second_.RecieveCard(dealer_.GiveCard());
-        logger_->PrintMoveLog(second_player_number_, second_, second_res);
-        do {
-            if(match_type_ == MatchType::kManual){
-                std::string input;
-                std::cin >> input;
-                if(input == "quit"){
-                    throw GameQuitException();
-                }
-            }
-            first_res = first_.PlayNextMove(second_.GetFirstCardScore());
-            if(first_res == State::kTakeMore) first_.RecieveCard(dealer_.GiveCard());
-            logger_->PrintMoveLog(first_player_number_, first_, first_res);
-            second_res = second_.PlayNextMove(first_.GetFirstCardScore());
-            if(second_res == State::kTakeMore) second_.RecieveCard(dealer_.GiveCard());
-            logger_->PrintMoveLog(second_player_number_, second_, second_res);
-        } while(first_res == State::kTakeMore || second_res == State::kTakeMore);
-        return DetermineWinner(first_res, second_res, first_.ShowScore(), second_.ShowScore());
-    }
+          MatchType type, int first_number, int second_number);
+    MatchResult DetermineWinner(State first_state, State second_state, int first_score, int second_score);
+    MatchResult play();
   private:
     class BadStateException{};
     class GameQuitException{};
     MatchType match_type_;
-    players::Player<CardType, DeckType> first_;
+    Player<CardType, DeckType> first_;
     int first_player_number_;
-    players::Player<CardType, DeckType> second_;
+    Player<CardType, DeckType> second_;
     int second_player_number_;
-    dealers::Dealer<CardType> dealer_;
+    Dealer<CardType> dealer_;
     std::unique_ptr<Logger<CardType, DeckType>> logger_;
 };
 
