@@ -109,7 +109,8 @@ RandomPlainStrategy::RandomPlainStrategy(): Strategy<int, int>("RandomInt"){
     rng_ = std::mt19937(rd());
 }
 
-RandomPlainStrategy::RandomPlainStrategy(const RandomPlainStrategy& other) : rng_(other.rng_), actual_strategy_(other.actual_strategy_->Clone()) {}
+RandomPlainStrategy::RandomPlainStrategy(const RandomPlainStrategy& other) : Strategy<int,int>(other.name_),
+    rng_(other.rng_), actual_strategy_(other.actual_strategy_->Clone()) {}
 State RandomPlainStrategy::MakeChoice(int& sum, int& opponents_card){
     int temp = rng_()%100;
     if(temp < 25){
@@ -209,7 +210,7 @@ void TableCardStrategy<CardType>::SetTablePath(std::string path){
 }
 
 template<typename CardType>
-RandomCardStrategy<CardType>::RandomCardStrategy(): Strategy<CardType, Deck>("RandomInt"){
+RandomCardStrategy<CardType>::RandomCardStrategy(): Strategy<CardType, Deck>("RandomCard"){
     auto rd = std::random_device();
     rng_ = std::mt19937(rd());
 }

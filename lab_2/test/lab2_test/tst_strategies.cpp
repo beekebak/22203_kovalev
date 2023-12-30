@@ -160,10 +160,21 @@ TEST(G17CardTest, StopsWhenSumIsOver16) {
     ASSERT_EQ(result, State::kStop);
 }
 
-TEST(G18CardTest, TakesMoreWhenSumIs16OrLess) {
+TEST(G17CardTest, TakesMoreWhenSumIs16OrLess) {
     G17Card<Card> strategy;
     Deck deck;
     deck.max_score = 16;
+    Card opponentCard(5);
+    State result = strategy.MakeChoice(deck, opponentCard);
+    ASSERT_EQ(result, State::kTakeMore);
+}
+
+
+TEST(G17CardTest, CorrectlyUsesAces) {
+    G17Card<Card> strategy;
+    Deck deck;
+    deck.max_score = 22;
+    deck.ace_count = 1;
     Card opponentCard(5);
     State result = strategy.MakeChoice(deck, opponentCard);
     ASSERT_EQ(result, State::kTakeMore);

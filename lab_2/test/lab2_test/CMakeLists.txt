@@ -65,7 +65,10 @@ add_executable(lab_2 main.cpp tst_lab_2.cpp ${SOURCES}
                tst_factory.cpp
 
                tst_player.cpp
-               tst_parser.cpp)
+               tst_parser.cpp
+               tst_match.cpp
+               tst_game.cpp
+               tst_controller.cpp)
 add_test(NAME lab_2 COMMAND lab_2)
 target_link_libraries(lab_2 PRIVATE Threads::Threads)
 target_include_directories(lab_2 PRIVATE ${PROJECT_SOURCE_DIR}/../../include)

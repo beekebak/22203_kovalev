@@ -2,13 +2,12 @@
 
 template<typename CardType, typename DeckType>
 Game<CardType, DeckType>::Game(std::vector<Player<CardType, DeckType>>& players,
-     Logger<CardType, DeckType>* logger, MatchType type, GameConfig& config):
+    Logger<CardType, DeckType>* logger, MatchType type, GameConfig& config):
     logger_{std::unique_ptr<Logger<CardType,DeckType>>(logger)},
     game_type_{type}, config_{config}{
     for(int i = 0; i < players.size(); i++){
         players_set_.emplace_back(players[i]);
         result_table_.table.push_back(0);
-        std::cout << std::endl;
     }
     InitializeLoadableStrategies();
 }

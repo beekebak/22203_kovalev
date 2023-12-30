@@ -25,8 +25,6 @@ class Game{
     void OrganizeTournament();
   private:
     MatchType game_type_;
-    int deck_count_ = 1;
-    int deck_size_ = 10;
     std::vector<Player<CardType, DeckType>> players_set_;
     std::unique_ptr<Logger<CardType,DeckType>> logger_;
     GameConfig config_;

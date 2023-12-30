@@ -5,10 +5,11 @@ Match<CardType, DeckType>::Match(Player<CardType, DeckType> f,
       Player<CardType, DeckType> s,
       Dealer<CardType> d,
       std::unique_ptr<Logger<CardType, DeckType>> l,
-      MatchType type, int first_number, int second_number):
+      MatchType type, int first_number, int second_number,
+      std::istream& stream):
     first_{f}, second_{s}, dealer_{d}, logger_{l->Clone()},
     match_type_{type}, first_player_number_{first_number},
-    second_player_number_{second_number} {}
+    second_player_number_{second_number}, in_stream_{stream} {}
 
 template<typename CardType, typename DeckType>
 MatchResult Match<CardType, DeckType>::DetermineWinner(State first_state, State second_state, int first_score, int second_score){
@@ -51,7 +52,7 @@ MatchResult Match<CardType, DeckType>::play(){
     do {
         if(match_type_ == MatchType::kManual){
             std::string input;
-            std::cin >> input;
+            in_stream_ >> input;
             if(input == "quit"){
                 throw GameQuitException();
             }
