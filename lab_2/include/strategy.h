@@ -47,7 +47,8 @@ class TablePlainStrategy: public Strategy<int, int>{
     static ChooseTable table_;
 };
 
-inline ChooseTable TablePlainStrategy::table_ = ChooseTable("./main/plusi/22203_kovalev/lab_2/int_table.json");
+//inline ChooseTable TablePlainStrategy::table_ = ChooseTable("./main/plusi/22203_kovalev/lab_2/int_table.json");
+inline ChooseTable TablePlainStrategy::table_ = ChooseTable("/home/beekebak/main/plusi/22203_kovalev/lab_2/int_table.json");
 
 class CowardPlain : public Strategy<int, int>{
   public:
@@ -97,7 +98,9 @@ private:
 };
 
 template <typename CardType>
-inline ChooseTable TableCardStrategy<CardType>::table_ = ChooseTable("./main/plusi/22203_kovalev/lab_2/card_table.json");
+//inline ChooseTable TableCardStrategy<CardType>::table_ = ChooseTable("./main/plusi/22203_kovalev/lab_2/card_table.json");
+inline ChooseTable TableCardStrategy<CardType>::table_ = ChooseTable("/home/beekebak/main/plusi/22203_kovalev/lab_2/card_table.json");
+
 
 template <typename CardType>
 class RandomCardStrategy: public Strategy<CardType, Deck>{

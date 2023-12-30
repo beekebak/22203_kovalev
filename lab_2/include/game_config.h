@@ -14,8 +14,8 @@ struct GameConfig{
     GameType type = GameType::kCard;
     int deck_size_ = 52;
     int deck_count_ = 1;
-    std::string card_table_path_ = "./main/plusi/22203_kovalev/lab_2/card_table.json";
-    std::string int_table_path_ = "./main/plusi/22203_kovalev/lab_2/int_table.json";
+    std::string card_table_path_ = "/home/beekebak/main/plusi/22203_kovalev/lab_2/card_table.json";
+    std::string int_table_path_ = "/home/beekebak/main/plusi/22203_kovalev/lab_2/int_table.json";
     std::string logger_type_ = "verbose";
     const std::vector<std::string> card_strategies_names_ = {"17ge", "table_card", "random_card",
                                                 "coward_card"};

@@ -88,7 +88,10 @@ CowardPlain::CowardPlain(): Strategy<int, int>("CowardPlain"){};
 
 State CowardPlain::MakeChoice(int& sum, int& opponents_card){
     State answer = State::kLose;
-    if(sum >= 12){
+    if(sum >= 22){
+        Strategy<int, int>::ChangeState(answer, State::kLose);
+    }
+    else if(sum >= 12){
         Strategy<int, int>::ChangeState(answer, State::kStop);
     }
     else{
@@ -101,11 +104,11 @@ CowardPlain* CowardPlain::CloneImpl() const{
     return new CowardPlain(*this);
 }
 
-
 RandomPlainStrategy::RandomPlainStrategy(): Strategy<int, int>("RandomInt"){
     auto rd = std::random_device();
     rng_ = std::mt19937(rd());
 }
+
 RandomPlainStrategy::RandomPlainStrategy(const RandomPlainStrategy& other) : rng_(other.rng_), actual_strategy_(other.actual_strategy_->Clone()) {}
 State RandomPlainStrategy::MakeChoice(int& sum, int& opponents_card){
     int temp = rng_()%100;
@@ -165,7 +168,10 @@ State CowardCard<CardType>::MakeChoice(Deck& deck_state, CardType& opponents_car
     State answer = State::kLose;
     for(int i = 0; i <= deck_state.ace_count; i++){
         Strategy<CardType, Deck>::ChangeMaxScore(deck_state.max_score, deck_state.points - i*10);
-        if(deck_state.max_score - i*10 >= 12){
+        if(deck_state.max_score - i*10 >= 22){
+            Strategy<CardType, Deck>::ChangeState(answer, State::kLose);
+        }
+        else if(deck_state.max_score - i*10 >= 12){
             Strategy<CardType, Deck>::ChangeState(answer, State::kStop);
         }
         else{

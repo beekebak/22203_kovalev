@@ -1,4 +1,5 @@
 #include "choose_table.h"
+#include <iostream>
 
 ChooseTable::ChooseTable(std::string path){
     std::ifstream input_file;
@@ -8,5 +9,8 @@ ChooseTable::ChooseTable(std::string path){
 }
 
 State ChooseTable::MakeChoice(int score, int opponent_card){
-    return chooses_.at(table_[score][opponent_card].get<std::string>());
+    if(score <= 21){
+        return chooses_.at(table_[std::to_string(score)][std::to_string(opponent_card)].get<std::string>());
+    }
+    return State::kLose;
 }
