@@ -4,6 +4,7 @@
 #include "card.h"
 #include "choose_table.h"
 #include "game_config.h"
+#include "factory_initializator.h"
 
 #ifndef STRATEGY_H
 #define STRATEGY_H
@@ -70,50 +71,47 @@ private:
     std::unique_ptr<Strategy<int,int>> actual_strategy_ = std::unique_ptr<Strategy<int,int>>(new G18Plain);
 };
 
-template <typename CardType>
-class G17Card : public Strategy<CardType, Deck>{
+class G17Card : public Strategy<Card, Deck>{
   public:
     G17Card();
-    State MakeChoice(Deck& deck_state, CardType& opponents_card) override;
+    State MakeChoice(Deck& deck_state, Card& opponents_card) override;
     G17Card* CloneImpl() const override;
 };
 
-template <typename CardType>
-class CowardCard : public Strategy<CardType, Deck>{
+class CowardCard : public Strategy<Card, Deck>{
 public:
     CowardCard();
-    State MakeChoice(Deck& deck_state, CardType& opponents_card) override;
+    State MakeChoice(Deck& deck_state, Card& opponents_card) override;
     CowardCard* CloneImpl() const override;
 };
 
-template <typename CardType>
-class TableCardStrategy: public Strategy<CardType, Deck>{
+
+class TableCardStrategy: public Strategy<Card, Deck>{
 public:
     TableCardStrategy();
-    State MakeChoice(Deck& sum, CardType& opponents_card) override;
+    State MakeChoice(Deck& sum, Card& opponents_card) override;
     TableCardStrategy* CloneImpl() const override;
     static void SetTablePath(std::string path);
 private:
     static ChooseTable table_;
 };
 
-template <typename CardType>
+
 //inline ChooseTable TableCardStrategy<CardType>::table_ = ChooseTable("./main/plusi/22203_kovalev/lab_2/card_table.json");
-inline ChooseTable TableCardStrategy<CardType>::table_ = ChooseTable("/home/beekebak/main/plusi/22203_kovalev/lab_2/card_table.json");
+inline ChooseTable TableCardStrategy::table_ = ChooseTable("/home/beekebak/main/plusi/22203_kovalev/lab_2/card_table.json");
 
 
-template <typename CardType>
-class RandomCardStrategy: public Strategy<CardType, Deck>{
+class RandomCardStrategy: public Strategy<Card, Deck>{
 public:
     RandomCardStrategy();
     RandomCardStrategy(const RandomCardStrategy& other);
     ~RandomCardStrategy() = default;
-    State MakeChoice(Deck& sum, CardType& opponents_card) override;
+    State MakeChoice(Deck& sum, Card& opponents_card) override;
     RandomCardStrategy* CloneImpl() const override;
 private:
     class RandomException{};
     std::mt19937 rng_;
-    std::unique_ptr<Strategy<CardType, Deck>> actual_strategy_ = std::unique_ptr<Strategy<CardType, Deck>>(new G17Card<CardType>);
+    std::unique_ptr<Strategy<Card, Deck>> actual_strategy_ = std::unique_ptr<Strategy<Card, Deck>>(new G17Card);
 };
 
 #endif // STRATEGY_H

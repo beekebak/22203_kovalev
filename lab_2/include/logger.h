@@ -2,6 +2,7 @@
 #include "player.h"
 #include "strategy.h"
 #include "card.h"
+#include "factory_initializator.h"
 
 #ifndef LOGGER_H
 #define LOGGER_H

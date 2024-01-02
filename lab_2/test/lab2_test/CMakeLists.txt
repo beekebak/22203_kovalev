@@ -17,7 +17,6 @@ set(SOURCES
     ../../src/card.cpp
     ../../src/choose_table.cpp
     ../../src/controller.cpp
-    ../../src/factories_initialization.cpp
     ../../src/game.cpp
     ../../src/match.cpp
     ../../src/parser.cpp

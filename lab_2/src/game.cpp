@@ -66,7 +66,7 @@ MatchResult Game<CardType, DeckType>::StartNewMatch(Player<CardType, DeckType>& 
 template<typename CardType, typename DeckType>
 void Game<CardType, DeckType>::InitializeLoadableStrategies(){
     if constexpr (std::is_same_v<CardType, int>)TablePlainStrategy::SetTablePath(config_.int_table_path_);
-    if constexpr (std::is_same_v<CardType, Card>)TableCardStrategy<CardType>::SetTablePath(config_.card_table_path_);
+    if constexpr (std::is_same_v<CardType, Card>)TableCardStrategy::SetTablePath(config_.card_table_path_);
 }
 
 template<typename CardType, typename DeckType>

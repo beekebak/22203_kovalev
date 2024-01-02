@@ -143,7 +143,7 @@ TEST(RandomPlainTest, CloneMethodCreatesNewInstance) {
 }
 
 TEST(G17CardTest, LosesWhenSumIsOver21) {
-    G17Card<Card> strategy;
+    G17Card strategy;
     Deck deck;
     deck.max_score = 22;
     Card opponentCard(5);
@@ -152,7 +152,7 @@ TEST(G17CardTest, LosesWhenSumIsOver21) {
 }
 
 TEST(G17CardTest, StopsWhenSumIsOver16) {
-    G17Card<Card> strategy;
+    G17Card strategy;
     Deck deck;
     deck.max_score = 17;
     Card opponentCard(5);
@@ -161,7 +161,7 @@ TEST(G17CardTest, StopsWhenSumIsOver16) {
 }
 
 TEST(G17CardTest, TakesMoreWhenSumIs16OrLess) {
-    G17Card<Card> strategy;
+    G17Card strategy;
     Deck deck;
     deck.max_score = 16;
     Card opponentCard(5);
@@ -171,7 +171,7 @@ TEST(G17CardTest, TakesMoreWhenSumIs16OrLess) {
 
 
 TEST(G17CardTest, CorrectlyUsesAces) {
-    G17Card<Card> strategy;
+    G17Card strategy;
     Deck deck;
     deck.max_score = 22;
     deck.ace_count = 1;
@@ -181,7 +181,7 @@ TEST(G17CardTest, CorrectlyUsesAces) {
 }
 
 TEST(TableCardTest, TakesMoreWhenHInTable){
-    TableCardStrategy<Card> strategy;
+    TableCardStrategy strategy;
     Deck deck;
     deck.max_score = 2;
     Card opponentCard(5);
@@ -190,7 +190,7 @@ TEST(TableCardTest, TakesMoreWhenHInTable){
 }
 
 TEST(TableCardTest, StopsWhenSInTable){
-    TableCardStrategy<Card> strategy;
+    TableCardStrategy strategy;
     Deck deck;
     deck.max_score = 20;
     Card opponentCard(5);
@@ -200,7 +200,7 @@ TEST(TableCardTest, StopsWhenSInTable){
 
 
 TEST(TableCardTest, LosesWhenMoreThanInTable){
-    TableCardStrategy<Card> strategy;
+    TableCardStrategy strategy;
     Deck deck;
     deck.max_score = 22;
     Card opponentCard(5);
@@ -209,7 +209,7 @@ TEST(TableCardTest, LosesWhenMoreThanInTable){
 }
 
 TEST(CowardCardTest, TakesMoreWhenSumIsLessThan12){
-    CowardCard<Card> strategy;
+    CowardCard strategy;
     Deck deck;
     deck.max_score = 10;
     Card opponentCard(5);
@@ -218,7 +218,7 @@ TEST(CowardCardTest, TakesMoreWhenSumIsLessThan12){
 }
 
 TEST(CowardCardTest, StopsWhenSumIsMoreThan11){
-    CowardCard<Card> strategy;
+    CowardCard strategy;
     Deck deck;
     deck.max_score = 12;
     Card opponentCard(5);
@@ -227,7 +227,7 @@ TEST(CowardCardTest, StopsWhenSumIsMoreThan11){
 }
 
 TEST(RandomCardTest, LosesWhenSumIsOver21) {
-    RandomCardStrategy<Card> strategy;
+    RandomCardStrategy strategy;
     Deck deck;
     deck.max_score = 22;
     Card opponentCard(5);
@@ -236,7 +236,7 @@ TEST(RandomCardTest, LosesWhenSumIsOver21) {
 }
 
 TEST(RandomCardTest, StopsWhenSumIsExactly21) {
-    RandomCardStrategy<Card> strategy;
+    RandomCardStrategy strategy;
     Deck deck;
     deck.max_score = 21;
     Card opponentCard(5);
@@ -245,9 +245,9 @@ TEST(RandomCardTest, StopsWhenSumIsExactly21) {
 }
 
 TEST(RandomCardTest, CloneMethodCreatesNewInstance) {
-    RandomCardStrategy<Card> originalStrategy;
-    RandomCardStrategy<Card>* cloned = originalStrategy.CloneImpl();
+    RandomCardStrategy originalStrategy;
+    RandomCardStrategy* cloned = originalStrategy.CloneImpl();
     EXPECT_NE(&originalStrategy, cloned);
-    EXPECT_TRUE(typeid(*cloned) == typeid(RandomCardStrategy<Card>));
+    EXPECT_TRUE(typeid(*cloned) == typeid(RandomCardStrategy));
     delete cloned;
 }

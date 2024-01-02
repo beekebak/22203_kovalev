@@ -14,53 +14,54 @@ public:
 };
 
 TEST(FactoryTest, RegisterInstance) {
-    Factory<MockProduct, std::string, std::function<MockProduct*()>> factory;
-
     std::string id = "mock";
-    bool registrationSuccess = factory.RegisterInstance(id, []() { return new MockProduct(); });
+    bool registration_success = Factory<MockProduct, std::string,
+    std::function<MockProduct*()>>::GetInstance()->RegisterInstance(id, []() { return new MockProduct(); });
+    bool is_registred = Factory<MockProduct, std::string,
+                                std::function<MockProduct*()>>::GetInstance()->IsRegistred("mock");
 
-    ASSERT_TRUE(registrationSuccess);
-    ASSERT_TRUE(factory.IsRegistred(id));
+    ASSERT_TRUE(registration_success);
+    ASSERT_TRUE(is_registred);
 }
 
 TEST(FactoryTest, RegisterInstanceOverwritePrevention) {
-    Factory<MockProduct, std::string, std::function<MockProduct*()>> factory;
+    using factory = Factory<MockProduct, std::string, std::function<MockProduct*()>>;
 
-    std::string id = "mock";
-    factory.RegisterInstance(id, []() { return new MockProduct(); });
-    bool registrationSuccess = factory.RegisterInstance(id, []() { return new MockProduct(); });
+    std::string id = "mock1";
+    factory::GetInstance()->RegisterInstance(id, []() -> MockProduct* { return new MockProduct(); });
+    bool registration_success = factory::GetInstance()->RegisterInstance(id, []() -> MockProduct* { return new MockProduct(); });
 
-    ASSERT_FALSE(registrationSuccess);
+    ASSERT_FALSE(registration_success);
 }
 
 TEST(FactoryTest, IsRegistered) {
-    Factory<MockProduct, std::string, std::function<std::unique_ptr<MockProduct>()>> factory;
-    std::string id = "mock";
+    using factory = Factory<MockProduct, std::string, std::function<MockProduct*()>>;
+    std::string id = "mock2";
 
-    bool preRegistration = factory.IsRegistred(id);
-    factory.RegisterInstance(id, []() { return std::unique_ptr<MockProduct>(new MockProduct()); });
-    bool postRegistration = factory.IsRegistred(id);
+    bool pre_registration = factory::GetInstance()->IsRegistred(id);
+    factory::GetInstance()->RegisterInstance(id, []() { return new MockProduct(); });
+    bool post_registration = factory::GetInstance()->IsRegistred(id);
 
-    ASSERT_FALSE(preRegistration);
-    ASSERT_TRUE(postRegistration);
+    ASSERT_FALSE(pre_registration);
+    ASSERT_TRUE(post_registration);
 }
 
 TEST(FactoryTest, CreateObjectSuccess) {
-    Factory<MockProduct, std::string, std::function<MockProduct*()>> factory;
-    std::string id = "mock";
+    using factory = Factory<MockProduct, std::string, std::function<MockProduct*()>>;
+    std::string id = "mock3";
 
-    factory.RegisterInstance(id, []() { return new MockProduct(); });
-    std::unique_ptr<MockProduct> product = std::unique_ptr<MockProduct>(factory.CreateObject(id));
+    factory::GetInstance()->RegisterInstance(id, []() { return new MockProduct(); });
+    std::unique_ptr<MockProduct> product = std::unique_ptr<MockProduct>(factory::GetInstance()->CreateObject(id));
 
     ASSERT_NE(product, nullptr);
     EXPECT_EQ(product->Foo(), "FOOO");
 }
 
 TEST(FactoryTest, CreateObjectUnregisteredID) {
-    Factory<MockProduct, std::string, std::function<MockProduct*()>> factory;
-    std::string id = "mock";
+    using factory = Factory<MockProduct, std::string, std::function<MockProduct*()>>;
+    std::string id = "mock4";
 
-    EXPECT_THROW({std::unique_ptr<MockProduct> product = std::unique_ptr<MockProduct>(factory.CreateObject(id));},
-                 std::out_of_range);
+    EXPECT_THROW({std::unique_ptr<MockProduct> product = std::unique_ptr<MockProduct>(factory::GetInstance()->
+                CreateObject(id));}, std::out_of_range);
 }
 

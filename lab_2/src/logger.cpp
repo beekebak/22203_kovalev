@@ -36,10 +36,20 @@ VerboseLogger<CardType, DeckType>* VerboseLogger<CardType, DeckType>::CloneImpl(
     return new VerboseLogger(*this);
 }
 
+FactoryInitializator<Logger<Card, Deck>, std::string,
+                    VerboseLogger<Card, Deck>> VerboseLoggerCardInitialization("verbose");
+FactoryInitializator<Logger<int, int>, std::string,
+                     VerboseLogger<int, int>> VerboseLoggerIntInitialization("verbose");
+
 template<typename CardType, typename DeckType>
 SilentLogger<CardType, DeckType>* SilentLogger<CardType, DeckType>::CloneImpl() const{
     return new SilentLogger(*this);
 }
+
+FactoryInitializator<Logger<Card, Deck>, std::string,
+                    SilentLogger<Card, Deck>> SilentLoggerCardInitialization("silent");
+FactoryInitializator<Logger<int, int>, std::string,
+                     SilentLogger<int, int>> SilentLoggerIntInitialization("silent");
 
 template<typename CardType, typename DeckType>
 void TournamentLogger<CardType, DeckType>::PrintGameResult(int winner_number,
@@ -58,11 +68,10 @@ TournamentLogger<CardType, DeckType>* TournamentLogger<CardType, DeckType>::Clon
     return new TournamentLogger(*this);
 }
 
+FactoryInitializator<Logger<Card, Deck>, std::string,
+                    TournamentLogger<Card, Deck>> TournamentLoggerCardInitialization("tournament");
+FactoryInitializator<Logger<int, int>, std::string,
+                     TournamentLogger<int, int>> TournamentLoggerIntInitialization("tournament");
+
 template class Logger<int, int>;
 template class Logger<Card, Deck>;
-template class VerboseLogger<int, int>;
-template class VerboseLogger<Card, Deck>;
-template class SilentLogger<int, int>;
-template class SilentLogger<Card, Deck>;
-template class TournamentLogger<int, int>;
-template class TournamentLogger<Card, Deck>;

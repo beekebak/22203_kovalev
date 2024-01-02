@@ -18,7 +18,7 @@ TEST(ControllerTest, StartInitializesGameProperly) {
     config.deck_size_ = 10;
     Controller<int, int> controller(strategies, config);
     EXPECT_NO_THROW(controller.Start());
-    std::vector<std::string> strategies5 = {"abwasg", "sdadsa"};
-    Controller<int, int> controller5(strategies5, config);
-    EXPECT_ANY_THROW(controller5.Start());
+    std::vector<std::string> strategies1 = {"abwasg", "sdadsa"};
+    Controller<int, int> controller1(strategies1, config);
+    EXPECT_ANY_THROW(controller1.Start());
 }
