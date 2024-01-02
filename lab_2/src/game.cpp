@@ -41,9 +41,10 @@ void Game<CardType, DeckType>::OrganizeTournament(){
                 result_table_.table[j]++;
                 logger_->PrintMatchResult(j+1);
             }
-            else{
+            else if(result == MatchResult::kDraw){
                 logger_->PrintMatchResult(kNoWinner);
             }
+            else return;
         }
     }
     ProcessEndgame();
@@ -59,7 +60,7 @@ MatchResult Game<CardType, DeckType>::StartNewMatch(Player<CardType, DeckType>& 
                                   Dealer<CardType>(config_.deck_size_, config_.deck_count_),
                                   logger_->Clone(), game_type_, first_number,
                                   second_number);
-    return match.play();
+    return match.Play();
 }
 
 template<typename CardType, typename DeckType>

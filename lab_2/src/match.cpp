@@ -23,7 +23,7 @@ MatchResult Match<CardType, DeckType>::DetermineWinner(State first_state, State 
             return MatchResult::kP1Win;
         }
         else if(second_state == State::kTakeMore){
-            throw BadStateException();
+            throw std::runtime_error("bad state");
         }
         else if(first_score > second_score){
             return MatchResult::kP1Win;
@@ -36,15 +36,15 @@ MatchResult Match<CardType, DeckType>::DetermineWinner(State first_state, State 
         }
         break;
     case State::kTakeMore:
-        throw BadStateException();
+        throw std::runtime_error("bad state");
     }
-    throw BadStateException();
+    throw std::runtime_error("bad state");
 }
 
 template<typename CardType, typename DeckType>
-MatchResult Match<CardType, DeckType>::play(){
-    enum State first_res{State::kTakeMore};
-    enum State second_res{State::kTakeMore};
+MatchResult Match<CardType, DeckType>::Play(){
+    State first_res{State::kTakeMore};
+    State second_res{State::kTakeMore};
     first_.RecieveCard(dealer_.GiveCard());
     logger_->PrintMoveLog(first_player_number_, first_, first_res);
     second_.RecieveCard(dealer_.GiveCard());
@@ -54,7 +54,7 @@ MatchResult Match<CardType, DeckType>::play(){
             std::string input;
             in_stream_ >> input;
             if(input == "quit"){
-                throw GameQuitException();
+                return MatchResult::kQuit;
             }
         }
         first_res = first_.PlayNextMove(second_.GetFirstCardScore());

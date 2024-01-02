@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <exception>
 #include "player.h"
 #include "dealer.h"
 #include "logger.h"
@@ -10,7 +11,8 @@
 enum class MatchResult{
     kP1Win,
     kP2Win,
-    kDraw
+    kDraw,
+    kQuit
 };
 
 enum class MatchType{
@@ -29,11 +31,9 @@ class Match
           MatchType type, int first_number, int second_number,
           std::istream& stream = std::cin);
     MatchResult DetermineWinner(State first_state, State second_state, int first_score, int second_score);
-    MatchResult play();
+    MatchResult Play();
   private:
     std::istream& in_stream_;
-    class BadStateException{};
-    class GameQuitException{};
     MatchType match_type_;
     Player<CardType, DeckType> first_;
     int first_player_number_;

@@ -54,14 +54,15 @@ TEST_F(MatchTest, ThrowsBadStateExceptionWhenFirstPlayerTakesMoreInTheEnd) {
     EXPECT_ANY_THROW(match.DetermineWinner(State::kTakeMore, State::kStop, 0, 0));
 }
 
-TEST_F(MatchTest, ThrowsExceptionToEndGame){
+TEST_F(MatchTest, GameQuit){
     std::istringstream stream(std::string("quit"));
     Match<int, int> match(mockPlayerOne, mockPlayerTwo, mockDealer, std::move(mockLogger), MatchType::kManual, 1, 2, stream);
-    EXPECT_ANY_THROW(match.play());
+    MatchResult result = match.Play();
+    EXPECT_EQ(result, MatchResult::kQuit);
 }
 
-TEST_F(MatchTest, NoThrowIfCorrectInput){
+TEST_F(MatchTest, NoThrowForAnyInput){
     std::istringstream stream(std::string("asdv"));
     Match<int, int> match(mockPlayerOne, mockPlayerTwo, mockDealer, std::move(mockLogger), MatchType::kManual, 1, 2, stream);
-    EXPECT_NO_THROW(match.play());
+    EXPECT_NO_THROW(match.Play());
 }
