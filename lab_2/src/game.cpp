@@ -58,7 +58,7 @@ MatchResult Game<CardType, DeckType>::StartNewMatch(Player<CardType, DeckType>& 
     Match<CardType, DeckType> match =
         Match<CardType, DeckType>(first, second,
                                   Dealer<CardType>(config_.deck_size_, config_.deck_count_),
-                                  logger_->Clone(), game_type_, first_number,
+                                  logger_.get(), game_type_, first_number,
                                   second_number);
     return match.Play();
 }

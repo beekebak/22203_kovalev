@@ -27,7 +27,7 @@ class Match
     Match(Player<CardType, DeckType> f,
           Player<CardType, DeckType> s,
           Dealer<CardType> d,
-          std::unique_ptr<Logger<CardType, DeckType>> l,
+          Logger<CardType, DeckType>* l,
           MatchType type, int first_number, int second_number,
           std::istream& stream = std::cin);
     MatchResult DetermineWinner(State first_state, State second_state, int first_score, int second_score);
@@ -40,7 +40,7 @@ class Match
     Player<CardType, DeckType> second_;
     int second_player_number_;
     Dealer<CardType> dealer_;
-    std::unique_ptr<Logger<CardType, DeckType>> logger_;
+    Logger<CardType, DeckType>* logger_;
 };
 
 #endif // MATCH_H

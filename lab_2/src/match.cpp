@@ -4,10 +4,10 @@ template<typename CardType, typename DeckType>
 Match<CardType, DeckType>::Match(Player<CardType, DeckType> f,
       Player<CardType, DeckType> s,
       Dealer<CardType> d,
-      std::unique_ptr<Logger<CardType, DeckType>> l,
+      Logger<CardType, DeckType>* l,
       MatchType type, int first_number, int second_number,
       std::istream& stream):
-    first_{f}, second_{s}, dealer_{d}, logger_{l->Clone()},
+    first_{f}, second_{s}, dealer_{d}, logger_{l},
     match_type_{type}, first_player_number_{first_number},
     second_player_number_{second_number}, in_stream_{stream} {}
 

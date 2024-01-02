@@ -6,11 +6,6 @@ std::string Strategy<Card, DeckType>::GetName(){
 }
 
 template<typename Card, typename DeckType>
-std::unique_ptr<Strategy<Card, DeckType>> Strategy<Card, DeckType>::Clone() const{
-    return std::unique_ptr<Strategy<Card, DeckType>>(CloneImpl());
-}
-
-template<typename Card, typename DeckType>
 void Strategy<Card, DeckType>::ChangeMaxScore(int& old_max_score, int new_max_score){
     if(new_max_score <= 21 && old_max_score < new_max_score){
         old_max_score = new_max_score;
@@ -47,10 +42,6 @@ State G16Plain::MakeChoice(int& sum, int& opponents_card){
     return answer;
 }
 
-G16Plain* G16Plain::CloneImpl() const{
-    return new G16Plain(*this);
-}
-
 FactoryInitializator<Strategy<int, int>, std::string,
                     G16Plain> G16PlainInitialization("16ge");
 
@@ -70,10 +61,6 @@ State G18Plain::MakeChoice(int& sum, int& opponents_card){
     return answer;
 }
 
-G18Plain* G18Plain::CloneImpl() const{
-    return new G18Plain(*this);
-}
-
 FactoryInitializator<Strategy<int, int>, std::string,
                     G18Plain> G18PlainInitialization("18ge");
 
@@ -81,10 +68,6 @@ TablePlainStrategy::TablePlainStrategy(): Strategy<int,int>("TableInt"){}
 
 State TablePlainStrategy::MakeChoice(int& sum, int& opponents_card){
     return table_.MakeChoice(sum, opponents_card);
-}
-
-TablePlainStrategy* TablePlainStrategy::CloneImpl() const{
-    return new TablePlainStrategy(*this);
 }
 
 void TablePlainStrategy::SetTablePath(std::string path){
@@ -110,10 +93,6 @@ State CowardPlain::MakeChoice(int& sum, int& opponents_card){
     return answer;
 }
 
-CowardPlain* CowardPlain::CloneImpl() const{
-    return new CowardPlain(*this);
-}
-
 FactoryInitializator<Strategy<int, int>, std::string,
                     CowardPlain> CowardPlainInitialization("coward_int");
 
@@ -122,8 +101,6 @@ RandomPlainStrategy::RandomPlainStrategy(): Strategy<int, int>("RandomInt"){
     rng_ = std::mt19937(rd());
 }
 
-RandomPlainStrategy::RandomPlainStrategy(const RandomPlainStrategy& other) : Strategy<int,int>(other.name_),
-    rng_(other.rng_), actual_strategy_(other.actual_strategy_->Clone()) {}
 State RandomPlainStrategy::MakeChoice(int& sum, int& opponents_card){
     int temp = rng_()%100;
     if(temp < 25){
@@ -140,16 +117,11 @@ State RandomPlainStrategy::MakeChoice(int& sum, int& opponents_card){
     }
     return actual_strategy_->MakeChoice(sum, opponents_card);
 }
-RandomPlainStrategy* RandomPlainStrategy::CloneImpl() const {
-    return new RandomPlainStrategy(*this);
-}
 
 FactoryInitializator<Strategy<int, int>, std::string,
                     RandomPlainStrategy> RandomPlainInitialization("random_int");
 
-
 G17Card::G17Card(): Strategy<Card, Deck>(">=17"){};
-
 
 State G17Card::MakeChoice(Deck& deck_state, Card& opponents_card){
     State answer = State::kLose;
@@ -172,18 +144,10 @@ State G17Card::MakeChoice(Deck& deck_state, Card& opponents_card){
     return answer;
 }
 
-
-G17Card* G17Card::CloneImpl() const{
-    return new G17Card(*this);
-}
-
-
 FactoryInitializator<Strategy<Card, Deck>, std::string,
                     G17Card> G17CardInitialization("17ge");
 
-
 CowardCard::CowardCard(): Strategy<Card, Deck>("CowardCard"){};
-
 
 State CowardCard::MakeChoice(Deck& deck_state, Card& opponents_card){
     State answer = State::kLose;
@@ -206,47 +170,26 @@ State CowardCard::MakeChoice(Deck& deck_state, Card& opponents_card){
     return answer;
 }
 
-
-CowardCard* CowardCard::CloneImpl() const {
-    return new CowardCard(*this);
-}
-
-
 FactoryInitializator<Strategy<Card, Deck>, std::string,
                     CowardCard> CowardCardInitialization("coward_card");
 
-
 TableCardStrategy::TableCardStrategy(): Strategy<Card, Deck>("TableCard"){}
-
 
 State TableCardStrategy::MakeChoice(Deck& sum, Card& opponents_card) {
     return table_.MakeChoice(sum.max_score, opponents_card.GetDenominationValue());
 }
 
-
-TableCardStrategy* TableCardStrategy::CloneImpl() const {
-    return new TableCardStrategy(*this);
-}
-
-
 void TableCardStrategy::SetTablePath(std::string path){
     table_ = ChooseTable(path);
 }
 
-
 FactoryInitializator<Strategy<Card, Deck>, std::string,
                     TableCardStrategy> TableCardInitialization("table_card");
-
 
 RandomCardStrategy::RandomCardStrategy(): Strategy<Card, Deck>("RandomCard"){
     auto rd = std::random_device();
     rng_ = std::mt19937(rd());
 }
-
-
-RandomCardStrategy::RandomCardStrategy(const RandomCardStrategy& other) :
-    rng_(other.rng_), actual_strategy_(other.actual_strategy_->Clone()) {}
-
 
 State RandomCardStrategy::MakeChoice(Deck& sum, Card& opponents_card) {
     int temp = rng_()%100;
@@ -261,12 +204,6 @@ State RandomCardStrategy::MakeChoice(Deck& sum, Card& opponents_card) {
     }
     return actual_strategy_->MakeChoice(sum, opponents_card);
 }
-
-
-RandomCardStrategy* RandomCardStrategy::CloneImpl() const {
-    return new RandomCardStrategy(*this);
-}
-
 
 FactoryInitializator<Strategy<Card, Deck>, std::string,
                     RandomCardStrategy> RandomCardInitialization("random_card");

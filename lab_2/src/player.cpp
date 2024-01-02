@@ -4,10 +4,6 @@ template<typename CardType>
 Player<CardType, Deck>::Player(Strategy<CardType, Deck>* strategy) : strategy_(strategy){}
 
 template<typename CardType>
-Player<CardType, Deck>::Player(Player& other) : state_(other.state_), players_deck_(other.players_deck_),
-    strategy_(other.strategy_->Clone()){}
-
-template<typename CardType>
 int Player<CardType, Deck>::ShowScore(){
     return state_.max_score;
 }
@@ -42,9 +38,6 @@ void Player<CardType, Deck>::RecieveCard(CardType card){
 }
 
 Player<int, int>::Player(Strategy<int, int>* strategy) : strategy_(strategy){}
-
-Player<int, int>::Player(const Player& other) : state_(other.state_), players_deck_(other.players_deck_),
-    strategy_(other.strategy_->Clone()) {}
 
 int Player<int, int>::ShowScore(){
     return state_;

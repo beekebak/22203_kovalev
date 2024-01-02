@@ -37,14 +37,6 @@ TEST(G16PlainTest, StopsWhenSumIsExactly21) {
     ASSERT_EQ(result, State::kStop);
 }
 
-TEST(G16PlainTest, CloneMethodCreatesNewInstance) {
-    G16Plain originalStrategy;
-    G16Plain* cloned = originalStrategy.CloneImpl();
-    EXPECT_NE(&originalStrategy, cloned);
-    EXPECT_TRUE(typeid(*cloned) == typeid(G16Plain));
-    delete cloned;
-}
-
 TEST(G18PlainTest, LosesWhenSumIsOver21) {
     G18Plain strategy;
     int sum = 22;
@@ -134,13 +126,6 @@ TEST(RandomPlainTest, StopsWhenSumIsExactly21) {
     ASSERT_EQ(result, State::kStop);
 }
 
-TEST(RandomPlainTest, CloneMethodCreatesNewInstance) {
-    RandomPlainStrategy originalStrategy;
-    RandomPlainStrategy* cloned = originalStrategy.CloneImpl();
-    EXPECT_NE(&originalStrategy, cloned);
-    EXPECT_TRUE(typeid(*cloned) == typeid(RandomPlainStrategy));
-    delete cloned;
-}
 
 TEST(G17CardTest, LosesWhenSumIsOver21) {
     G17Card strategy;
@@ -244,10 +229,3 @@ TEST(RandomCardTest, StopsWhenSumIsExactly21) {
     ASSERT_EQ(result, State::kStop);
 }
 
-TEST(RandomCardTest, CloneMethodCreatesNewInstance) {
-    RandomCardStrategy originalStrategy;
-    RandomCardStrategy* cloned = originalStrategy.CloneImpl();
-    EXPECT_NE(&originalStrategy, cloned);
-    EXPECT_TRUE(typeid(*cloned) == typeid(RandomCardStrategy));
-    delete cloned;
-}

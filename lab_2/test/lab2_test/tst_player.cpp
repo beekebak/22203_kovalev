@@ -11,10 +11,6 @@ public:
     State MakeChoice(Deck& sum, Card& opponent_card) override{
         return State::kTakeMore;
     }
-
-    MockStrategy* CloneImpl() const override{
-        return new MockStrategy(*this);
-    }
 };
 
 class MockStrategyInt : public Strategy<int, int>{
@@ -23,10 +19,6 @@ public:
 
     State MakeChoice(int& sum, int& opponent_card) override{
         return State::kTakeMore;
-    }
-
-    MockStrategyInt* CloneImpl() const override{
-        return new MockStrategyInt(*this);
     }
 };
 
