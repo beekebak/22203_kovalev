@@ -8,6 +8,7 @@
 #include <QLabel>
 #include <QPainter>
 #include <QString>
+#include <QKeyEvent>
 
 #include "model.h"
 
@@ -49,8 +50,9 @@ class View: public QWidget{
     GameField* game_;
     NextFigureField* next_figure_;
     ScorePanel* score_panel_;
+    void keyPressEvent(QKeyEvent* e) override;
   signals:
-    //void NewInput();
+    void NewKeyPressed(int key_code);
   public slots:
     void NewGameField(std::vector<Cell> cells, int x, int y);
     void NewScore(int score);

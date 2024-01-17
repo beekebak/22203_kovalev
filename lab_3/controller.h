@@ -15,12 +15,13 @@ class Controller: public QObject
   signals:
     void PrintScore(int score);
     void Start();
-    //void PaintNextFigure();
-    //void MoveCurrentFigure();
+    //void PaintNextPill();
+    void MoveCurrentPill(MoveDirection direction);
+    void TurnPill();
   public slots:
     //void ChangeScore();
     //void ChangeNextFigure();
-    //void HandleInput();
+    void HandleInputedKey(int key_code);
   private:
     Model model;
 };

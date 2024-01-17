@@ -18,6 +18,17 @@ enum class CellState{
     kYellowVirus
 };
 
+enum class MoveDirection{
+    kRight,
+    kLeft,
+    kDown
+};
+
+enum class PillOrientation{
+    kHorizontal,
+    kVertical
+};
+
 using GameFieldTable = std::vector<std::vector<CellState>>;
 
 struct Cell{
@@ -36,19 +47,28 @@ struct ModelCell{
 
 class Figure{
   protected:
-    Figure FindBottomOfFigure();
-    bool CheckIfCanDrop(GameFieldTable& game_field_matrix_);
-    void DropFigureByOneTile();
+    Figure FindBorder(MoveDirection direction);
+    Figure FindBottom();
+    Figure FindLeftBorder();
+    Figure FindRightBorder();
+    void DetermineShift(int& x_shift, int& y_shift, MoveDirection direction);
+    bool CheckIfCanMove(GameFieldTable& game_field_matrix_, int x_shift, int y_shift);
+    void MoveFigure(int x_shift, int y_shift);
     std::vector<ModelCell> figure_;
   public:
     void AddSelfToGameField(GameFieldTable& game_field_matrix_);
     void RemoveSelfFromGameField(GameFieldTable& game_field_matrix_);
-    bool ProcessSelfFall(GameFieldTable& game_field_matrix_);
+    bool ProcessSelfMove(GameFieldTable& game_field_matrix_, MoveDirection direction);
 };
 
 class Pill: public Figure{
   public:
     Pill();
+    void ProcessSelfTurn(GameFieldTable& game_field_matrix_);
+  private:
+    PillOrientation DetermineOrientation();
+    bool CheckIfCanTurn(GameFieldTable game_field_matrix, PillOrientation orientation);
+    void TurnSelf(PillOrientation orientation);
 };
 
 class Model: public QObject
@@ -59,6 +79,7 @@ class Model: public QObject
     Model();
   private:
     Pill pill_;
+    void InitializeGameField();
     void UpdateGameFieldChanges();
     void GenerateViruses();
     Figure GenerateNewPill();
@@ -68,8 +89,9 @@ class Model: public QObject
   //  void NextFigureChanged();
   public slots:
     void StartSignalGot();
-    void PillDrop();
-  //  void FigureMoved();
+    void PillMoved(MoveDirection direction);
+    void PillTurned();
+    void PillMoveDownByTime();
 };
 
 #endif // MODEL_H

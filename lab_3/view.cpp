@@ -80,3 +80,7 @@ void View::NewGameField(std::vector<Cell> game_field, int rows_count, int column
     game_->SetColumnsCount(columns_count);
     QWidget::update();
 }
+
+void View::keyPressEvent(QKeyEvent* e){
+    emit NewKeyPressed(e->key());
+}
