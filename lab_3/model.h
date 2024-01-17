@@ -5,6 +5,7 @@
 #include <map>
 #include <QObject>
 #include <QColor>
+#include <QTimer>
 
 enum class CellState{
     kEmpty,
@@ -17,12 +18,18 @@ enum class CellState{
     kYellowVirus
 };
 
-struct TetrisCell{
+struct Cell{
     int x_position;
     int y_position;
     QColor color;
     Qt::BrushStyle style;
-    TetrisCell(int x, int y, QColor input_color, Qt::BrushStyle style);
+    Cell(int x, int y, QColor input_color, Qt::BrushStyle style);
+};
+
+struct ModelCell{
+    int x_position = 0;
+    int y_position = 0;
+    CellState state = CellState::kOutOfBound;
 };
 
 class Model: public QObject
@@ -32,14 +39,27 @@ class Model: public QObject
     std::vector<std::vector<CellState>> game_field_matrix_;
     Model();
   private:
+    struct Figure{
+        Figure FindBottomOfFigure();
+        bool CheckIfCanDrop(std::vector<std::vector<CellState>> game_field_matrix_);
+        void DropFigureByOneTile();
+        std::vector<ModelCell> figure_;
+    };
+
+    Figure pill_;
+    void AddFigureToGameField(Figure& figure);
+    void RemoveFigureFromGameField(Figure& figure);
     void UpdateGameFieldChanges();
     void GenerateViruses();
+    Figure GenerateNewPill();
+    bool ProcessFigureFall(Figure& figure);
   signals:
-    void GameFieldChanged(std::vector<TetrisCell> cells, int x_size, int y_size);
+    void GameFieldChanged(std::vector<Cell> cells, int x_size, int y_size);
   //  void ScoreChanged();
   //  void NextFigureChanged();
   public slots:
     void StartSignalGot();
+    void PillDrop();
   //  void FigureMoved();
 };
 

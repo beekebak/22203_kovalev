@@ -14,22 +14,22 @@
 class GameField: public QWidget{
   public:
     GameField(QWidget* parent = nullptr);
-    void SetCells(std::vector<TetrisCell>);
-    void SetHorizontalCellsCount(int hor);
-    void SetVerticalCellsCount(int vert);
+    void SetCells(std::vector<Cell>);
+    void SetRowsCount(int row_size);
+    void SetColumnsCount(int column_size);
   private:
-    int horizontal_sells_count;
-    int vertical_sells_count;
-    std::vector<TetrisCell> active_cells_;
+    int rows_count_;
+    int columns_count_;
+    std::vector<Cell> game_field_;
     void paintEvent(QPaintEvent*) override;
 };
 
 class NextFigureField: public QWidget{
   public:
     NextFigureField(QWidget* parent = nullptr);
-    void SetFigure(std::vector<TetrisCell> figure);
+    void SetFigure(std::vector<Cell> figure);
   private:
-    std::vector<TetrisCell> figure_;
+    std::vector<Cell> figure_;
     //void paintEvent(QPaintEvent*) override;
 };
 
@@ -52,7 +52,7 @@ class View: public QWidget{
   signals:
     //void NewInput();
   public slots:
-    void NewGameField(std::vector<TetrisCell> cells, int x, int y);
+    void NewGameField(std::vector<Cell> cells, int x, int y);
     void NewScore(int score);
     //void NewNextFigure();
 };
