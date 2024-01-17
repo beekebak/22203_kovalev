@@ -6,25 +6,12 @@
 Cell::Cell(int x, int y, QColor input_color, Qt::BrushStyle input_style):
     x_position(x), y_position(y), color(input_color), style(input_style){}
 
-void Model::AddFigureToGameField(Figure& figure){
-    for(int i = 0; i < figure.figure_.size(); i++){
-        game_field_matrix_[figure.figure_[i].x_position][figure.figure_[i].y_position] =
-            figure.figure_[i].state;
-    }
-}
-
-void Model::RemoveFigureFromGameField(Figure& figure){
-    for(int i = 0; i < figure.figure_.size(); i++){
-        game_field_matrix_[figure.figure_[i].x_position][figure.figure_[i].y_position] = CellState::kEmpty;
-    }
-}
-
 Model::Model(){
-    game_field_matrix_ = std::vector<std::vector<CellState>>(20,
+    game_field_matrix_ = GameFieldTable(20,
                                 std::vector<CellState>(10, CellState::kEmpty));
     GenerateViruses();
-    pill_ = GenerateNewPill();
-    AddFigureToGameField(pill_);
+    pill_ = Pill();
+    pill_.AddSelfToGameField(game_field_matrix_);
     UpdateGameFieldChanges();
     QTimer* timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Model::PillDrop);
@@ -42,18 +29,6 @@ void Model::GenerateViruses(){
         int virus_place = rng()%160+40;
         game_field_matrix_[virus_place/10][virus_place%10] = viruses[rng()%3];
     }
-}
-
-Model::Figure Model::GenerateNewPill(){
-    static std::map<int, CellState> pills = {{0, CellState::kYellowPill},
-                                               {1, CellState::kBluePill},
-                                               {2, CellState::kRedPill}};
-    Figure pill;
-    auto rd = std::random_device();
-    std::mt19937 rng = std::mt19937(rd());
-    pill.figure_.push_back(ModelCell{0,4,pills[rng()%3]});
-    pill.figure_.push_back(ModelCell{0,5,pills[rng()%3]});
-    return pill;
 }
 
 void Model::UpdateGameFieldChanges(){
@@ -94,50 +69,7 @@ void Model::StartSignalGot(){
     UpdateGameFieldChanges();
 }
 
-
-Model::Figure Model::Figure::FindBottomOfFigure(){
-    std::unordered_map<int, ModelCell> lowest_cells_of_figure;
-    for(int i = 0; i < figure_.size(); i++){
-        if(lowest_cells_of_figure.find(figure_[i].y_position) == lowest_cells_of_figure.end() ||
-            lowest_cells_of_figure[figure_[i].y_position].x_position < figure_[i].x_position){
-            lowest_cells_of_figure[figure_[i].y_position] = figure_[i];
-        }
-    }
-    Figure bottom;
-    for(auto const &cell:lowest_cells_of_figure){
-        bottom.figure_.push_back(cell.second);
-    }
-    return bottom;
-}
-
-bool Model::Figure::CheckIfCanDrop(std::vector<std::vector<CellState>> game_field_matrix){
-    for(int i = 0; i < figure_.size(); i++){
-        if(game_field_matrix[figure_[i].x_position+1][figure_[i].y_position] != CellState::kEmpty){
-            return false;
-        }
-    }
-    return true;
-}
-
-void Model::Figure::DropFigureByOneTile(){
-    for(int i = 0; i < figure_.size(); i++){
-        figure_[i].x_position++;
-    }
-}
-
-bool Model::ProcessFigureFall(Figure& figure){
-    Figure bottom = figure.FindBottomOfFigure();
-    bool drop_is_avialable = bottom.CheckIfCanDrop(game_field_matrix_);
-    if(drop_is_avialable){
-        RemoveFigureFromGameField(figure);
-        figure.DropFigureByOneTile();
-        AddFigureToGameField(figure);
-        return true;
-    }
-    return false;
-}
-
 void Model::PillDrop(){
-    ProcessFigureFall(pill_);
+    pill_.ProcessSelfFall(game_field_matrix_);
     UpdateGameFieldChanges();
 }

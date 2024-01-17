@@ -18,6 +18,8 @@ enum class CellState{
     kYellowVirus
 };
 
+using GameFieldTable = std::vector<std::vector<CellState>>;
+
 struct Cell{
     int x_position;
     int y_position;
@@ -32,27 +34,34 @@ struct ModelCell{
     CellState state = CellState::kOutOfBound;
 };
 
+class Figure{
+  protected:
+    Figure FindBottomOfFigure();
+    bool CheckIfCanDrop(GameFieldTable& game_field_matrix_);
+    void DropFigureByOneTile();
+    std::vector<ModelCell> figure_;
+  public:
+    void AddSelfToGameField(GameFieldTable& game_field_matrix_);
+    void RemoveSelfFromGameField(GameFieldTable& game_field_matrix_);
+    bool ProcessSelfFall(GameFieldTable& game_field_matrix_);
+};
+
+class Pill: public Figure{
+  public:
+    Pill();
+};
+
 class Model: public QObject
 {
   Q_OBJECT
   public:
-    std::vector<std::vector<CellState>> game_field_matrix_;
+    GameFieldTable game_field_matrix_;
     Model();
   private:
-    struct Figure{
-        Figure FindBottomOfFigure();
-        bool CheckIfCanDrop(std::vector<std::vector<CellState>> game_field_matrix_);
-        void DropFigureByOneTile();
-        std::vector<ModelCell> figure_;
-    };
-
-    Figure pill_;
-    void AddFigureToGameField(Figure& figure);
-    void RemoveFigureFromGameField(Figure& figure);
+    Pill pill_;
     void UpdateGameFieldChanges();
     void GenerateViruses();
     Figure GenerateNewPill();
-    bool ProcessFigureFall(Figure& figure);
   signals:
     void GameFieldChanged(std::vector<Cell> cells, int x_size, int y_size);
   //  void ScoreChanged();
