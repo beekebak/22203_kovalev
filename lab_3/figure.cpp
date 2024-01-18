@@ -159,6 +159,7 @@ void Pill::TurnSelf(PillOrientation orientation){
 }
 
 void Pill::ProcessSelfTurn(GameFieldTable& game_field_matrix){
+    if(is_locked) return;
     PillOrientation orientation = DetermineOrientation();
     bool turn_is_avialable = CheckIfCanTurn(game_field_matrix, orientation);
     if(turn_is_avialable){
