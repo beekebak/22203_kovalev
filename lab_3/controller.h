@@ -10,7 +10,7 @@ class Controller: public QObject
 {
     Q_OBJECT
   public:
-    View view;
+    GameView game_view;
     Controller();
   signals:
     void PrintScore(int score);

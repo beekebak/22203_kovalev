@@ -1,6 +1,6 @@
 #include <random>
 #include <map>
-#include "model.h"
+#include "figure.h"
 
 void Figure::AddSelfToGameField(GameFieldTable& game_field_matrix_){
     for(int i = 0; i < figure_.size(); i++){
@@ -13,16 +13,6 @@ void Figure::RemoveSelfFromGameField(GameFieldTable& game_field_matrix_){
     for(int i = 0; i < figure_.size(); i++){
         game_field_matrix_[figure_[i].x_position][figure_[i].y_position] = CellState::kEmpty;
     }
-}
-
-Pill::Pill(){
-    static std::map<int, CellState> pills = {{0, CellState::kYellowPill},
-                                             {1, CellState::kBluePill},
-                                             {2, CellState::kRedPill}};
-    auto rd = std::random_device();
-    std::mt19937 rng = std::mt19937(rd());
-    figure_.push_back(ModelCell{1,5,pills[rng()%3]});
-    figure_.push_back(ModelCell{1,6,pills[rng()%3]});
 }
 
 Figure Figure::FindBorder(MoveDirection direction){
@@ -128,43 +118,14 @@ bool Figure::ProcessSelfMove(GameFieldTable& game_field_matrix, MoveDirection di
     return false;
 }
 
-PillOrientation Pill::DetermineOrientation(){
-    if(figure_[0].x_position == figure_[1].x_position){
-        return PillOrientation::kHorizontal;
-    }
-    else{
-        return PillOrientation::kVertical;
-    }
-}
-
-bool Pill::CheckIfCanTurn(GameFieldTable game_field_matrix, PillOrientation orientation){
-    if(orientation == PillOrientation::kHorizontal){
-        return game_field_matrix[figure_[0].x_position-1][figure_[0].y_position+1] == CellState::kEmpty;
-    }
-    else{
-        return game_field_matrix[figure_[0].x_position+1][figure_[0].y_position-1] == CellState::kEmpty;
-    }
-}
-
-void Pill::TurnSelf(PillOrientation orientation){
-    if(orientation == PillOrientation::kHorizontal){
-        figure_[0].x_position--;
-        figure_[0].y_position++;
-    }
-    else{
-        figure_[0].x_position++;
-        figure_[1].y_position--;
-        std::swap(figure_[0], figure_[1]);
-    }
-}
-
-void Pill::ProcessSelfTurn(GameFieldTable& game_field_matrix){
-    if(is_locked) return;
-    PillOrientation orientation = DetermineOrientation();
-    bool turn_is_avialable = CheckIfCanTurn(game_field_matrix, orientation);
-    if(turn_is_avialable){
-        RemoveSelfFromGameField(game_field_matrix);
-        TurnSelf(orientation);
-        AddSelfToGameField(game_field_matrix);
+void Figure::BuildHangingFigure(std::vector<std::vector<bool>>& visited, GameFieldTable& game_field,
+                                std::vector<std::vector<CellHangingState>>& binding_states, int i, int j){
+    if(Cell::IsPill(game_field[i][j]) && !visited[i][j]){
+        figure_.push_back({i, j, game_field[i][j]});
+        visited[i][j] = true;
+        if(i-1 >= 1) BuildHangingFigure(visited, game_field, binding_states, i-1, j);
+        if(j-1 >= 1) BuildHangingFigure(visited, game_field, binding_states, i, j-1);
+        if(i-1 < binding_states.size()-1) BuildHangingFigure(visited, game_field, binding_states, i+1, j);
+        if(j-1 < binding_states[0].size()-1) BuildHangingFigure(visited, game_field, binding_states, i, j+1);
     }
 }

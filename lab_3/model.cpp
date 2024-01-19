@@ -3,11 +3,7 @@
 #include <iostream>
 #include <QTime>
 #include <QCoreApplication>
-
 #include "model.h"
-
-Cell::Cell(int x, int y, QColor input_color, Qt::BrushStyle input_style):
-    x_position(x), y_position(y), color(input_color), style(input_style){}
 
 Model::Model(){
     game_field_matrix_ = GameFieldTable(22,
@@ -80,10 +76,11 @@ bool Model::PillMoved(MoveDirection direction){
     return move_is_done;
 }
 
+//https://stackoverflow.com/questions/3752742/how-do-i-create-a-pause-wait-function-using-qt
 void Model::Delay(){
     QTime die_time = QTime::currentTime().addSecs(1);
     while (QTime::currentTime() < die_time)
-        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 50);
 }
 
 void Model::PillMoveDownByTime(){
@@ -101,22 +98,6 @@ void Model::PillMoveDownByTime(){
             }
         }
         ChangePill();
-    }
-}
-
-bool Cell::IsPill(CellState state){
-    return state == CellState::kBluePill || state == CellState::kRedPill || state == CellState::kYellowPill;
-}
-
-void Figure::BuildHangingFigure(std::vector<std::vector<bool>>& visited, GameFieldTable& game_field,
-                                std::vector<std::vector<CellHangingState>>& binding_states, int i, int j){
-    if(Cell::IsPill(game_field[i][j]) && !visited[i][j]){
-        figure_.push_back({i, j, game_field[i][j]});
-        visited[i][j] = true;
-        if(i-1 >= 1) BuildHangingFigure(visited, game_field, binding_states, i-1, j);
-        if(j-1 >= 1) BuildHangingFigure(visited, game_field, binding_states, i, j-1);
-        if(i-1 < binding_states.size()-1) BuildHangingFigure(visited, game_field, binding_states, i+1, j);
-        if(j-1 < binding_states[0].size()-1) BuildHangingFigure(visited, game_field, binding_states, i, j+1);
     }
 }
 
@@ -173,28 +154,12 @@ void Model::PillTurned(){
     UpdateGameFieldChanges();
 }
 
-bool Model::CheckColorMatch(CellState sample, CellState cell_to_check){
-    switch(sample){
-      case CellState::kRedVirus:
-      case CellState::kRedPill:
-        return cell_to_check == CellState::kRedPill || cell_to_check == CellState::kRedVirus;
-      case CellState::kBlueVirus:
-      case CellState::kBluePill:
-        return cell_to_check == CellState::kBluePill || cell_to_check == CellState::kBlueVirus;
-      case CellState::kYellowVirus:
-      case CellState::kYellowPill:
-        return cell_to_check == CellState::kYellowPill || cell_to_check == CellState::kYellowVirus;
-      default:
-        return false;
-    }
-}
-
 void Model::FindSequences(std::vector<ModelCell>& to_delete, GameFieldTable table){
     for(int i = 1; i < table.size()-1; i++){
         int seq = 1;
         CellState sample = table[i][1];
         for(int j = 2; j < table[0].size()-1; j++){
-            if(CheckColorMatch(sample, table[i][j])){
+            if(Cell::CheckColorMatch(sample, table[i][j])){
                 seq++;
             }
             else{

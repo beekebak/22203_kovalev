@@ -1,7 +1,7 @@
 #include <iostream>
 #include "view.h"
 
-View::View(QWidget *parent): QWidget(parent), game_(new GameField()),
+GameView::GameView(QWidget *parent): QWidget(parent), game_(new GameField()),
                              next_figure_(new NextFigureField()),
                              score_panel_(new ScorePanel()){
     QVBoxLayout* game_field_layout = new QVBoxLayout();
@@ -35,7 +35,7 @@ void ScorePanel::ChangeScores(int score){
     scores_->setText(QString::number(score));
 }
 
-void View::NewScore(int score){
+void GameView::NewScore(int score){
     score_panel_->ChangeScores(score);
 }
 
@@ -74,13 +74,22 @@ void GameField::paintEvent(QPaintEvent* event){
     painter.end();
 }
 
-void View::NewGameField(std::vector<Cell> game_field, int rows_count, int columns_count){
+void GameView::NewGameField(std::vector<Cell> game_field, int rows_count, int columns_count){
     game_->SetCells(game_field);
     game_->SetRowsCount(rows_count);
     game_->SetColumnsCount(columns_count);
     QWidget::update();
 }
 
-void View::keyPressEvent(QKeyEvent* e){
+void GameView::keyPressEvent(QKeyEvent* e){
     emit NewKeyPressed(e->key());
+}
+
+void GameView::ActivationGameFieldChanged(ModelActivationState activation){
+    switch (activation){
+      case ModelActivationState::kActivate:
+        this->setFocusPolicy(Qt::StrongFocus);
+      case ModelActivationState::kDeactivate:
+        this->setFocusPolicy(Qt::NoFocus);
+    }
 }

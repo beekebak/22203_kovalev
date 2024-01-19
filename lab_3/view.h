@@ -42,10 +42,10 @@ class ScorePanel: public QWidget{
     QLabel* scores_;
 };
 
-class View: public QWidget{
+class GameView: public QWidget{
     Q_OBJECT
   public:
-    View(QWidget* parent = nullptr);
+    GameView(QWidget* parent = nullptr);
   private:
     GameField* game_;
     NextFigureField* next_figure_;
@@ -54,6 +54,7 @@ class View: public QWidget{
   signals:
     void NewKeyPressed(int key_code);
   public slots:
+    void ActivationGameFieldChanged(ModelActivationState activation);
     void NewGameField(std::vector<Cell> cells, int x, int y);
     void NewScore(int score);
     //void NewNextFigure();
