@@ -12,28 +12,30 @@
 
 #include "model.h"
 
-class GameField: public QWidget{
+class WidgetWithFigureToPaint: public QWidget{
+  public:
+    void SetCells(std::vector<Cell> cells);
+  protected:
+    WidgetWithFigureToPaint(QWidget* parent = nullptr, int rows_count = 0, int columns_count = 0);
+    int rows_count_;
+    int columns_count_;
+    std::vector<Cell> figure_;
+    void Paint(int rows_count, int columns_count);
+};
+
+class GameField: public WidgetWithFigureToPaint{
   public:
     GameField(QWidget* parent = nullptr);
-    void SetCells(std::vector<Cell>);
     void SetRowsCount(int row_size);
     void SetColumnsCount(int column_size);
   private:
-    int rows_count_;
-    int columns_count_;
-    std::vector<Cell> game_field_;
     void paintEvent(QPaintEvent*) override;
 };
 
-class NextFigureField: public QWidget{
+class NextFigureField: public WidgetWithFigureToPaint{
   public:
     NextFigureField(QWidget* parent = nullptr);
-    void SetCells(std::vector<Cell>);
-    void SetFigure(std::vector<Cell> figure);
   private:
-    int rows_count_ = 1;
-    int columns_count_ = 2;
-    std::vector<Cell> figure_;
     void paintEvent(QPaintEvent*) override;
 };
 

@@ -1,6 +1,32 @@
 #include <iostream>
 #include "view.h"
 
+WidgetWithFigureToPaint::WidgetWithFigureToPaint(QWidget* parent, int rows_count, int columns_count):
+    QWidget(parent), rows_count_(rows_count), columns_count_(columns_count){}
+
+void WidgetWithFigureToPaint::SetCells(std::vector<Cell> cells){
+    figure_ = cells;
+}
+
+void WidgetWithFigureToPaint::Paint(int rows_count, int columns_count){
+    int wid = this->width()-100;
+    int he = this->height()-100;
+    int xsize = wid/columns_count;
+    int ysize = he/rows_count;
+    QPainter painter;
+    painter.begin(this);
+    for(int i = 0; i < figure_.size(); i++){
+        QBrush brush;
+        brush.setColor(figure_[i].color);
+        brush.setStyle(figure_[i].style);
+        painter.setBrush(brush);
+        painter.drawRect(50+figure_[i].x_position * xsize,
+                         50+figure_[i].y_position * ysize,
+                         xsize, ysize);
+    }
+    painter.end();
+}
+
 GameView::GameView(QWidget *parent): QWidget(parent), game_(new GameField()),
                              next_figure_(new NextFigureField()),
                              score_panel_(new ScorePanel()){
@@ -43,17 +69,9 @@ void GameView::NewScore(int score){
     score_panel_->ChangeScores(score);
 }
 
-NextFigureField::NextFigureField(QWidget* parent): QWidget(parent){}
+NextFigureField::NextFigureField(QWidget* parent): WidgetWithFigureToPaint(parent, 1, 2) {}
 
-GameField::GameField(QWidget* parent): QWidget(parent) {}
-
-void NextFigureField::SetCells(std::vector<Cell> cells){
-    figure_ = cells;
-}
-
-void GameField::SetCells(std::vector<Cell> cells){
-    game_field_ = cells;
-}
+GameField::GameField(QWidget* parent): WidgetWithFigureToPaint(parent){}
 
 void GameField::SetRowsCount(int rows_count){
     rows_count_ = rows_count;
@@ -64,41 +82,11 @@ void GameField::SetColumnsCount(int vert){
 }
 
 void NextFigureField::paintEvent(QPaintEvent* event){
-    int wid = this->width()-100;
-    int he = this->height()-100;
-    int xsize = wid/columns_count_;
-    int ysize = he/rows_count_;
-    QPainter painter;
-    painter.begin(this);
-    for(int i = 0; i < figure_.size(); i++){
-        QBrush brush;
-        brush.setColor(figure_[i].color);
-        brush.setStyle(figure_[i].style);
-        painter.setBrush(brush);
-        painter.drawRect(50+figure_[i].x_position * xsize,
-                         50+figure_[i].y_position * ysize,
-                         xsize, ysize);
-    }
-    painter.end();
+    WidgetWithFigureToPaint::Paint(rows_count_, columns_count_);
 }
 
 void GameField::paintEvent(QPaintEvent* event){
-    int wid = this->width()-100;
-    int he = this->height()-100;
-    int xsize = wid/columns_count_;
-    int ysize = he/rows_count_;
-    QPainter painter;
-    painter.begin(this);
-    for(int i = 0; i < game_field_.size(); i++){
-        QBrush brush;
-        brush.setColor(game_field_[i].color);
-        brush.setStyle(game_field_[i].style);
-        painter.setBrush(brush);
-        painter.drawRect(50+game_field_[i].x_position * xsize,
-                         50+game_field_[i].y_position * ysize,
-                         xsize, ysize);
-    }
-    painter.end();
+    WidgetWithFigureToPaint::Paint(rows_count_, columns_count_);
 }
 
 void GameView::NewGameField(std::vector<Cell> game_field, int rows_count, int columns_count){
