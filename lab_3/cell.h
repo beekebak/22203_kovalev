@@ -19,7 +19,8 @@ struct Cell{
     int y_position;
     QColor color;
     Qt::BrushStyle style;
-    bool static IsPill(CellState state);
+    static bool IsPill(CellState state);
+    static bool IsVirus(CellState state);
     Cell(int x, int y, QColor input_color, Qt::BrushStyle style);
     static bool CheckColorMatch(CellState sample, CellState cell_to_check);
 };

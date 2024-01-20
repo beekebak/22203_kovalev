@@ -5,12 +5,10 @@
 #include <QCoreApplication>
 #include "model.h"
 
-Model::Model(){
-    game_field_matrix_ = GameFieldTable(22,
-                                std::vector<CellState>(12, CellState::kEmpty));
+Model::Model(): level_(0), score_(0), pill_(Pill()), next_pill_(Pill()),
+    game_field_matrix_(GameFieldTable(22,std::vector<CellState>(12, CellState::kEmpty))){
     InitializeGameField();
-    GenerateViruses();
-    pill_ = Pill();
+    GenerateViruses(level_);
     pill_.AddSelfToGameField(game_field_matrix_);
     UpdateGameFieldChanges();
     QTimer* timer = new QTimer(this);
@@ -18,15 +16,18 @@ Model::Model(){
     timer->start(1000);
 }
 
-void Model::GenerateViruses(){
+void Model::GenerateViruses(int level){
     static std::map<int, CellState> viruses = {{0, CellState::kYellowVirus},
                                                {1, CellState::kBlueVirus},
                                                {2, CellState::kRedVirus}};
     auto rd = std::random_device();
     std::mt19937 rng = std::mt19937(rd());
-    int count = rng()%8+2;
-    for(int i = 0; i < count; i++){
+    viruses_count_ = (rng()%8+2+level)%50;
+    for(int i = 0; i < viruses_count_; i++){
         int virus_place = rng()%160+40;
+        while(game_field_matrix_[virus_place/10+1][virus_place%10+1] != CellState::kEmpty){
+            virus_place = rng()%160+40;
+        }
         game_field_matrix_[virus_place/10+1][virus_place%10+1] = viruses[rng()%3];
     }
 }
@@ -63,9 +64,11 @@ void Model::UpdateGameFieldChanges(){
         }
     }
     emit GameFieldChanged(game_field_cells, game_field_matrix_.size(), game_field_matrix_[0].size());
+    emit ScoreChanged(score_);
 }
 
 void Model::StartSignalGot(){
+    emit NextPillChanged(next_pill_.ConvertSelf());
     UpdateGameFieldChanges();
 }
 
@@ -78,7 +81,7 @@ bool Model::PillMoved(MoveDirection direction){
 
 //https://stackoverflow.com/questions/3752742/how-do-i-create-a-pause-wait-function-using-qt
 void Model::Delay(){
-    QTime die_time = QTime::currentTime().addSecs(1);
+    QTime die_time = QTime::currentTime().addMSecs(250);
     while (QTime::currentTime() < die_time)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 50);
 }
@@ -90,6 +93,7 @@ void Model::PillMoveDownByTime(){
         while(1){
             if(!RemoveSequences(binding_states)) break;
             pill_.is_locked = true;
+            emit ChangeActivationOfGameField(ModelActivationState::kDeactivate);
             std::vector<Figure> figures_to_drop = MakeHangingFigures(binding_states);
             while(figures_to_drop.size() > 0){
                 DropFigures(figures_to_drop);
@@ -97,7 +101,14 @@ void Model::PillMoveDownByTime(){
                 Delay();
             }
         }
-        ChangePill();
+        emit ChangeActivationOfGameField(ModelActivationState::kActivate);
+        if(viruses_count_ == 0) ChangeLevel();
+        else if(CheckPillAddPossibility()){
+            ChangePill();
+        }
+        else {
+            QCoreApplication::quit();
+        }
     }
 }
 
@@ -131,9 +142,11 @@ void Model::DropFigures(std::vector<Figure>& figures){
 }
 
 void Model::ChangePill(){
-    pill_ = Pill();
+    pill_ = next_pill_;
+    next_pill_ = Pill();
     pill_.AddSelfToGameField(game_field_matrix_);
     UpdateGameFieldChanges();
+    emit NextPillChanged(next_pill_.ConvertSelf());
 }
 
 void Model::InitializeGameField(){
@@ -220,11 +233,37 @@ bool Model::RemoveSequences(std::vector<std::vector<CellHangingState>>& hanging_
     if(to_delete.size() == 0 && to_delete_transposed.size() == 0){
         return false;
     }
+    score_ += 100*to_delete_transposed.size();
+    score_ += 100*to_delete.size();
     for(int i = 0; i < to_delete.size(); i++){
+        if(Cell::IsVirus(game_field_matrix_[to_delete[i].x_position][to_delete[i].y_position])) viruses_count_--;
         game_field_matrix_[to_delete[i].x_position][to_delete[i].y_position] = CellState::kEmpty;
     }
     for(int i = 0; i < to_delete_transposed.size(); i++){
+        if(Cell::IsVirus(game_field_matrix_[to_delete_transposed[i].x_position][to_delete_transposed[i].y_position])) viruses_count_--;
         game_field_matrix_[to_delete_transposed[i].x_position][to_delete_transposed[i].y_position] = CellState::kEmpty;
     }
     return true;
+}
+
+void Model::ClearField(){
+    for(int i = 1; i < game_field_matrix_.size()-1; i++){
+        for(int j = 1; j < game_field_matrix_[0].size()-1; j++){
+            game_field_matrix_[i][j] = CellState::kEmpty;
+        }
+    }
+}
+
+bool Model::CheckPillAddPossibility(){
+    return game_field_matrix_[1][5] == CellState::kEmpty &&
+           game_field_matrix_[1][6] == CellState::kEmpty;
+}
+
+void Model::ChangeLevel(){
+    ClearField();
+    level_++;
+    GenerateViruses(level_);
+    ChangePill();
+    pill_.AddSelfToGameField(game_field_matrix_);
+    UpdateGameFieldChanges();
 }

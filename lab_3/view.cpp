@@ -5,12 +5,12 @@ GameView::GameView(QWidget *parent): QWidget(parent), game_(new GameField()),
                              next_figure_(new NextFigureField()),
                              score_panel_(new ScorePanel()){
     QVBoxLayout* game_field_layout = new QVBoxLayout();
-    game_->setMinimumSize(500, 1000);
+    game_->setMinimumSize(500, 800);
     game_field_layout->addWidget(game_);
 
     QVBoxLayout* score_and_next_figure_layout = new QVBoxLayout();
     score_and_next_figure_layout->addStretch(0);
-    next_figure_->setMinimumSize(200, 200);
+    next_figure_->setMinimumSize(200, 150);
     score_and_next_figure_layout->addWidget(next_figure_);
     score_and_next_figure_layout->addStretch(0);
     score_panel_->setMinimumSize(200, 200);
@@ -27,12 +27,16 @@ GameView::GameView(QWidget *parent): QWidget(parent), game_(new GameField()),
 }
 
 ScorePanel::ScorePanel(QWidget* parent): QWidget(parent), scores_(new QLabel(this)){
-    scores_->setText("00000");
+    QFont font = QFont();
+    font.setPointSize(40);
+    scores_->setFont(font);
+    scores_->setText("0000000");
     scores_->setAlignment(Qt::AlignCenter);
 }
 
 void ScorePanel::ChangeScores(int score){
     scores_->setText(QString::number(score));
+    scores_->setAlignment(Qt::AlignCenter);
 }
 
 void GameView::NewScore(int score){
@@ -42,6 +46,10 @@ void GameView::NewScore(int score){
 NextFigureField::NextFigureField(QWidget* parent): QWidget(parent){}
 
 GameField::GameField(QWidget* parent): QWidget(parent) {}
+
+void NextFigureField::SetCells(std::vector<Cell> cells){
+    figure_ = cells;
+}
 
 void GameField::SetCells(std::vector<Cell> cells){
     game_field_ = cells;
@@ -53,6 +61,25 @@ void GameField::SetRowsCount(int rows_count){
 
 void GameField::SetColumnsCount(int vert){
     columns_count_ = vert;
+}
+
+void NextFigureField::paintEvent(QPaintEvent* event){
+    int wid = this->width()-100;
+    int he = this->height()-100;
+    int xsize = wid/columns_count_;
+    int ysize = he/rows_count_;
+    QPainter painter;
+    painter.begin(this);
+    for(int i = 0; i < figure_.size(); i++){
+        QBrush brush;
+        brush.setColor(figure_[i].color);
+        brush.setStyle(figure_[i].style);
+        painter.setBrush(brush);
+        painter.drawRect(50+figure_[i].x_position * xsize,
+                         50+figure_[i].y_position * ysize,
+                         xsize, ysize);
+    }
+    painter.end();
 }
 
 void GameField::paintEvent(QPaintEvent* event){
@@ -78,6 +105,11 @@ void GameView::NewGameField(std::vector<Cell> game_field, int rows_count, int co
     game_->SetCells(game_field);
     game_->SetRowsCount(rows_count);
     game_->SetColumnsCount(columns_count);
+    QWidget::update();
+}
+
+void GameView::NewNextFigure(std::vector<Cell> pill){
+    next_figure_->SetCells(pill);
     QWidget::update();
 }
 

@@ -1,5 +1,6 @@
 #include <random>
 #include <map>
+#include <exception>
 #include "pill.h"
 
 Pill::Pill(){
@@ -51,4 +52,24 @@ void Pill::ProcessSelfTurn(GameFieldTable& game_field_matrix){
         TurnSelf(orientation);
         AddSelfToGameField(game_field_matrix);
     }
+}
+
+std::vector<Cell> Pill::ConvertSelf(){
+    std::vector<Cell> converted_pill;
+    for(int i = 0; i < figure_.size(); i++){
+        switch(figure_[i].state){
+          case CellState::kRedPill:
+            converted_pill.push_back({i, 0, Qt::red, Qt::SolidPattern});
+            break;
+          case CellState::kBluePill:
+            converted_pill.push_back({i, 0, Qt::blue, Qt::SolidPattern});
+            break;
+          case CellState::kYellowPill:
+            converted_pill.push_back({i, 0, Qt::yellow, Qt::SolidPattern});
+            break;
+          default:
+            throw std::runtime_error("pill conversion failed");
+        }
+    }
+    return converted_pill;
 }

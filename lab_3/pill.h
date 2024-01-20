@@ -9,11 +9,12 @@ enum class PillOrientation{
 };
 
 class Pill: public Figure{
-public:
+  public:
     Pill();
     void ProcessSelfTurn(GameFieldTable& game_field_matrix_);
+    std::vector<Cell> ConvertSelf();
     bool is_locked = false;
-private:
+  private:
     PillOrientation DetermineOrientation();
     bool CheckIfCanTurn(GameFieldTable game_field_matrix, PillOrientation orientation);
     void TurnSelf(PillOrientation orientation);

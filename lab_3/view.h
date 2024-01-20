@@ -28,10 +28,13 @@ class GameField: public QWidget{
 class NextFigureField: public QWidget{
   public:
     NextFigureField(QWidget* parent = nullptr);
+    void SetCells(std::vector<Cell>);
     void SetFigure(std::vector<Cell> figure);
   private:
+    int rows_count_ = 1;
+    int columns_count_ = 2;
     std::vector<Cell> figure_;
-    //void paintEvent(QPaintEvent*) override;
+    void paintEvent(QPaintEvent*) override;
 };
 
 class ScorePanel: public QWidget{
@@ -57,7 +60,7 @@ class GameView: public QWidget{
     void ActivationGameFieldChanged(ModelActivationState activation);
     void NewGameField(std::vector<Cell> cells, int x, int y);
     void NewScore(int score);
-    //void NewNextFigure();
+    void NewNextFigure(std::vector<Cell> pill);
 };
 
 #endif // VIEW_H

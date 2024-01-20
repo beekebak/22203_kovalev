@@ -6,6 +6,9 @@ Cell::Cell(int x, int y, QColor input_color, Qt::BrushStyle input_style):
 bool Cell::IsPill(CellState state){
     return state == CellState::kBluePill || state == CellState::kRedPill || state == CellState::kYellowPill;
 }
+bool Cell::IsVirus(CellState state){
+    return state == CellState::kBlueVirus || state == CellState::kRedVirus || state == CellState::kYellowVirus;
+}
 
 bool Cell::CheckColorMatch(CellState sample, CellState cell_to_check){
     switch(sample){
