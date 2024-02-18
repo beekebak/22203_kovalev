@@ -1,3 +1,5 @@
+package Source;
+
 import java.util.HashMap;
 
 public class DataHandler {
@@ -5,30 +7,30 @@ public class DataHandler {
     private int dataPointer = 15000;
     private HashMap<Integer, Integer> loopBracketsMap;
 
-    char GetData() {
+    public char GetData() {
         return data[dataPointer];
     }
 
-    void SetData(char val) throws ArrayStoreException {
+    public void SetData(char val) throws ArrayStoreException {
         if (val > 255) throw new ArrayStoreException("Data cell value overflowed");
         data[dataPointer] = val;
     }
 
-    int GetDataPointer() {
+    public int GetDataPointer() {
         return dataPointer;
     }
 
-    void SetDataPointer(int val) throws IndexOutOfBoundsException {
+    public void SetDataPointer(int val) throws IndexOutOfBoundsException {
         if (val < 0 || val >= 30000) throw new IndexOutOfBoundsException("Illegal data pointer value");
         dataPointer = val;
     }
 
-    int GetOpeningBracketIndex(int index){
-        return loopBracketsMap.entrySet().stream().filter(entry -> entry.getKey().
+    public int GetOpeningBracketIndex(int index){
+        return loopBracketsMap.entrySet().stream().filter(entry -> entry.getValue().
                                 equals(index)).findFirst().get().getKey();
     }
 
-    int GetClosingBracketIndex(int index){
+    public int GetClosingBracketIndex(int index){
         return loopBracketsMap.get(index);
     }
 

@@ -1,4 +1,8 @@
+package Source;
+
 import Exceptions.InputFormatException;
+import Operations.Operation;
+import Operations.OperationFactory;
 
 import java.util.ArrayDeque;
 import java.util.HashMap;
@@ -20,7 +24,10 @@ class Interpreter {
         return bracketsMap;
     }
 
-    void Interpret(String input, DataHandler dataHandler, IOHandler IOhandler){
-
+    void Interpret(DataHandler dataHandler, IOHandler IOhandler, OperationFactory factory) throws InputFormatException{
+        while(!IOhandler.StringIsOver()){
+            Operation op = factory.GetInstance(String.valueOf(IOhandler.GetChar()));
+            op.Operate(dataHandler, IOhandler);
+        }
     }
 }
