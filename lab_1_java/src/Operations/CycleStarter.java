@@ -8,7 +8,7 @@ class CycleStarter implements Operation{
     @Override
     public void Operate(DataHandler dataHandler, IOHandler IOhandler){
         if(dataHandler.GetData() == 0){
-            IOhandler.SetIter(dataHandler.GetClosingBracketIndex(IOhandler.GetIter())+1);
+            IOhandler.SetIter(dataHandler.GetClosingBracketIndex(IOhandler.GetIter()-1)+1);
         }
     }
 }
