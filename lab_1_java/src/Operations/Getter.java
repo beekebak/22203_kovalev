@@ -9,4 +9,8 @@ class Getter implements Operation{
     public void Operate(DataHandler dataHandler, IOHandler IOhandler){
         IOhandler.Write(dataHandler.GetData());
     }
+    @Override
+    public OperationType GetType(){
+        return OperationType.DEFAULT_TYPE;
+    }
 }

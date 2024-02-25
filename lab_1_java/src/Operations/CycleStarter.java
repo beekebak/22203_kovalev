@@ -11,4 +11,8 @@ class CycleStarter implements Operation{
             IOhandler.SetIter(dataHandler.GetClosingBracketIndex(IOhandler.GetIter()-1)+1);
         }
     }
+    @Override
+    public OperationType GetType(){
+        return OperationType.CYCLE_START;
+    }
 }

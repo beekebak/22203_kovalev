@@ -11,4 +11,8 @@ class CycleEnder implements Operation{
             IOhandler.SetIter(dataHandler.GetOpeningBracketIndex(IOhandler.GetIter()-1));
         }
     }
+    @Override
+    public OperationType GetType(){
+        return OperationType.CYCLE_END;
+    }
 }

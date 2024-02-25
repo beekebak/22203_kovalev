@@ -10,4 +10,8 @@ class LeftShift implements Operation{
     public void Operate(DataHandler dataHandler, IOHandler IOhandler){
         dataHandler.SetDataPointer( dataHandler.GetDataPointer() - 1);
     }
+    @Override
+    public OperationType GetType(){
+        return OperationType.DEFAULT_TYPE;
+    }
 }
