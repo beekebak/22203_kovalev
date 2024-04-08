@@ -12,13 +12,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Preprocessor does work to check input string
- * before it will be interpreted.
+ * Checks input string validness before it will be interpreted.
  */
 public class Preprocessor {
     private static final Logger log = LogManager.getLogger("OperationFactory.class.getName()");
     /**
-     * Checks input validness and resolves cycles.
+     * Checks input validness and resolves loops.
      * @param input string to be checked.
      * @param factory operation factory to get operation behaviour.
      * @return each cycle start mapped with its end.

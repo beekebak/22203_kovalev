@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation(libs.junit.jupiter)
+    testImplementation("org.junit.jupiter:junit-jupiter:5.7.1")
     implementation("org.apache.logging.log4j:log4j-api:2.17.1")
     implementation("org.apache.logging.log4j:log4j-core:2.17.1")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")

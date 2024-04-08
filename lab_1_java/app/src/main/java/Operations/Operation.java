@@ -1,6 +1,6 @@
 package Operations;
 
-import Source.DataHandler;
+import Source.ExecutionContext;
 import Source.IOHandler;
 
 /**
@@ -14,6 +14,6 @@ public interface Operation{
         INPUT_OPERATOR,
         DEFAULT_TYPE
     }
-    void Operate(DataHandler dataHandler, IOHandler IOhandler);
+    void Operate(ExecutionContext context, IOHandler IOhandler);
     OperationType GetType();
 }

@@ -4,21 +4,27 @@ import Operations.OperationFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.*;
+
 /**
- * Brainfuck interpreter class
+ * Brainfuck interpreter
+ * Executes infinite loop in which program works
  */
 public class BrainFuck{
     private static final Logger log = LogManager.getLogger("OperationFactory.class.getName()");
-    private final DataHandler dataHandler = new DataHandler();
+    private final ExecutionContext context = new ExecutionContext();
     private final Interpreter interpreter = new Interpreter();
     private final Preprocessor preprocessor = new Preprocessor();
-    private final IOHandler IOhandler = new IOHandler();
-
+    private final IOHandler IOhandler;
     private final OperationFactory factory = new OperationFactory();
 
-    /**
-     * Infinite loop in which interpreter works.
-     */
+    public BrainFuck(InputStream in, OutputStream out){
+        IOhandler = new IOHandler(in, out);
+    }
+    public BrainFuck(){
+        IOhandler = new IOHandler();
+    }
+
     public void Work(){
         try {
             while (true) {
@@ -28,8 +34,8 @@ public class BrainFuck{
                     log.info("Program ended successfully.");
                     break;
                 }
-                dataHandler.SetLoopBracketsMap(preprocessor.PreprocessInput(input, factory));
-                interpreter.Interpret(dataHandler, IOhandler, factory);
+                context.SetLoopBracketsMap(preprocessor.PreprocessInput(input, factory));
+                interpreter.Interpret(context, IOhandler, factory);
             }
         }
         catch (RuntimeException exception){

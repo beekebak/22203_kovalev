@@ -6,9 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
-public class ProgrammTest {
+public class ProgramTest {
     @Test
     public void PrintHelloWorld(){
         String helloWorld = ">+++++++++[<++++++++>-]<.>+++++++[<++++>-]<+.+++++++..+++.>>>++++++++[<++++>-]" +
@@ -17,9 +16,7 @@ public class ProgrammTest {
 
         ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
         ByteArrayInputStream inputStreamCaptor = new ByteArrayInputStream(helloWorld.getBytes());
-        System.setOut(new PrintStream(outputStreamCaptor));
-        System.setIn(inputStreamCaptor);
-        BrainFuck brainFuck = new BrainFuck();
+        BrainFuck brainFuck = new BrainFuck(inputStreamCaptor, outputStreamCaptor);
         brainFuck.Work();
         Assertions.assertEquals("Hello World!\n", outputStreamCaptor.toString());
     }

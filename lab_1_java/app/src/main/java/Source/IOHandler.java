@@ -9,10 +9,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * I/O handler class to write input lines and print output
+ * Writes input lines and prints output.
+ * Could be initialized with custom in/out streams.
+ * Uses System.in/System.out by default.
+ * iter is string iterator that points to character should be read next.
  */
 
-public class IOHandler {
+public class IOHandler implements Closeable{
     private static final Logger log = LogManager.getLogger("OperationFactory.class.getName()");
     private Scanner inputScanner;
     private Writer outputWriter;
@@ -84,5 +87,15 @@ public class IOHandler {
     public void SetIter(int iter){
         log.debug("Input string iterator is now {}", iter);
         this.iter = iter;
+    }
+
+    public void close(){
+        try {
+            inputScanner.close();
+            outputWriter.close();
+        }
+        catch(IOException ex){
+            log.error("IOHandler close failure");
+        }
     }
 }

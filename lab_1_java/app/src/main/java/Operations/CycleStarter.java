@@ -1,14 +1,14 @@
 package Operations;
 
-import Source.DataHandler;
+import Source.ExecutionContext;
 import Source.IOHandler;
 
 class CycleStarter implements Operation{
     public CycleStarter(){}
     @Override
-    public void Operate(DataHandler dataHandler, IOHandler IOhandler){
-        if(dataHandler.GetData() == 0){
-            IOhandler.SetIter(dataHandler.GetClosingBracketIndex(IOhandler.GetIter()-1)+1);
+    public void Operate(ExecutionContext context, IOHandler IOhandler){
+        if(context.GetData() == 0){
+            IOhandler.SetIter(context.GetClosingBracketIndex(IOhandler.GetIter()-1)+1);
         }
     }
     @Override

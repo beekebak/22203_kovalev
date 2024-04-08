@@ -6,25 +6,25 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 
 public class BrainFuckTest {
-    BrainFuck bf;
+    private BrainFuck bf;
     private ByteArrayInputStream inputStreamCaptor;
-    @BeforeEach
-    public void Setup(){
-        bf = new BrainFuck();
-    }
 
     @Test
-    public void LeavesCorrectly(){
+    public void LeavesCorrectly() {
         byte[] quit = {'q', 'u', 'i', 't'};
         inputStreamCaptor = new ByteArrayInputStream(quit);
-        System.setIn(inputStreamCaptor);
+        bf = new BrainFuck(inputStreamCaptor, System.out);
         bf.Work();
+    }
+    @Test
+    public void LeavesCorrectlyOnException(){
         byte[] qui = {'q', 'u', 'i'};
         inputStreamCaptor = new ByteArrayInputStream(qui);
-        System.setIn(inputStreamCaptor);
+        bf = new BrainFuck(inputStreamCaptor, System.out);
         bf.Work();
     }
 }

@@ -1,13 +1,13 @@
 package Operations;
 
-import Source.DataHandler;
+import Source.ExecutionContext;
 import Source.IOHandler;
 
 class Increment implements Operation{
     public Increment(){}
     @Override
-    public void Operate(DataHandler dataHandler, IOHandler IOhandler){
-        dataHandler.SetData((char) (dataHandler.GetData() + 1));
+    public void Operate(ExecutionContext context, IOHandler IOhandler){
+        context.SetData((char) (context.GetData() + 1));
     }
     @Override
     public OperationType GetType(){

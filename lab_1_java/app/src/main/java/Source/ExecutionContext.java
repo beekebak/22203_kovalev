@@ -5,10 +5,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Class that handles all data needed in program.
+ * Handles data needed in program.
  * Provides operations to access data.
+ * Data is array of char and pointer to one data cell.
+ * There is also map of loop start/end symbols indexes in current
+ * interpreting string.
  */
-public class DataHandler {
+public class ExecutionContext {
     private static final Logger log = LogManager.getLogger("OperationFactory.class.getName()");
     private char[] data = new char[30000];
     private int dataPointer = 15000;
