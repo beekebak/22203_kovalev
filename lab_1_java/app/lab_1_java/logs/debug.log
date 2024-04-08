@@ -1,0 +1,1303 @@
+[DEBUG] 2024-04-08 03:55:15.314 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.325 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.326 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.326 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.326 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.327 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.328 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.328 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.354 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.354 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.354 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.354 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.354 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.354 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.354 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.354 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.356 [Test worker] getName() - Opening bracket found at index 6.
+[DEBUG] 2024-04-08 03:55:15.356 [Test worker] getName() - Opening bracket found at index 9.
+[DEBUG] 2024-04-08 03:55:15.356 [Test worker] getName() - Opening bracket found at index 12 matched opening bracket at8.
+[DEBUG] 2024-04-08 03:55:15.356 [Test worker] getName() - Opening bracket found at index 14 matched opening bracket at5.
+[DEBUG] 2024-04-08 03:55:15.356 [Test worker] getName() - Got closing bracket from index 14
+[DEBUG] 2024-04-08 03:55:15.361 [Test worker] getName() - Got closing bracket from index 12
+[DEBUG] 2024-04-08 03:55:15.362 [Test worker] getName() - Got opening bracket from index 9
+[DEBUG] 2024-04-08 03:55:15.362 [Test worker] getName() - Got opening bracket from index 6
+[DEBUG] 2024-04-08 03:55:15.372 [Test worker] getName() - I/O handler read line 
+[DEBUG] 2024-04-08 03:55:15.373 [Test worker] getName() - Input string iterator is now 0
+[DEBUG] 2024-04-08 03:55:15.373 [Test worker] getName() - Got character 
+[DEBUG] 2024-04-08 03:55:15.373 [Test worker] getName() - Input string iterator is now 4
+[DEBUG] 2024-04-08 03:55:15.374 [Test worker] getName() - Input string iterator is now 100
+[DEBUG] 2024-04-08 03:55:15.376 [Test worker] getName() - I/O handler read line 
+[DEBUG] 2024-04-08 03:55:15.377 [Test worker] getName() - Input string iterator is now 0
+[DEBUG] 2024-04-08 03:55:15.378 [Test worker] getName() - Input string iterator is now 4
+[DEBUG] 2024-04-08 03:55:15.379 [Test worker] getName() - Input string iterator is now 100
+[DEBUG] 2024-04-08 03:55:15.382 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.382 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.382 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.383 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.383 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.383 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.383 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.383 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.386 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.386 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.386 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.386 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.386 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.386 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.386 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.386 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.388 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.388 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.388 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.388 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.388 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.389 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.389 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.389 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.395 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.395 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.395 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.396 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.396 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.396 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.396 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.396 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.398 [Test worker] getName() - Opening bracket found at index 6.
+[DEBUG] 2024-04-08 03:55:15.398 [Test worker] getName() - Opening bracket found at index 12 matched opening bracket at5.
+[DEBUG] 2024-04-08 03:55:15.399 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.399 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.399 [Test worker] getName() - Got data pointer which is -1
+[DEBUG] 2024-04-08 03:55:15.400 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.400 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.400 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.400 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.400 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.400 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.400 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.400 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.402 [Test worker] getName() - Opening bracket found at index 6.
+[DEBUG] 2024-04-08 03:55:15.403 [Test worker] getName() - Opening bracket found at index 12 matched opening bracket at5.
+[DEBUG] 2024-04-08 03:55:15.403 [Test worker] getName() - 0 cell is now b.
+[DEBUG] 2024-04-08 03:55:15.405 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.406 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.406 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.406 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.406 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.406 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.406 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.406 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.407 [Test worker] getName() - Opening bracket found at index 6.
+[DEBUG] 2024-04-08 03:55:15.408 [Test worker] getName() - Opening bracket found at index 12 matched opening bracket at5.
+[DEBUG] 2024-04-08 03:55:15.408 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.409 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.410 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.410 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.410 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.410 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.410 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.410 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.410 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.412 [Test worker] getName() - Opening bracket found at index 6.
+[DEBUG] 2024-04-08 03:55:15.412 [Test worker] getName() - Opening bracket found at index 12 matched opening bracket at5.
+[DEBUG] 2024-04-08 03:55:15.412 [Test worker] getName() - 0 cell is now b.
+[DEBUG] 2024-04-08 03:55:15.413 [Test worker] getName() - 0 cell is now a.
+[DEBUG] 2024-04-08 03:55:15.413 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.414 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.414 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.414 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.414 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.414 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.414 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.414 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.416 [Test worker] getName() - Opening bracket found at index 6.
+[DEBUG] 2024-04-08 03:55:15.416 [Test worker] getName() - Opening bracket found at index 12 matched opening bracket at5.
+[DEBUG] 2024-04-08 03:55:15.416 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.417 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.417 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.418 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.418 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.418 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.418 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.418 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.418 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.418 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.418 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.420 [Test worker] getName() - Opening bracket found at index 6.
+[DEBUG] 2024-04-08 03:55:15.421 [Test worker] getName() - Opening bracket found at index 12 matched opening bracket at5.
+[DEBUG] 2024-04-08 03:55:15.421 [Test worker] getName() - Input string iterator is now 6
+[DEBUG] 2024-04-08 03:55:15.421 [Test worker] getName() - Input string iterator is 6
+[DEBUG] 2024-04-08 03:55:15.421 [Test worker] getName() - Got closing bracket from index 12
+[DEBUG] 2024-04-08 03:55:15.421 [Test worker] getName() - Input string iterator is now 12
+[DEBUG] 2024-04-08 03:55:15.422 [Test worker] getName() - Input string iterator is 12
+[DEBUG] 2024-04-08 03:55:15.422 [Test worker] getName() - Input string iterator is now 6
+[DEBUG] 2024-04-08 03:55:15.422 [Test worker] getName() - 0 cell is now 1.
+[DEBUG] 2024-04-08 03:55:15.422 [Test worker] getName() - Input string iterator is 6
+[DEBUG] 2024-04-08 03:55:15.423 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.423 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.423 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.423 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.423 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.423 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.423 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.423 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.425 [Test worker] getName() - Opening bracket found at index 6.
+[DEBUG] 2024-04-08 03:55:15.425 [Test worker] getName() - Opening bracket found at index 12 matched opening bracket at5.
+[DEBUG] 2024-04-08 03:55:15.426 [Test worker] getName() - Input string iterator is now 12
+[DEBUG] 2024-04-08 03:55:15.426 [Test worker] getName() - Input string iterator is 12
+[DEBUG] 2024-04-08 03:55:15.426 [Test worker] getName() - 0 cell is now 1.
+[DEBUG] 2024-04-08 03:55:15.426 [Test worker] getName() - Input string iterator is 12
+[DEBUG] 2024-04-08 03:55:15.427 [Test worker] getName() - Got opening bracket from index 6
+[DEBUG] 2024-04-08 03:55:15.427 [Test worker] getName() - Input string iterator is now 5
+[DEBUG] 2024-04-08 03:55:15.427 [Test worker] getName() - Input string iterator is 5
+[DEBUG] 2024-04-08 03:55:15.428 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.429 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.429 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.429 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.429 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.429 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.429 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.429 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.431 [Test worker] getName() - Opening bracket found at index 6.
+[DEBUG] 2024-04-08 03:55:15.431 [Test worker] getName() - Opening bracket found at index 12 matched opening bracket at5.
+[DEBUG] 2024-04-08 03:55:15.432 [Test worker] getName() - I/O handler read line 
+[DEBUG] 2024-04-08 03:55:15.433 [Test worker] getName() - Got character 
+[DEBUG] 2024-04-08 03:55:15.433 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.435 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.436 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.436 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.436 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.436 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.436 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.436 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.436 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.438 [Test worker] getName() - Opening bracket found at index 1.
+[DEBUG] 2024-04-08 03:55:15.438 [Test worker] getName() - Opening bracket found at index 9 matched opening bracket at0.
+[DEBUG] 2024-04-08 03:55:15.439 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.440 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.440 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.440 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.440 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.440 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.440 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.440 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.443 [Test worker] getName() - Opening bracket found at index 5.
+[DEBUG] 2024-04-08 03:55:15.447 [Test worker] getName() - Added new key "+".
+[DEBUG] 2024-04-08 03:55:15.447 [Test worker] getName() - Added new key "[".
+[DEBUG] 2024-04-08 03:55:15.447 [Test worker] getName() - Added new key ",".
+[DEBUG] 2024-04-08 03:55:15.447 [Test worker] getName() - Added new key "<".
+[DEBUG] 2024-04-08 03:55:15.447 [Test worker] getName() - Added new key "-".
+[DEBUG] 2024-04-08 03:55:15.448 [Test worker] getName() - Added new key "]".
+[DEBUG] 2024-04-08 03:55:15.448 [Test worker] getName() - Added new key ".".
+[DEBUG] 2024-04-08 03:55:15.448 [Test worker] getName() - Added new key ">".
+[DEBUG] 2024-04-08 03:55:15.448 [Test worker] getName() - I/O handler read line >+++++++++[<++++++++>-]<.>+++++++[<++++>-]<+.+++++++..+++.>>>++++++++[<++++>-]<.>>>++++++++++[<+++++++++>-]<---.<<<<.+++.------.--------.>>+.>++++++++++.
+[DEBUG] 2024-04-08 03:55:15.448 [Test worker] getName() - Opening bracket found at index 11.
+[DEBUG] 2024-04-08 03:55:15.448 [Test worker] getName() - Opening bracket found at index 23 matched opening bracket at10.
+[DEBUG] 2024-04-08 03:55:15.448 [Test worker] getName() - Opening bracket found at index 34.
+[DEBUG] 2024-04-08 03:55:15.448 [Test worker] getName() - Opening bracket found at index 42 matched opening bracket at33.
+[DEBUG] 2024-04-08 03:55:15.449 [Test worker] getName() - Opening bracket found at index 70.
+[DEBUG] 2024-04-08 03:55:15.449 [Test worker] getName() - Opening bracket found at index 78 matched opening bracket at69.
+[DEBUG] 2024-04-08 03:55:15.449 [Test worker] getName() - Opening bracket found at index 94.
+[DEBUG] 2024-04-08 03:55:15.449 [Test worker] getName() - Opening bracket found at index 107 matched opening bracket at93.
+[DEBUG] 2024-04-08 03:55:15.449 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.449 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.449 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.449 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.449 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.449 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.450 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.450 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.450 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.450 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.450 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.450 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.450 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.450 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.450 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.450 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.450 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.450 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.450 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - 1 cell is now 	.
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.451 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Input string iterator is 23
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Got opening bracket from index 11
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Input string iterator is now 10
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - 0 cell is now 	.
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - 0 cell is now 
+.
+[DEBUG] 2024-04-08 03:55:15.452 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.453 [Test worker] getName() - Input string iterator is 23
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - Got opening bracket from index 11
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - Input string iterator is now 10
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.454 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Input string iterator is 23
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Got opening bracket from index 11
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Input string iterator is now 10
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.455 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - 0 cell is now .
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - 0 cell is now  .
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Input string iterator is 23
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Got opening bracket from index 11
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Input string iterator is now 10
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.456 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - 0 cell is now !.
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - 0 cell is now ".
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - 0 cell is now #.
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - 0 cell is now $.
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - 0 cell is now %.
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - 0 cell is now &.
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - 0 cell is now '.
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - 0 cell is now (.
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.457 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Input string iterator is 23
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Got opening bracket from index 11
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Input string iterator is now 10
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - 0 cell is now ).
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - 0 cell is now *.
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - 0 cell is now +.
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - 0 cell is now ,.
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.458 [Test worker] getName() - 0 cell is now -.
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - 0 cell is now ..
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - 0 cell is now /.
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - 0 cell is now 0.
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Input string iterator is 23
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Got opening bracket from index 11
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Input string iterator is now 10
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.459 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - 0 cell is now 1.
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - 0 cell is now 2.
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - 0 cell is now 3.
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - 0 cell is now 4.
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - 0 cell is now 5.
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - 0 cell is now 6.
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - 0 cell is now 7.
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - 0 cell is now 8.
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.460 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - Input string iterator is 23
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - Got opening bracket from index 11
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - Input string iterator is now 10
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - 0 cell is now 9.
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - 0 cell is now :.
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - 0 cell is now ;.
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - 0 cell is now <.
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - 0 cell is now =.
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - 0 cell is now >.
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.461 [Test worker] getName() - 0 cell is now ?.
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - 0 cell is now @.
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Input string iterator is 23
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Got opening bracket from index 11
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Input string iterator is now 10
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - 0 cell is now A.
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - 0 cell is now B.
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - 0 cell is now C.
+[DEBUG] 2024-04-08 03:55:15.462 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.463 [Test worker] getName() - 0 cell is now D.
+[DEBUG] 2024-04-08 03:55:15.463 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.463 [Test worker] getName() - 0 cell is now E.
+[DEBUG] 2024-04-08 03:55:15.463 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.463 [Test worker] getName() - 0 cell is now F.
+[DEBUG] 2024-04-08 03:55:15.463 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.463 [Test worker] getName() - 0 cell is now G.
+[DEBUG] 2024-04-08 03:55:15.463 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.463 [Test worker] getName() - 0 cell is now H.
+[DEBUG] 2024-04-08 03:55:15.463 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.463 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.463 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - 1 cell is now  .
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - Got character .
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.464 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - 0 cell is now I.
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - 0 cell is now J.
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - 0 cell is now K.
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - 0 cell is now L.
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.465 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Input string iterator is 42
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Got opening bracket from index 34
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Input string iterator is now 33
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - 0 cell is now M.
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - 0 cell is now N.
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - 0 cell is now O.
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - 0 cell is now P.
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.466 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Input string iterator is 42
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Got opening bracket from index 34
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Input string iterator is now 33
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - 0 cell is now Q.
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - 0 cell is now R.
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - 0 cell is now S.
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - 0 cell is now T.
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.467 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Input string iterator is 42
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Got opening bracket from index 34
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Input string iterator is now 33
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - 0 cell is now U.
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - 0 cell is now V.
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - 0 cell is now W.
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - 0 cell is now X.
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Input string iterator is 42
+[DEBUG] 2024-04-08 03:55:15.468 [Test worker] getName() - Got opening bracket from index 34
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Input string iterator is now 33
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - 0 cell is now Y.
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - 0 cell is now Z.
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - 0 cell is now [.
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - 0 cell is now \.
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Input string iterator is 42
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Got opening bracket from index 34
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Input string iterator is now 33
+[DEBUG] 2024-04-08 03:55:15.469 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - 0 cell is now ].
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - 0 cell is now ^.
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - 0 cell is now _.
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - 0 cell is now `.
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - 1 cell is now .
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Input string iterator is 42
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got opening bracket from index 34
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Input string iterator is now 33
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.470 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - 0 cell is now a.
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - 0 cell is now b.
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - 0 cell is now c.
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - 0 cell is now d.
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - 1 cell is now  .
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - 0 cell is now e.
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Got character .
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - 0 cell is now f.
+[DEBUG] 2024-04-08 03:55:15.471 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - 0 cell is now g.
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - 0 cell is now h.
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - 0 cell is now i.
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - 0 cell is now j.
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - 0 cell is now k.
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - 0 cell is now l.
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - Got character .
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - Got character .
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - 0 cell is now m.
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - 0 cell is now n.
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - 0 cell is now o.
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - Got character .
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.472 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Got data pointer which is 2
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Data pointer is now 2
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.473 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Got data pointer which is 3
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Data pointer is now 3
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Got data pointer which is 2
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Data pointer is now 2
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Input string iterator is 78
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Got opening bracket from index 70
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Input string iterator is now 69
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Got data pointer which is 3
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Data pointer is now 3
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.474 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Got data pointer which is 2
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Data pointer is now 2
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Input string iterator is 78
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Got opening bracket from index 70
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Input string iterator is now 69
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Got data pointer which is 3
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Data pointer is now 3
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - 2 cell is now 	.
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.475 [Test worker] getName() - 2 cell is now 
+.
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Got data pointer which is 2
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Data pointer is now 2
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Input string iterator is 78
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Got opening bracket from index 70
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Input string iterator is now 69
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Got data pointer which is 3
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Data pointer is now 3
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.476 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Got data pointer which is 2
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Data pointer is now 2
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Input string iterator is 78
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Got opening bracket from index 70
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Input string iterator is now 69
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Got data pointer which is 3
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Data pointer is now 3
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.477 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got data pointer which is 2
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Data pointer is now 2
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Input string iterator is 78
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got opening bracket from index 70
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Input string iterator is now 69
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got data pointer which is 3
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Data pointer is now 3
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got data pointer which is 2
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Data pointer is now 2
+[DEBUG] 2024-04-08 03:55:15.478 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Input string iterator is 78
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Got opening bracket from index 70
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Input string iterator is now 69
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Got data pointer which is 3
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Data pointer is now 3
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Got data pointer which is 2
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Data pointer is now 2
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Input string iterator is 78
+[DEBUG] 2024-04-08 03:55:15.479 [Test worker] getName() - Got opening bracket from index 70
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Input string iterator is now 69
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Got data pointer which is 3
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Data pointer is now 3
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - 2 cell is now .
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - 2 cell is now  .
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Got data pointer which is 2
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Data pointer is now 2
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - 3 cell is now  .
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Got data pointer which is 3
+[DEBUG] 2024-04-08 03:55:15.480 [Test worker] getName() - Data pointer is now 3
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Got character .
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Got data pointer which is 2
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Data pointer is now 2
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Got data pointer which is 3
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Data pointer is now 3
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Got data pointer which is 4
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Data pointer is now 4
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.481 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - 5 cell is now 	.
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - 5 cell is now 
+.
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Got data pointer which is 5
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Data pointer is now 5
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.482 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - 4 cell is now 	.
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Got data pointer which is 4
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Data pointer is now 4
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - 5 cell is now 	.
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Input string iterator is 107
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Got opening bracket from index 94
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Input string iterator is now 93
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Got data pointer which is 5
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Data pointer is now 5
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - 4 cell is now 
+.
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.483 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got data pointer which is 4
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Data pointer is now 4
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Input string iterator is 107
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got opening bracket from index 94
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Input string iterator is now 93
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got data pointer which is 5
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Data pointer is now 5
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.484 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - Got data pointer which is 4
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - Data pointer is now 4
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.485 [Test worker] getName() - Input string iterator is 107
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Got opening bracket from index 94
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Input string iterator is now 93
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Got data pointer which is 5
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Data pointer is now 5
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - 4 cell is now .
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - 4 cell is now  .
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - 4 cell is now !.
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - 4 cell is now ".
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - 4 cell is now #.
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.486 [Test worker] getName() - 4 cell is now $.
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got data pointer which is 4
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Data pointer is now 4
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Input string iterator is 107
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got opening bracket from index 94
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Input string iterator is now 93
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got data pointer which is 5
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Data pointer is now 5
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - 4 cell is now %.
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - 4 cell is now &.
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - 4 cell is now '.
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - 4 cell is now (.
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - 4 cell is now ).
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - 4 cell is now *.
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - 4 cell is now +.
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - 4 cell is now ,.
+[DEBUG] 2024-04-08 03:55:15.487 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - 4 cell is now -.
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Got data pointer which is 4
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Data pointer is now 4
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Input string iterator is 107
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Got opening bracket from index 94
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Input string iterator is now 93
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Got data pointer which is 5
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Data pointer is now 5
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - 4 cell is now ..
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - 4 cell is now /.
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - 4 cell is now 0.
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - 4 cell is now 1.
+[DEBUG] 2024-04-08 03:55:15.488 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - 4 cell is now 2.
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - 4 cell is now 3.
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - 4 cell is now 4.
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - 4 cell is now 5.
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - 4 cell is now 6.
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got data pointer which is 4
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Data pointer is now 4
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Input string iterator is 107
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got opening bracket from index 94
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Input string iterator is now 93
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got data pointer which is 5
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Data pointer is now 5
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - 4 cell is now 7.
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - 4 cell is now 8.
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - 4 cell is now 9.
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.489 [Test worker] getName() - 4 cell is now :.
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - 4 cell is now ;.
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - 4 cell is now <.
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - 4 cell is now =.
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - 4 cell is now >.
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - 4 cell is now ?.
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got data pointer which is 4
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Data pointer is now 4
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Input string iterator is 107
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got opening bracket from index 94
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Input string iterator is now 93
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got data pointer which is 5
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Data pointer is now 5
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - 4 cell is now @.
+[DEBUG] 2024-04-08 03:55:15.490 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - 4 cell is now A.
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - 4 cell is now B.
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - 4 cell is now C.
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - 4 cell is now D.
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - 4 cell is now E.
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - 4 cell is now F.
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - 4 cell is now G.
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - 4 cell is now H.
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got data pointer which is 4
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Data pointer is now 4
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Input string iterator is 107
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got opening bracket from index 94
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Input string iterator is now 93
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got data pointer which is 5
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Data pointer is now 5
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - 4 cell is now I.
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - 4 cell is now J.
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - 4 cell is now K.
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.491 [Test worker] getName() - 4 cell is now L.
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - 4 cell is now M.
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - 4 cell is now N.
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - 4 cell is now O.
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - 4 cell is now P.
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - 4 cell is now Q.
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got data pointer which is 4
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Data pointer is now 4
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - 5 cell is now .
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Input string iterator is 107
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got opening bracket from index 94
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Input string iterator is now 93
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character [
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got data pointer which is 5
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Data pointer is now 5
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - 4 cell is now R.
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - 4 cell is now S.
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - 4 cell is now T.
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - 4 cell is now U.
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - 4 cell is now V.
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - 4 cell is now W.
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.492 [Test worker] getName() - 4 cell is now X.
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - 4 cell is now Y.
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - 4 cell is now Z.
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got data pointer which is 4
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Data pointer is now 4
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - 5 cell is now  .
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character ]
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got data pointer which is 5
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Data pointer is now 5
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - 4 cell is now Y.
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - 4 cell is now X.
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - 4 cell is now W.
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character .
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got data pointer which is 4
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Data pointer is now 4
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got data pointer which is 3
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Data pointer is now 3
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got data pointer which is 2
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Data pointer is now 2
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character <
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character .
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - 0 cell is now p.
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.493 [Test worker] getName() - 0 cell is now q.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now r.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character .
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now q.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now p.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now o.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now n.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now m.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now l.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character .
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now k.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now j.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now i.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now h.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now g.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now f.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now e.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character -
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - 0 cell is now d.
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character .
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.494 [Test worker] getName() - Got data pointer which is 0
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Data pointer is now 0
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got data pointer which is 1
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Data pointer is now 1
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - 2 cell is now !.
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character .
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character >
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got data pointer which is 2
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Data pointer is now 2
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - 3 cell is now .
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - 3 cell is now 	.
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character +
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - 3 cell is now 
+.
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - Got character .
+[DEBUG] 2024-04-08 03:55:15.495 [Test worker] getName() - I/O handler read line quit

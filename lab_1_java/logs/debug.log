@@ -1,0 +1,8 @@
+[DEBUG] 2024-04-07 14:16:00.526 [main] getName() - Added new key "+".
+[DEBUG] 2024-04-07 14:16:00.541 [main] getName() - Added new key "[".
+[DEBUG] 2024-04-07 14:16:00.542 [main] getName() - Added new key ",".
+[DEBUG] 2024-04-07 14:16:00.543 [main] getName() - Added new key "<".
+[DEBUG] 2024-04-07 14:16:00.544 [main] getName() - Added new key "-".
+[DEBUG] 2024-04-07 14:16:00.545 [main] getName() - Added new key "]".
+[DEBUG] 2024-04-07 14:16:00.545 [main] getName() - Added new key ".".
+[DEBUG] 2024-04-07 14:16:00.547 [main] getName() - Added new key ">".
