@@ -1,8 +1,0 @@
-+ = Operations.Increment
-- = Operations.Decrement
-. = Operations.Getter
-, = Operations.Setter
-[ = Operations.CycleStarter
-] = Operations.CycleEnder
-> = Operations.RightShift
-< = Operations.LeftShift
