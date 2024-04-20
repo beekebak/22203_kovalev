@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<Pane fx:id="fullView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#MoveCamera" prefHeight="300.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lab_2_java.Controllers.MainGameFieldController">
+   <children>
+      <Circle centerX="700.0" centerY="100.0" fill="DODGERBLUE" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="300.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Circle fx:id="camera" centerX="50.0" centerY="50.0" fill="DODGERBLUE" layoutX="50.0" layoutY="50.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+   </children>
+</Pane>
