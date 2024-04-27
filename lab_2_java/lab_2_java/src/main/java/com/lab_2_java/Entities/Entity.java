@@ -1,5 +1,9 @@
 package com.lab_2_java.Entities;
 
+import javafx.scene.image.Image;
+
 public interface Entity {
-    void HandleCollision(Entity collided);
+     Image getSprite();
+
+     void HandleCollision(Entity collided);
 }
