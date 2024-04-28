@@ -1,9 +1,8 @@
 package com.lab_2_java.Entities.Tiles;
 
 import com.lab_2_java.Entities.Entity;
+import com.lab_2_java.Entities.Tiles.Boosters.ExplosionTile;
 import javafx.scene.image.Image;
-
-import java.security.cert.TrustAnchor;
 
 public class BreakableTile extends Tile {
     public BreakableTile(){
@@ -11,9 +10,13 @@ public class BreakableTile extends Tile {
     }
 
     @Override
-    public void HandleCollision(Entity collided) {}
+    public void HandleCollision(Entity collided) {
+        if(collided instanceof ExplosionTile){
+            DestroySelf();
+        }
+    }
 
-    private void DestroySelf(){
+    protected void DestroySelf(){
         isBroken.set(true);
     }
 }

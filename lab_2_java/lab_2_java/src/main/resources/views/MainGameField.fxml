@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.canvas.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<Pane fx:id="fullView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      onKeyPressed="#MoveCamera" prefHeight="2000.0" prefWidth="5000.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lab_2_java.Controllers.MainGameFieldController">
+<Pane fx:id="fullView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#HandleKeyEvent" prefHeight="2000.0" prefWidth="5000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lab_2_java.Controllers.MainGameFieldController">
    <children>
       <Circle fx:id="camera" centerX="200.0" centerY="100.0" fill="DODGERBLUE" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-      <Canvas fx:id="backgroundCanvas" height="2000.0" width="5000.0" />
    </children>
 </Pane>

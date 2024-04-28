@@ -1,7 +1,6 @@
 package com.lab_2_java.Utility;
 
 import com.lab_2_java.Entities.Creatures.Creature;
-import com.lab_2_java.Entities.Entity;
 import com.lab_2_java.Entities.Tiles.Tile;
 
 public class SolidCollisionChecker {
@@ -16,22 +15,15 @@ public class SolidCollisionChecker {
         int rightX = creature.getXValue()+creature.getCenterXShift()+dx+creature.getXSize();
         int upperY = creature.getYValue()+creature.getCenterYShift()+dy-creature.getYSize();
         int lowerY = creature.getYValue()+creature.getCenterYShift()+dy+creature.getYSize();
-
-        Entity containmentOfRequestedCell = gameLevel.getCellContainmentFromView(leftX, upperY);
-            if(containmentOfRequestedCell instanceof Tile && ((Tile) containmentOfRequestedCell).isSolid()) {
-            return false;
-        }
-        containmentOfRequestedCell = gameLevel.getCellContainmentFromView(rightX, upperY);
-        if(containmentOfRequestedCell instanceof Tile && ((Tile) containmentOfRequestedCell).isSolid()) {
-            return false;
-        }
-        containmentOfRequestedCell = gameLevel.getCellContainmentFromView(leftX, lowerY);
-        if(containmentOfRequestedCell instanceof Tile && ((Tile) containmentOfRequestedCell).isSolid()) {
-            return false;
-        }
-        containmentOfRequestedCell = gameLevel.getCellContainmentFromView(rightX, lowerY);
-        if(containmentOfRequestedCell instanceof Tile && ((Tile) containmentOfRequestedCell).isSolid()) {
-            return false;
+        int Xcoords[] = {leftX, rightX};
+        int Ycoords[] = {upperY, lowerY};
+        for(int i = 0; i < Xcoords.length; i++){
+            for(int j = 0; j < Ycoords.length; j++){
+                Tile containmentOfRequestedCell = gameLevel.getCellContainmentFromView(Xcoords[i], Ycoords[j]);
+                if(containmentOfRequestedCell != null && (containmentOfRequestedCell).isSolid()) {
+                    return false;
+                }
+            }
         }
         return true;
     }
