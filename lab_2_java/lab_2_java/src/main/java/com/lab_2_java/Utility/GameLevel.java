@@ -5,13 +5,13 @@ import com.lab_2_java.Entities.Tiles.BreakableTile;
 import com.lab_2_java.Levelio.LevelReader;
 import javafx.application.Platform;
 import javafx.beans.Observable;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableBooleanValue;
 import javafx.concurrent.Task;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -22,11 +22,39 @@ public class GameLevel {
     private static final Executor explosionTimer = Executors.newSingleThreadExecutor();
     private final Image backGround = new Image("/sprites/background.png");
     private Bomberman bomberman = new Bomberman(150,150);
-    private List<List<Tile>> gameGrid;
+    private List<List<TileWrapper>> gameGrid;
+
 
     public GameLevel(){
         InitializeGameGrid();
         SolidCollisionChecker.setLevel(this);
+    }
+
+    public static class TileWrapper{
+        private Tile tile;
+        public SimpleBooleanProperty IsPresent() {
+            return isNull;
+        }
+
+        private SimpleBooleanProperty isNull;
+
+        public TileWrapper(Tile tile) {
+            this.tile = tile;
+            isNull = new SimpleBooleanProperty(false);
+            if(tile == null) isNull.set(true);
+        }
+
+        public Tile getTile() {
+            return tile;
+        }
+        public SimpleBooleanProperty IsNull() {
+            return isNull;
+        }
+        public void setTile(Tile tile) {
+            this.tile = tile;
+            if(tile == null) isNull.set(true);
+            else isNull.set(false);
+        }
     }
 
     public void InitializeGameGrid(){
@@ -35,23 +63,30 @@ public class GameLevel {
     }
 
     public Image getCellImage(int viewX, int viewY){
-        if(gameGrid.get(viewY).get(viewX) == null){
+        if(gameGrid.get(viewY).get(viewX).getTile() == null){
             return null;
         }
-        return gameGrid.get(viewY).get(viewX).getSprite();
+        return gameGrid.get(viewY).get(viewX).getTile().getSprite();
     }
 
     public Observable getCellObservable(int viewX, int viewY){
-        return gameGrid.get(viewY).get(viewX).isBrokenProperty();
+        return gameGrid.get(viewY).get(viewX).getTile().isBrokenProperty();
     }
 
-    Tile getCellContainmentFromView(int x, int y){
+    public Tile getCellContainmentTile(int X, int Y){
+        return gameGrid.get(Y).get(X).getTile();
+    }
+    public SimpleBooleanProperty getCellContainmentProperty(int X, int Y){
+        return gameGrid.get(Y).get(X).IsPresent();
+    }
+
+    public Tile getCellContainmentFromView(int x, int y){
         if(gameGrid.get(ConvertViewCoordinateToGridCoordinate(y)).
-                get(ConvertViewCoordinateToGridCoordinate(x)) == null){
+                get(ConvertViewCoordinateToGridCoordinate(x)).getTile() == null){
             return null;
         }
         return gameGrid.get(ConvertViewCoordinateToGridCoordinate(y)).
-                get(ConvertViewCoordinateToGridCoordinate(x));
+                get(ConvertViewCoordinateToGridCoordinate(x)).getTile();
     }
 
     public int GetGridColumnsCount(){
@@ -76,36 +111,29 @@ public class GameLevel {
         return bomberman;
     }
 
-    public int GetLastBombXCoordinate(){
-        return ConvertViewCoordinateToGridCoordinate(bomberman.getYValue()+bomberman.getYSize());
-    }
-
-    public int GetLastBombYCoordinate(){
-        return ConvertViewCoordinateToGridCoordinate(bomberman.getXValue()+bomberman.getXSize());
-    }
-
     public void ContinueExplosion(List<int[]> explosions, int row, int col, int drow, int dcol, int step, int maxStep){
         if(step == maxStep) return;
-        Tile tileOnExplosionWay = gameGrid.get(row+drow).get(col+dcol);
+        Tile tileOnExplosionWay = gameGrid.get(row+drow).get(col+dcol).getTile();
         if(tileOnExplosionWay == null){
-            gameGrid.get(row+drow).set(col+dcol, new ExplosionTile());
+            gameGrid.get(row+drow).get(col+dcol).setTile(new ExplosionTile());
             explosions.add(new int[]{row+drow, col+dcol});
             ContinueExplosion(explosions, row+drow, col+dcol, drow, dcol, step+1, maxStep);
         }
         else if(tileOnExplosionWay instanceof BreakableTile){
-            gameGrid.get(row+drow).set(col+dcol, null);
+            gameGrid.get(row+drow).get(col+dcol).setTile(null);
         }
     }
 
     private void CleanExplosions(List<int[]> explosions){
         for(var explosion : explosions){
-            gameGrid.get(explosion[0]).set(explosion[1], null);
+            gameGrid.get(explosion[0]).get(explosion[1]).setTile(null);
         }
     }
 
     private void StartExplosion(int row, int col){
         List<int[]> explosions = new ArrayList<>();
-        gameGrid.get(row).set(col, new ExplosionTile());
+        gameGrid.get(row).get(col).setTile(null);
+        gameGrid.get(row).get(col).setTile(new ExplosionTile());
         explosions.add(new int[]{row, col});
         int power = bomberman.getBombPower();
         ContinueExplosion(explosions, row, col, 1, 0, 0, power);
@@ -126,13 +154,16 @@ public class GameLevel {
         explosionTimer.execute(awaitExplosionsEnd);
     }
 
-    public boolean BombEvent(){
+    public void BombEvent(){
         Tile bomb = bomberman.PlantBomb();
-        if(bomb == null) return false;
+        if(bomb == null) return;
         int col = ConvertViewCoordinateToGridCoordinate(bomberman.getXValue()+bomberman.getXSize());
         int row = ConvertViewCoordinateToGridCoordinate(bomberman.getYValue()+bomberman.getYSize());
-        gameGrid.get(row).set(col, bomb);
+        gameGrid.get(row).get(col).setTile(bomb);
         bomb.isBrokenProperty().addListener(observable -> {StartExplosion(row, col);});
-        return true;
+    }
+
+    public void Test(){
+        gameGrid.get(2).get(2).setTile(null);
     }
 }

@@ -3,7 +3,9 @@ package com.lab_2_java.Controllers;
 import com.lab_2_java.Utility.CoordinatesConverter;
 import com.lab_2_java.Utility.GameLevel;
 import com.lab_2_java.Utility.MoveDirections;
-import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -51,10 +53,7 @@ public class MainGameFieldController implements Initializable{
     }
 
     private void ActionKeyEvent(KeyEvent e){
-        boolean bombed = gameLevel.BombEvent();
-        if(bombed) {
-            RegisterImageView(gameLevel.GetLastBombYCoordinate(), gameLevel.GetLastBombXCoordinate());
-        }
+        gameLevel.BombEvent();
     }
 
     private GameLevel gameLevel = new GameLevel();
@@ -66,7 +65,7 @@ public class MainGameFieldController implements Initializable{
         fullView.getChildren().add(cellView);
         cellView.setX(CoordinatesConverter.ConvertGridCoordinateToViewCoordinate(i));
         cellView.setY(CoordinatesConverter.ConvertGridCoordinateToViewCoordinate(j));
-        gameLevel.getCellObservable(i,j).addListener((observable) -> {
+        gameLevel.getCellContainmentProperty(i,j).addListener((observable) -> {
             fullView.getChildren().remove(cellView);
         });
     }
@@ -112,8 +111,16 @@ public class MainGameFieldController implements Initializable{
                 if(gameLevel.getCellImage(i, j) != null){
                     RegisterImageView(i, j);
                 }
+                int effi = i;
+                int effj = j;
+                gameLevel.getCellContainmentProperty(i, j).addListener(observable -> {
+                    RegisterImageView(effi, effj);
+                });
             }
         }
+
+
+
 
         levelScene = new Scene(fullView);
         rect.widthProperty().bind(levelScene.widthProperty());

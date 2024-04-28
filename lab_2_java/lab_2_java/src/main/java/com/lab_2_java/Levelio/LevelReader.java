@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lab_2_java.Entities.EntityFactory;
 import com.lab_2_java.Entities.Tiles.BreakableTile;
 import com.lab_2_java.Entities.Tiles.Tile;
+import com.lab_2_java.Utility.GameLevel;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -21,28 +22,28 @@ public class LevelReader {
         }
     }
 
-    private void RegisterTile(List<List<Tile>> gameGrid, Tile tile, int i, int j){
+    private void RegisterTile(List<List<GameLevel.TileWrapper>> gameGrid, Tile tile, int i, int j){
         if(tile instanceof BreakableTile){
             tile.isBrokenProperty().addListener(observable -> {
-                gameGrid.get(i).set(j, null);
+                gameGrid.get(i).get(j).setTile(null);
             });
         }
     }
 
-    public List<List<Tile>> InitializeGrid(){
+    public List<List<GameLevel.TileWrapper>> InitializeGrid(){
         EntityFactory<Tile> tileFactory = new EntityFactory<>("factoryProperties/Tiles");
-        List<List<Tile>> gameGrid = new ArrayList<>();
+        List<List<GameLevel.TileWrapper>> gameGrid = new ArrayList<>();
         for(int i = 0; i < level.getGrid().size(); i++){
             gameGrid.add(new ArrayList<>());
         }
         for(int i = 0; i < level.getGrid().size(); i++) {
             for(int j = 0; j < level.getGrid().getFirst().size(); j++){
                 if(level.getGrid().get(i).get(j) == null) {
-                    gameGrid.get(i).add(j, null);
+                    gameGrid.get(i).add(j, new GameLevel.TileWrapper(null));
                 }
                 else{
                     Tile tile = tileFactory.GetInstance(level.getGrid().get(i).get(j));
-                    gameGrid.get(i).add(j, tile);
+                    gameGrid.get(i).add(j, new GameLevel.TileWrapper(tile));
                     RegisterTile(gameGrid, tile, i, j);
                 }
             }
