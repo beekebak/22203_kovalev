@@ -6,9 +6,14 @@ import com.lab_2_java.Entities.Tiles.Boosters.ExplosionTile;
 import com.lab_2_java.Utility.SolidCollisionChecker;
 
 public abstract class Enemy extends Creature {
-    protected Enemy(int speed, SolidCollisionChecker collisionChecker) {
-        super(speed, collisionChecker);
+    protected Enemy(int speed) {
+        super(speed);
     }
+
+    public Enemy(int speed, int xCoord, int yCoord) {
+        super(speed, xCoord, yCoord);
+    }
+
     public void HandleCollision(Entity collided){
         if(collided instanceof ExplosionTile){
             DestroySelf();

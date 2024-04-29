@@ -27,7 +27,7 @@ public abstract class Creature implements Entity {
         return ySize;
     }
     protected SimpleIntegerProperty x = new SimpleIntegerProperty();
-    protected BooleanProperty isAlive = new SimpleBooleanProperty(true);
+    protected SimpleBooleanProperty isAlive = new SimpleBooleanProperty(true);
 
     protected SimpleIntegerProperty y = new SimpleIntegerProperty();
 
@@ -58,21 +58,21 @@ public abstract class Creature implements Entity {
         return speed;
     }
 
-    final protected SolidCollisionChecker collisionChecker;
-
-    protected Creature(int speed, SolidCollisionChecker collisionChecker) {
+    protected Creature(int speed) {
         this.speed = speed;
-        this.collisionChecker = collisionChecker;
     }
 
-    protected Creature(int speed, SolidCollisionChecker collisionChecker, int x, int y) {
+    protected Creature(int speed, int x, int y) {
         this.speed = speed;
-        this.collisionChecker = collisionChecker;
         setX(x);
         setY(y);
     }
 
     public abstract void Move();
+
+    public SimpleBooleanProperty IsAlive(){
+        return isAlive;
+    }
 
     protected void DestroySelf() {
         isAlive.set(false);

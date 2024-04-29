@@ -7,4 +7,9 @@ public class ExplosionTile extends UnbreakableTile {
     public ExplosionTile(){
         super.sprite = new Image("/sprites/explosion.png");
     }
+
+    @Override
+    public boolean isSolid() {
+        return false;
+    }
 }

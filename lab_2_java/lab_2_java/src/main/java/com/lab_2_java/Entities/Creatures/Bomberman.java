@@ -6,6 +6,7 @@ import com.lab_2_java.Entities.Tiles.BombTile;
 import com.lab_2_java.Entities.Tiles.Boosters.ExplosionTile;
 import com.lab_2_java.Utility.SolidCollisionChecker;
 import com.lab_2_java.Utility.MoveDirections;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.image.Image;
 
 public class Bomberman extends Creature {
@@ -27,7 +28,7 @@ public class Bomberman extends Creature {
     }
 
     public Bomberman(int xCoord, int yCoord){
-        super(8, new SolidCollisionChecker(), xCoord, yCoord);
+        super(8, xCoord, yCoord);
         super.xSize = 12;
         super.ySize = 18;
         super.centerXShift = 16;
@@ -45,16 +46,16 @@ public class Bomberman extends Creature {
     public void Move(MoveDirections direction){
         int dx=0, dy=0;
         switch (direction) {
-            case UP -> dy = -getSpeed();
-            case DOWN -> dy = getSpeed();
-            case LEFT -> dx = -getSpeed();
-            case RIGHT -> dx = getSpeed();
+            case UP -> dy = -speed;
+            case DOWN -> dy = speed;
+            case LEFT -> dx = -speed;
+            case RIGHT -> dx = speed;
         }
-        if(collisionChecker.CheckMoveValidity(this, dx, dy)) {
+        if(SolidCollisionChecker.CheckMoveValidity(this, dx, dy)) {
             setX(getXValue() + dx);
             setY(getYValue() + dy);
         }
-        else while(collisionChecker.CheckMoveValidity(this, dx/4, dy/4)) {
+        else while(SolidCollisionChecker.CheckMoveValidity(this, dx/4, dy/4)) {
             setX(getXValue() + dx/4);
             setY(getYValue() + dy/4);
         }
@@ -74,5 +75,9 @@ public class Bomberman extends Creature {
         if(collided instanceof Enemy || collided instanceof ExplosionTile){
             DestroySelf();
         }
+    }
+
+    public SimpleBooleanProperty GetProperty(){
+        return isAlive;
     }
 }

@@ -1,17 +1,17 @@
 package com.lab_2_java.Utility;
 
+import com.lab_2_java.Entities.Creatures.Creature;
+import com.lab_2_java.Entities.Tiles.BombTile;
 import com.lab_2_java.Entities.Tiles.Boosters.ExplosionTile;
 import com.lab_2_java.Entities.Tiles.BreakableTile;
 import com.lab_2_java.Levelio.LevelReader;
+import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
-import javafx.beans.Observable;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ObservableBooleanValue;
 import javafx.concurrent.Task;
 import javafx.scene.image.Image;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -21,13 +21,51 @@ import com.lab_2_java.Entities.Tiles.Tile;
 public class GameLevel {
     private static final Executor explosionTimer = Executors.newSingleThreadExecutor();
     private final Image backGround = new Image("/sprites/background.png");
-    private Bomberman bomberman = new Bomberman(150,150);
+    private Bomberman bomberman;
+    private List<Creature> enemies;
     private List<List<TileWrapper>> gameGrid;
+    private int frameRateCounter = 0;
 
+    public List<Creature> getEnemies() {
+        return enemies;
+    }
 
     public GameLevel(){
-        InitializeGameGrid();
+        InitializeGame();
         SolidCollisionChecker.setLevel(this);
+        bomberman.GetProperty().addListener(observable -> {
+            System.out.println("DEAD");
+        });
+    }
+
+    private void HandleCreatureCollisionsWithCreature(Creature collider, Creature collided){
+        if(MovingCollisionChecker.CheckCollision(collided, collider)){
+            collided.HandleCollision(collider);
+            collider.HandleCollision(collided);
+        }
+    }
+
+    private void HandleCreatureCollisionWithTile(Creature creature, Tile tile){
+        creature.HandleCollision(tile);
+    }
+
+    private void UpdateLevel(){
+        frameRateCounter++;
+        Set<Tile> collidedTiles = SolidCollisionChecker.FindCollidedCells(bomberman);
+        for(var tile:collidedTiles){
+            HandleCreatureCollisionWithTile(bomberman, tile);
+        }
+        if(frameRateCounter % 8 == 0) {
+            for (var enemy : enemies) {
+                enemy.Move();
+                HandleCreatureCollisionsWithCreature(bomberman, enemy);
+                collidedTiles = SolidCollisionChecker.FindCollidedCells(enemy);
+                for(var tile:collidedTiles){
+                    HandleCreatureCollisionWithTile(enemy, tile);
+                }
+            }
+        }
+        if(frameRateCounter % 8 == 0) frameRateCounter = 0;
     }
 
     public static class TileWrapper{
@@ -36,7 +74,7 @@ public class GameLevel {
             return isNull;
         }
 
-        private SimpleBooleanProperty isNull;
+        private final SimpleBooleanProperty isNull;
 
         public TileWrapper(Tile tile) {
             this.tile = tile;
@@ -57,9 +95,24 @@ public class GameLevel {
         }
     }
 
-    public void InitializeGameGrid(){
+    private void RegisterBreakableTile(BreakableTile tile, int i, int j){
+        tile.isBrokenProperty().addListener(observable -> {
+            gameGrid.get(i).get(j).setTile(null);
+        });
+    }
+
+    public void InitializeGame(){
         LevelReader levelReader = new LevelReader("src/main/resources/levels/campaign_levels/level1-1.json");
         gameGrid = levelReader.InitializeGrid();
+        bomberman = (Bomberman) levelReader.InitializePlayer();
+        enemies = levelReader.InitializeEnemies();
+        AnimationTimer frameUpdater = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                UpdateLevel();
+            }
+        };
+        frameUpdater.start();
     }
 
     public Image getCellImage(int viewX, int viewY){
@@ -69,13 +122,6 @@ public class GameLevel {
         return gameGrid.get(viewY).get(viewX).getTile().getSprite();
     }
 
-    public Observable getCellObservable(int viewX, int viewY){
-        return gameGrid.get(viewY).get(viewX).getTile().isBrokenProperty();
-    }
-
-    public Tile getCellContainmentTile(int X, int Y){
-        return gameGrid.get(Y).get(X).getTile();
-    }
     public SimpleBooleanProperty getCellContainmentProperty(int X, int Y){
         return gameGrid.get(Y).get(X).IsPresent();
     }
@@ -132,7 +178,6 @@ public class GameLevel {
 
     private void StartExplosion(int row, int col){
         List<int[]> explosions = new ArrayList<>();
-        gameGrid.get(row).get(col).setTile(null);
         gameGrid.get(row).get(col).setTile(new ExplosionTile());
         explosions.add(new int[]{row, col});
         int power = bomberman.getBombPower();
@@ -155,15 +200,23 @@ public class GameLevel {
     }
 
     public void BombEvent(){
-        Tile bomb = bomberman.PlantBomb();
+        BombTile bomb = bomberman.PlantBomb();
         if(bomb == null) return;
         int col = ConvertViewCoordinateToGridCoordinate(bomberman.getXValue()+bomberman.getXSize());
         int row = ConvertViewCoordinateToGridCoordinate(bomberman.getYValue()+bomberman.getYSize());
         gameGrid.get(row).get(col).setTile(bomb);
+        RegisterBreakableTile(bomb, row, col);
+        AnimationTimer bombSolidation = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                if(!SolidCollisionChecker.FindCollidedCells(bomberman).contains(bomb)){
+                    bomb.MakeSolid();
+                    this.stop();
+                }
+            }
+        };
+        bombSolidation.start();
+        bomb.isBrokenProperty().addListener(observable -> {bombSolidation.stop();});
         bomb.isBrokenProperty().addListener(observable -> {StartExplosion(row, col);});
-    }
-
-    public void Test(){
-        gameGrid.get(2).get(2).setTile(null);
     }
 }

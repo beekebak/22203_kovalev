@@ -11,6 +11,7 @@ import java.util.concurrent.Executors;
 
 public class BombTile extends BreakableTile{
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private boolean solid = false;
 
     public BombTile(){
         super.sprite = new Image("/sprites/bomb.png");
@@ -40,6 +41,10 @@ public class BombTile extends BreakableTile{
 
     @Override
     public boolean isSolid() {
-        return false;
+        return solid;
+    }
+
+    public void MakeSolid(){
+        solid = true;
     }
 }

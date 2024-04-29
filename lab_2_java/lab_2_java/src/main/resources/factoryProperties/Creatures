@@ -1,0 +1,2 @@
+Bomberman = com.lab_2_java.Entities.Creatures.Bomberman
+Slime = com.lab_2_java.Entities.Creatures.Enemies.Slime

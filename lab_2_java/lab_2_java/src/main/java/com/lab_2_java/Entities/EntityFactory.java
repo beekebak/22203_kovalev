@@ -29,9 +29,9 @@ public class EntityFactory<T extends Entity> {
         }
     }
 
-    public T GetInstance(String className){
+    public T GetInstance(String className, Object... args){
         try {
-            return  constructorHashMap.get(className).newInstance();
+            return constructorHashMap.get(className).newInstance(args);
         }
         catch (InvocationTargetException | InstantiationException | IllegalAccessException | NullPointerException e) {
             throw new RuntimeException("Creating a new entity failed");

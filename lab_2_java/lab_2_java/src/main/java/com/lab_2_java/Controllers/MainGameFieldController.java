@@ -3,9 +3,6 @@ package com.lab_2_java.Controllers;
 import com.lab_2_java.Utility.CoordinatesConverter;
 import com.lab_2_java.Utility.GameLevel;
 import com.lab_2_java.Utility.MoveDirections;
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.BooleanBinding;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -32,7 +29,7 @@ public class MainGameFieldController implements Initializable{
 
     @FXML
     private void HandleKeyEvent(KeyEvent e){
-        if(e.getCode() == KeyCode.W ||e.getCode() == KeyCode.A || e.getCode() == KeyCode.D || e.getCode() == KeyCode.S){
+        if(e.getCode() == KeyCode.W || e.getCode() == KeyCode.A || e.getCode() == KeyCode.D || e.getCode() == KeyCode.S){
             MoveCamera(e);
         }
         else if(e.getCode() == KeyCode.SPACE){
@@ -60,12 +57,22 @@ public class MainGameFieldController implements Initializable{
 
     private Scene levelScene;
 
-    private void RegisterImageView(int i, int j){
+    private void RegisterTileImageView(int i, int j){
         ImageView cellView = new ImageView(gameLevel.getCellImage(i,j));
         fullView.getChildren().add(cellView);
         cellView.setX(CoordinatesConverter.ConvertGridCoordinateToViewCoordinate(i));
         cellView.setY(CoordinatesConverter.ConvertGridCoordinateToViewCoordinate(j));
         gameLevel.getCellContainmentProperty(i,j).addListener((observable) -> {
+            fullView.getChildren().remove(cellView);
+        });
+    }
+
+    private void RegisterEnemyImageView(int i){
+        ImageView cellView = new ImageView(gameLevel.getEnemies().get(i).getSprite());
+        fullView.getChildren().add(cellView);
+        cellView.xProperty().bind(gameLevel.getEnemies().get(i).getX());
+        cellView.yProperty().bind(gameLevel.getEnemies().get(i).getY());
+        gameLevel.getEnemies().get(i).IsAlive().addListener((observable) -> {
             fullView.getChildren().remove(cellView);
         });
     }
@@ -109,18 +116,19 @@ public class MainGameFieldController implements Initializable{
         for(int i = 0; i < gameLevel.GetGridColumnsCount(); i++){
             for(int j = 0; j < gameLevel.GetGridRowsCount(); j++){
                 if(gameLevel.getCellImage(i, j) != null){
-                    RegisterImageView(i, j);
+                    RegisterTileImageView(i, j);
                 }
                 int effi = i;
                 int effj = j;
                 gameLevel.getCellContainmentProperty(i, j).addListener(observable -> {
-                    RegisterImageView(effi, effj);
+                    RegisterTileImageView(effi, effj);
                 });
             }
         }
-
-
-
+        for(int i = 0; i < gameLevel.getEnemies().size(); i++){
+            int effi = i;
+            RegisterEnemyImageView(effi);
+        }
 
         levelScene = new Scene(fullView);
         rect.widthProperty().bind(levelScene.widthProperty());

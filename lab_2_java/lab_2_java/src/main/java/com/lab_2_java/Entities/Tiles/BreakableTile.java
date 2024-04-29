@@ -15,7 +15,6 @@ public class BreakableTile extends Tile {
             DestroySelf();
         }
     }
-
     protected void DestroySelf(){
         isBroken.set(true);
     }
