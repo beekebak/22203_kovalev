@@ -1,4 +1,4 @@
-package com.lab_2_java.Entities.Tiles.Boosters;
+package com.lab_2_java.Entities.Tiles;
 
 import com.lab_2_java.Entities.Tiles.UnbreakableTile;
 import javafx.scene.image.Image;

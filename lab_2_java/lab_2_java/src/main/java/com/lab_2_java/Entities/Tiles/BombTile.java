@@ -1,33 +1,28 @@
 package com.lab_2_java.Entities.Tiles;
 
 import com.lab_2_java.Entities.Entity;
-import com.lab_2_java.Entities.Tiles.Boosters.ExplosionTile;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.scene.image.Image;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class BombTile extends BreakableTile{
-    private static final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private static final Timer timer = new Timer();
     private boolean solid = false;
 
     public BombTile(){
         super.sprite = new Image("/sprites/bomb.png");
-        Task<Void> awaitExplosion = new Task<Void>() {
+        TimerTask awaitExplosion = new TimerTask() {
             @Override
-            public Void call() throws Exception {
-                try{
-                    Thread.sleep(3000);
-
-                    Platform.runLater(() -> {DestroySelf();});
-                }
-                catch (InterruptedException e) {}
-                return null;
+            public void run() {
+                Platform.runLater(() -> {DestroySelf();});
             }
         };
-        executor.submit(awaitExplosion);
+        timer.schedule(awaitExplosion, 3000L);
     }
     @Override
     public void HandleCollision(Entity collided) {

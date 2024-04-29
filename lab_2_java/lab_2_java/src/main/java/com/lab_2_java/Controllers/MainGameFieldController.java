@@ -3,6 +3,7 @@ package com.lab_2_java.Controllers;
 import com.lab_2_java.Utility.CoordinatesConverter;
 import com.lab_2_java.Utility.GameLevel;
 import com.lab_2_java.Utility.MoveDirections;
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -129,6 +130,14 @@ public class MainGameFieldController implements Initializable{
             int effi = i;
             RegisterEnemyImageView(effi);
         }
+
+        AnimationTimer frameUpdater = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                gameLevel.UpdateLevel();
+            }
+        };
+        frameUpdater.start();
 
         levelScene = new Scene(fullView);
         rect.widthProperty().bind(levelScene.widthProperty());

@@ -3,7 +3,7 @@ package com.lab_2_java.Entities.Creatures;
 import com.lab_2_java.Entities.Creatures.Enemies.Enemy;
 import com.lab_2_java.Entities.Entity;
 import com.lab_2_java.Entities.Tiles.BombTile;
-import com.lab_2_java.Entities.Tiles.Boosters.ExplosionTile;
+import com.lab_2_java.Entities.Tiles.ExplosionTile;
 import com.lab_2_java.Utility.SolidCollisionChecker;
 import com.lab_2_java.Utility.MoveDirections;
 import javafx.beans.property.SimpleBooleanProperty;

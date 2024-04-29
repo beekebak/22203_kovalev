@@ -3,6 +3,7 @@ package com.lab_2_java.Entities.Tiles.Boosters;
 import com.lab_2_java.Entities.Creatures.Bomberman;
 import com.lab_2_java.Entities.Entity;
 import com.lab_2_java.Entities.Tiles.BreakableTile;
+import com.lab_2_java.Entities.Tiles.ExplosionTile;
 
 public abstract class Booster extends BreakableTile {
     @Override

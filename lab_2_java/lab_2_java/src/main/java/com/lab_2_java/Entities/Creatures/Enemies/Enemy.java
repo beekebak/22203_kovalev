@@ -2,8 +2,7 @@ package com.lab_2_java.Entities.Creatures.Enemies;
 
 import com.lab_2_java.Entities.Creatures.Creature;
 import com.lab_2_java.Entities.Entity;
-import com.lab_2_java.Entities.Tiles.Boosters.ExplosionTile;
-import com.lab_2_java.Utility.SolidCollisionChecker;
+import com.lab_2_java.Entities.Tiles.ExplosionTile;
 
 public abstract class Enemy extends Creature {
     protected Enemy(int speed) {
