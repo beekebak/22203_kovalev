@@ -12,5 +12,6 @@ public class SerializableLevel {
     public SerializableLevel(List<List<SerializableTileWrapper>> grid) {
         this.grid = grid;
     }
+
     public SerializableLevel() {}
 }

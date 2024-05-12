@@ -31,14 +31,6 @@ public class LevelReader {
         }
     }
 
-    private void RegisterTile(List<List<GameLevel.TileWrapper>> gameGrid, Tile tile, int i, int j){
-        if(tile instanceof BreakableTile){
-            tile.isBrokenProperty().addListener(observable -> {
-                gameGrid.get(i).get(j).setTile(null);
-            });
-        }
-    }
-
     private void ParseLevel(){
         EntityFactory<Tile> tileFactory = new EntityFactory<>("factoryProperties/Tiles");
         EntityFactory<Creature> creaturesFactory = new EntityFactory<>("factoryProperties/Creatures",
@@ -54,7 +46,6 @@ public class LevelReader {
                 else if(level.getGrid().get(i).get(j).getType().equals("Tile")){
                     Tile tile = tileFactory.GetInstance(level.getGrid().get(i).get(j).getName());
                     gameGrid.get(i).add(j, new GameLevel.TileWrapper(tile));
-                    RegisterTile(gameGrid, tile, i, j);
                 }
                 else{
                     Creature creature = creaturesFactory.GetInstance(level.getGrid().get(i).get(j).getName(),
@@ -63,6 +54,17 @@ public class LevelReader {
                     if(creature instanceof Bomberman) bomberman = creature;
                     else enemies.add(creature);
                     gameGrid.get(i).add(j, new GameLevel.TileWrapper(null));
+                }
+            }
+        }
+        ParseBoosters(tileFactory);
+    }
+    private void ParseBoosters(EntityFactory<Tile> factory){
+        for(int i = 0; i < level.getGrid().size(); i++) {
+            for (int j = 0; j < level.getGrid().getFirst().size(); j++) {
+                if(level.getGrid().get(i).get(j) != null && level.getGrid().get(i).get(j).getBoosterName() != null){
+                    ((BreakableTile) gameGrid.get(i).get(j).getTile()).setUnderlyingTile(
+                            (BreakableTile) factory.GetInstance(level.getGrid().get(i).get(j).getBoosterName()));
                 }
             }
         }

@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
 import static java.lang.Math.max;
 
-public class MainGameFieldController implements Initializable{
+public class MainGameFieldController{
     @FXML
     Pane fullView;
     @FXML
@@ -54,9 +54,7 @@ public class MainGameFieldController implements Initializable{
         gameLevel.BombEvent();
     }
 
-    private GameLevel gameLevel = new GameLevel();
-
-    private Scene levelScene;
+    private GameLevel gameLevel;
 
     private void RegisterTileImageView(int i, int j){
         ImageView cellView = new ImageView(gameLevel.getCellImage(i,j));
@@ -78,8 +76,8 @@ public class MainGameFieldController implements Initializable{
         });
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void StartLevel(String path, Scene levelScene) {
+        gameLevel = new GameLevel(path);
         Rectangle rect = new Rectangle(1, 1);
         rect.xProperty().bindBidirectional(camera.layoutXProperty());
         rect.yProperty().bindBidirectional(camera.layoutYProperty());
@@ -139,11 +137,7 @@ public class MainGameFieldController implements Initializable{
         };
         frameUpdater.start();
 
-        levelScene = new Scene(fullView);
         rect.widthProperty().bind(levelScene.widthProperty());
         rect.heightProperty().bind(levelScene.heightProperty());
-
-        levelScene.getRoot().requestFocus();
-        levelScene.getRoot();
     }
 }

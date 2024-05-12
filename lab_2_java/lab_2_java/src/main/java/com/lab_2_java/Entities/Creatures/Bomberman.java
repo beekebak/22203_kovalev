@@ -14,9 +14,14 @@ public class Bomberman extends Creature {
 
     private int bombCount = 1;
 
+    public int getBombCount() {
+        return bombCount;
+    }
+
     public void setBombCount(int bombCount) {
         this.bombCount = bombCount;
     }
+
     private int bombPower = 1;
 
     public int getBombPower() {

@@ -2,6 +2,7 @@ package com.lab_2_java.Utility;
 
 import com.lab_2_java.Entities.Creatures.Creature;
 import com.lab_2_java.Entities.Tiles.BombTile;
+import com.lab_2_java.Entities.Tiles.Boosters.Booster;
 import com.lab_2_java.Entities.Tiles.ExplosionTile;
 import com.lab_2_java.Entities.Tiles.BreakableTile;
 import com.lab_2_java.Levelio.LevelReader;
@@ -26,8 +27,8 @@ public class GameLevel {
         return enemies;
     }
 
-    public GameLevel(){
-        InitializeGame();
+    public GameLevel(String path){
+        InitializeGame(path);
         SolidCollisionChecker.setLevel(this);
         bomberman.GetProperty().addListener(observable -> {
             System.out.println("DEAD");
@@ -43,6 +44,7 @@ public class GameLevel {
 
     private void HandleCreatureCollisionWithTile(Creature creature, Tile tile){
         creature.HandleCollision(tile);
+        if(tile != null) tile.HandleCollision(creature);
     }
 
     public void UpdateLevel(){
@@ -93,13 +95,28 @@ public class GameLevel {
 
     private void RegisterBreakableTile(BreakableTile tile, int i, int j){
         tile.isBrokenProperty().addListener(observable -> {
-            gameGrid.get(i).get(j).setTile(null);
+            if(tile.getUnderlyingTile() != null) {
+                gameGrid.get(i).get(j).setTile(null);
+                gameGrid.get(i).get(j).setTile(tile.getUnderlyingTile());
+                RegisterBreakableTile(tile.getUnderlyingTile(), i, j);
+                if(tile.getUnderlyingTile() instanceof Booster) {
+                    ((Booster) tile.getUnderlyingTile()).RemoveInvincibility();
+                }
+            }
+            else gameGrid.get(i).get(j).setTile(tile.getUnderlyingTile());
         });
     }
 
-    public void InitializeGame(){
-        LevelReader levelReader = new LevelReader("src/main/resources/levels/campaign_levels/level1-1.json");
+    public void InitializeGame(String path){
+        LevelReader levelReader = new LevelReader(path);
         gameGrid = levelReader.InitializeGrid();
+        for(int i = 0; i < gameGrid.size(); i++){
+            for(int j = 0; j < gameGrid.getFirst().size(); j++){
+                if(gameGrid.get(i).get(j).getTile() instanceof BreakableTile){
+                    RegisterBreakableTile((BreakableTile) gameGrid.get(i).get(j).getTile(), i, j);
+                }
+            }
+        }
         bomberman = (Bomberman) levelReader.InitializePlayer();
         enemies = levelReader.InitializeEnemies();
     }
@@ -155,7 +172,7 @@ public class GameLevel {
             ContinueExplosion(explosions, row+drow, col+dcol, drow, dcol, step+1, maxStep);
         }
         else if(tileOnExplosionWay instanceof BreakableTile){
-            gameGrid.get(row+drow).get(col+dcol).setTile(null);
+            gameGrid.get(row+drow).get(col+dcol).getTile().HandleCollision(new ExplosionTile());
         }
     }
 

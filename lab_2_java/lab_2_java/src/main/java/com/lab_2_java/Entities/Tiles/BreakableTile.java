@@ -4,13 +4,24 @@ import com.lab_2_java.Entities.Entity;
 import javafx.scene.image.Image;
 
 public class BreakableTile extends Tile {
+    protected boolean isInvincible = false;
+    private BreakableTile underlyingTile = null;
+
+    public BreakableTile getUnderlyingTile() {
+        return underlyingTile;
+    }
+
+    public void setUnderlyingTile(BreakableTile underlyingTile) {
+        this.underlyingTile = underlyingTile;
+    }
+
     public BreakableTile(){
         sprite = new Image("/sprites/box.png");
     }
 
     @Override
     public void HandleCollision(Entity collided) {
-        if(collided instanceof ExplosionTile){
+        if(collided instanceof ExplosionTile && !isInvincible){
             DestroySelf();
         }
     }

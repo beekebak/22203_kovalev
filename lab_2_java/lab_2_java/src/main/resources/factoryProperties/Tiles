@@ -1,2 +1,3 @@
 Metal = com.lab_2_java.Entities.Tiles.UnbreakableTile
 Wooden = com.lab_2_java.Entities.Tiles.BreakableTile
+BombCountBooster = com.lab_2_java.Entities.Tiles.Boosters.BombCountBooster

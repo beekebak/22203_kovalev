@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="mainVBox" alignment="CENTER" fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lab_2_java.Controllers.MainMenuController">
+   <children>
+      <Separator minHeight="100.0" orientation="VERTICAL" visible="false" VBox.vgrow="ALWAYS" />
+      <HBox fx:id="labelHBox" VBox.vgrow="SOMETIMES">
+         <children>
+            <Label fx:id="gameName" alignment="TOP_CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="BOMBERMAN" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="62.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" orientation="VERTICAL" visible="false" VBox.vgrow="ALWAYS" />
+      <HBox fx:id="startHBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="SOMETIMES">
+         <children>
+            <Separator minWidth="200.0" visible="false" HBox.hgrow="ALWAYS" />
+            <Button fx:id="gameStartButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#StartGame" text="START" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="62.0" />
+               </font>
+            </Button>
+            <Separator minWidth="200.0" visible="false" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <Separator minHeight="50.0" orientation="VERTICAL" prefHeight="50.0" visible="false" VBox.vgrow="SOMETIMES" />
+      <HBox fx:id="constructorHBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="SOMETIMES">
+         <children>
+            <Separator minWidth="200.0" visible="false" HBox.hgrow="ALWAYS" />
+            <Button fx:id="constructorButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#OpenConstructor" text="CONSTRUCTOR" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="62.0" />
+               </font>
+            </Button>
+            <Separator minWidth="200.0" visible="false" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <Separator minHeight="100.0" orientation="VERTICAL" visible="false" VBox.vgrow="ALWAYS" />
+   </children>
+</VBox>

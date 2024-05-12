@@ -1,29 +1,27 @@
 package com.lab_2_java.Levelio;
 
 public class SerializableTileWrapper {
-    public SerializableTileWrapper(String name, String type) {
-        this.name = name;
-        this.type = type;
-    }
+    private String name;
+    private String type;
 
-    public SerializableTileWrapper() {}
+    private String boosterName;
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getType() {
         return type;
     }
-
-    public void setType(String type) {
-        this.type = type;
+    public String getBoosterName() {
+        return boosterName;
     }
 
-    private String name;
-    private String type;
+    public SerializableTileWrapper(String name, String type, String boosterName) {
+        this.name = name;
+        this.type = type;
+        this.boosterName = boosterName;
+    }
+
+    public SerializableTileWrapper() {}
 }
