@@ -1,4 +1,4 @@
-package com.lab_2_java.Utility;
+package com.lab_2_java.Models;
 
 import com.lab_2_java.Entities.Creatures.Creature;
 import com.lab_2_java.Entities.Tiles.BombTile;
@@ -6,6 +6,8 @@ import com.lab_2_java.Entities.Tiles.Boosters.Booster;
 import com.lab_2_java.Entities.Tiles.ExplosionTile;
 import com.lab_2_java.Entities.Tiles.BreakableTile;
 import com.lab_2_java.Levelio.LevelReader;
+import com.lab_2_java.Utility.MovingCollisionChecker;
+import com.lab_2_java.Utility.SolidCollisionChecker;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.image.Image;
@@ -64,6 +66,10 @@ public class GameLevel {
             }
         }
         if(frameRateCounter % 6 == 0) frameRateCounter = 0;
+    }
+
+    public static boolean CheckPath(String levelLoadingPath) {
+        return LevelReader.CheckPath(levelLoadingPath);
     }
 
     public static class TileWrapper{
@@ -214,7 +220,6 @@ public class GameLevel {
             public void run(){
                 if(!SolidCollisionChecker.FindCollidedCells(bomberman).contains(bomb)){
                     bomb.MakeSolid();
-                    System.out.println("SOLID");
                     this.cancel();
                 }
             }

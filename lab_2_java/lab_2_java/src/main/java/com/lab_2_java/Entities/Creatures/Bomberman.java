@@ -40,6 +40,14 @@ public class Bomberman extends Creature {
         super.centerYShift = 22;
     }
 
+    public int getSpeed(){
+        return speed;
+    }
+
+    public void setSpeed(int speed){
+        this.speed = speed;
+    }
+
     public Image getSprite(){
         return sprite;
     }

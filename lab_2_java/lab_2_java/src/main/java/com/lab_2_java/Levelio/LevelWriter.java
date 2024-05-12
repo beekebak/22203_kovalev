@@ -19,6 +19,10 @@ public class LevelWriter {
 
     private String fileNameAppendix;
 
+    public String getFileNameAppendix() {
+        return fileNameAppendix;
+    }
+
     public void setFileNameAppendix(String fileNameAppendix) {
         this.fileNameAppendix = fileNameAppendix;
     }
@@ -29,13 +33,18 @@ public class LevelWriter {
                 nCopies(grid.getFirst().size(), null)));
         for(int i = 0; i < grid.size(); i++){
             for(int j = 0; j < grid.size(); j++){
-                if(grid.get(i).get(j) != null){
+                if(grid.get(i).get(j) != null && grid.get(i).get(j).getWrapper() != null){
                     serializableTilesGrid.get(i).set(j, new SerializableTileWrapper(
                             grid.get(i).get(j).getWrapper().getName(), grid.get(i).get(j).getWrapper().getTypeName(),
                             grid.get(i).get(j).getWrapper().getBoosterName()));
                 }
             }
         }
+    }
+
+    public boolean CheckIfFileIsPresent(){
+        File f = new File(fileNameBase+fileNameAppendix);
+        return f.exists();
     }
 
     public void Write(){

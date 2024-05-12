@@ -15,10 +15,6 @@ public class ContructorModel {
     private Map<String, ConstructorTileWrapper> tilesPool;
     private TriCallback<Void, Integer, Integer, List<List<ObservableConstructorTileWrapper>>> RegisterCallback;
 
-    public LevelWriter getWriter() {
-        return writer;
-    }
-
     public ConstructorTileWrapper getCurrentTile() {
         return currentTile;
     }
@@ -27,12 +23,14 @@ public class ContructorModel {
         this.currentTile = currentTile;
     }
 
-    public List<List<ObservableConstructorTileWrapper>> getGrid() {
-        return grid;
-    }
 
     public Map<String, ConstructorTileWrapper> getTilesPool() {
         return tilesPool;
+    }
+
+    public ContructorModel(TriCallback<Void, Integer, Integer, List<List<ObservableConstructorTileWrapper>>> Register){
+        RegisterCallback = Register;
+        InitializeTilesPool();
     }
 
     private void InitializeTilesPool(){
@@ -43,6 +41,10 @@ public class ContructorModel {
                 new Image("/sprites/box.png")));
         tilesPool.putIfAbsent("BombCountBooster", new ConstructorTileWrapper("Wooden",
                 "Tile", new Image("/sprites/BombCountBooster.png"), "BombCountBooster"));
+        tilesPool.putIfAbsent("BombPowerBooster", new ConstructorTileWrapper("Wooden",
+                "Tile", new Image("/sprites/BombPowerBooster.png"), "BombPowerBooster"));
+        tilesPool.putIfAbsent("SpeedBooster", new ConstructorTileWrapper("Wooden",
+                "Tile", new Image("/sprites/SpeedBooster.png"), "SpeedBooster"));
         tilesPool.putIfAbsent("Bomberman", new ConstructorTileWrapper("Bomberman",
                 "Creature", new Image("/sprites/bomberman.png")));
         tilesPool.putIfAbsent("Slime", new ConstructorTileWrapper("Slime",
@@ -87,9 +89,11 @@ public class ContructorModel {
 
     public void SetGridCell(int i, int j, ConstructorTileWrapper tileWrapper){
         DeleteGridCell(i, j);
-        if(grid.get(i).get(j) != null) grid.get(i).get(j).setWrapper(tileWrapper);
-        else grid.get(i).set(j, new ObservableConstructorTileWrapper(tileWrapper));
-        RegisterCallback.Apply(i, j, grid);
+        if(tileWrapper != null) {
+            if (grid.get(i).get(j) != null) grid.get(i).get(j).setWrapper(tileWrapper);
+            else grid.get(i).set(j, new ObservableConstructorTileWrapper(tileWrapper));
+            RegisterCallback.Apply(i, j, grid);
+        }
     }
 
     private void DeleteGridCell(int i, int j){
@@ -106,9 +110,32 @@ public class ContructorModel {
         }
     }
 
-    public ContructorModel(TriCallback<Void, Integer, Integer, List<List<ObservableConstructorTileWrapper>>> Register){
-        RegisterCallback = Register;
-        InitializeTilesPool();
+    public String GetWriteError(){
+        if(grid == null) return "Level grid is not set";
+        if(writer.getFileNameAppendix() == null) return "File name is not set";
+        return null;
+     }
+
+    public boolean CheckIfPlacementIsAvailable(int y, int x, ConstructorTileWrapper tile){
+        boolean borderPlacement = x == 0 || y == 0 || y == grid.size()-1 || x == grid.getFirst().size()-1;
+        boolean validBoosterPlacement = true;
+        if(tile.getBoosterName() != null){
+            validBoosterPlacement = grid.get(y).get(x) != null && (grid.get(y).get(x).getWrapper().getName() == "Wooden");
+        }
+        return !borderPlacement && validBoosterPlacement;
+    }
+
+    public boolean CheckIfFileDuplicates() {
+        return writer.CheckIfFileIsPresent();
+    }
+
+    public void SaveLevel(){
+        writer.ParseLevelConstructorGrid(grid);
+        writer.Write();
+    }
+
+    public void SetLevelName(String levelName){
+        writer.setFileNameAppendix(levelName+".json");
     }
 }
 

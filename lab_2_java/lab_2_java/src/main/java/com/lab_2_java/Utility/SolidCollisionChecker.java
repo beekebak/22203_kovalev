@@ -2,13 +2,14 @@ package com.lab_2_java.Utility;
 
 import com.lab_2_java.Entities.Creatures.Creature;
 import com.lab_2_java.Entities.Tiles.Tile;
+import com.lab_2_java.Models.GameLevel;
 
 import java.util.*;
 
 public class SolidCollisionChecker {
     private static GameLevel gameLevel;
 
-    static void setLevel(GameLevel level){
+    public static void setLevel(GameLevel level){
         gameLevel = level;
     }
 

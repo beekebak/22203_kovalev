@@ -7,12 +7,10 @@ import com.lab_2_java.Entities.EntityFactory;
 import com.lab_2_java.Entities.Tiles.BreakableTile;
 import com.lab_2_java.Entities.Tiles.Tile;
 import com.lab_2_java.Utility.CoordinatesConverter;
-import com.lab_2_java.Utility.GameLevel;
+import com.lab_2_java.Models.GameLevel;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class LevelReader {
@@ -81,5 +79,10 @@ public class LevelReader {
     }
     public void InitializeBackground(){
 
+    }
+
+    public static boolean CheckPath(String path) {
+        File file = new File(path);
+        return file.exists();
     }
 }

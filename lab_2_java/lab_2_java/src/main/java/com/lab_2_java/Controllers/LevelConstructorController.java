@@ -1,7 +1,6 @@
 package com.lab_2_java.Controllers;
 
 import com.lab_2_java.Models.ContructorModel;
-import com.lab_2_java.Utility.ConstructorTileWrapper;
 import com.lab_2_java.Utility.ObservableConstructorTileWrapper;
 import com.lab_2_java.Utility.TriCallback;
 import javafx.fxml.FXML;
@@ -10,11 +9,10 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.*;
-
-
 
 public class LevelConstructorController implements Initializable {
     @FXML
@@ -41,32 +39,51 @@ public class LevelConstructorController implements Initializable {
     private GridPane tilesMenuGrid;
     @FXML
     private ScrollPane scrollPane;
-    @FXML
-    private SplitPane splitPane;
     private GridPane gridView = new GridPane();
     private final ToggleGroup entitySelectButtonsGroup = new ToggleGroup();
     private final ContructorModel model = new ContructorModel(new RegisterCallback());
 
     @FXML
     private void SaveName(){
-        model.getWriter().setFileNameAppendix(levelNameTextField.getText()+".json");
+        model.SetLevelName(levelNameTextField.getText());
     }
 
     @FXML
     private void SaveSize(){
+        if(!rowsTextField.getText().matches("[0-9]+") || !colsTextField.getText().matches("[0-9]+")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Invalid size");
+            alert.showAndWait();
+            return;
+        }
         ResizeGridView();
         model.ResizeGrid(Integer.parseInt(rowsTextField.getText()), Integer.parseInt(colsTextField.getText()));
     }
 
     @FXML
     private void SaveLevel(){
-        model.getWriter().ParseLevelConstructorGrid(model.getGrid());
-        model.getWriter().Write();
+        String error = model.GetWriteError();
+        if(error != null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(error);
+            alert.showAndWait();
+            return;
+        }
+        if(model.CheckIfFileDuplicates()){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("File with this name exists. Overwrite?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.isEmpty() || result.get() == ButtonType.CANCEL){
+                return;
+            }
+        }
+        model.SaveLevel();
     }
 
     @FXML
     private void ChangeContent(MouseEvent e){
-        model.SetGridCell((int)e.getY()/50, (int)e.getX()/50, model.getCurrentTile());
+        if(model.CheckIfPlacementIsAvailable((int)e.getY()/50, (int)e.getX()/50, model.getCurrentTile()))
+            model.SetGridCell((int)e.getY()/50, (int)e.getX()/50, model.getCurrentTile());
     }
 
     public class RegisterCallback implements TriCallback<Void, Integer, Integer,
@@ -88,6 +105,10 @@ public class LevelConstructorController implements Initializable {
             tilesMenuGrid.add(button, 1, i);
             i++;
         }
+        RadioButton button = new RadioButton();
+        entitySelectButtonsGroup.getToggles().add(button);
+        button.onActionProperty().setValue(event -> model.setCurrentTile(null));
+        tilesMenuGrid.add(button, 1, i);
     }
 
     private void ResizeGridView(){

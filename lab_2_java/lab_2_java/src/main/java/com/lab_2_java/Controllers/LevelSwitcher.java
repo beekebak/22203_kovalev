@@ -3,6 +3,7 @@ package com.lab_2_java.Controllers;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -21,6 +22,12 @@ public class LevelSwitcher {
                 controller = loader.getController();
             }
             catch (IOException e) {}
+            if(!controller.CheckPath(levelLoadingPath)){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("level not done yet");
+                alert.showAndWait();
+                return null;
+            }
             controller.StartLevel(levelLoadingPath, mainStage.getScene());
             mainStage.getScene().setRoot(level);
             level.requestFocus();
@@ -60,6 +67,14 @@ public class LevelSwitcher {
     public static class LoadUserLevelsMenu implements Callback <Void, Void> {
         @Override
         public Void call(Void param) {
+            Parent userLevelMenu = null;
+            try {
+                userLevelMenu = FXMLLoader.load(getClass().getResource("/views/UserLevelSelectMenu.fxml"));
+            }
+            catch (IOException e) {}
+            mainStage.getScene().setRoot(userLevelMenu);
+            mainStage.setHeight(mainStage.getScene().getHeight());
+            mainStage.setWidth(mainStage.getScene().getWidth());
             return null;
         }
     }
@@ -70,7 +85,7 @@ public class LevelSwitcher {
     }
     public void Start() throws IOException {
         Parent mainMenu = FXMLLoader.load(getClass().getResource("/views/MainMenu.fxml"));
-        //Parent mainMenu = FXMLLoader.load(getClass().getResource("/views/LevelConstructor.fxml"));
+        //Parent mainMenu = FXMLLoader.load(getClass().getResource("/views/UserLevelSelectMenu.fxml"));
         mainStage.setTitle("Bomberman");
         mainStage.setScene(new Scene(mainMenu));
         mainStage.show();

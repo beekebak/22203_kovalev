@@ -1,11 +1,10 @@
 package com.lab_2_java.Controllers;
 
 import com.lab_2_java.Utility.CoordinatesConverter;
-import com.lab_2_java.Utility.GameLevel;
+import com.lab_2_java.Models.GameLevel;
 import com.lab_2_java.Utility.MoveDirections;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -15,9 +14,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import static java.lang.Math.max;
 
@@ -139,5 +135,9 @@ public class MainGameFieldController{
 
         rect.widthProperty().bind(levelScene.widthProperty());
         rect.heightProperty().bind(levelScene.heightProperty());
+    }
+
+    public boolean CheckPath(String levelLoadingPath) {
+        return GameLevel.CheckPath(levelLoadingPath);
     }
 }
