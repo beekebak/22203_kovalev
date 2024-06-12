@@ -14,6 +14,8 @@ public class ContructorModel {
     private List<List<ObservableConstructorTileWrapper>> grid;
     private Map<String, ConstructorTileWrapper> tilesPool;
     private TriCallback<Void, Integer, Integer, List<List<ObservableConstructorTileWrapper>>> RegisterCallback;
+    private boolean bombermanSet = false;
+    private boolean exitSet = false;
 
     public ConstructorTileWrapper getCurrentTile() {
         return currentTile;
@@ -45,10 +47,20 @@ public class ContructorModel {
                 "Tile", new Image("/sprites/BombPowerBooster.png"), "BombPowerBooster"));
         tilesPool.putIfAbsent("SpeedBooster", new ConstructorTileWrapper("Wooden",
                 "Tile", new Image("/sprites/SpeedBooster.png"), "SpeedBooster"));
+        tilesPool.putIfAbsent("Exit", new ConstructorTileWrapper("Wooden",
+                "Tile", new Image("/sprites/Exit.png"), "Exit"));
         tilesPool.putIfAbsent("Bomberman", new ConstructorTileWrapper("Bomberman",
                 "Creature", new Image("/sprites/bomberman.png")));
         tilesPool.putIfAbsent("Slime", new ConstructorTileWrapper("Slime",
                 "Creature", new Image("/sprites/slime.png")));
+        tilesPool.putIfAbsent("Ghost", new ConstructorTileWrapper("Ghost",
+                "Creature", new Image("/sprites/ghost.png")));
+        tilesPool.putIfAbsent("Dragon", new ConstructorTileWrapper("Dragon",
+                "Creature", new Image("/sprites/dragon.webp")));
+        tilesPool.putIfAbsent("Ogre", new ConstructorTileWrapper("Ogre",
+                "Creature", new Image("/sprites/ogre.png")));
+        tilesPool.putIfAbsent("Goblin", new ConstructorTileWrapper("Goblin",
+                "Creature", new Image("/sprites/goblin.png")));
     }
 
     public void ResizeGrid(int rowsCount, int colsCount){
@@ -87,9 +99,35 @@ public class ContructorModel {
         }
     }
 
+    private void CheckPrevious(int i, int j){
+        if(grid.get(i).get(j) != null && grid.get(i).get(j).getWrapper() != null &&
+                grid.get(i).get(j).getWrapper().getName().equals("Bomberman")){
+            bombermanSet = false;
+        }
+        if(grid.get(i).get(j) != null && grid.get(i).get(j).getWrapper() != null &&
+                grid.get(i).get(j).getWrapper().getBoosterName() != null &&
+                grid.get(i).get(j).getWrapper().getBoosterName().equals("Exit")){
+            exitSet = false;
+        }
+    }
+
+    private boolean CheckSetted(ConstructorTileWrapper tileWrapper){
+        if(tileWrapper.getName().equals("Bomberman")){
+            if(bombermanSet) return false;
+            else bombermanSet = true;
+        }
+        if(tileWrapper.getBoosterName() != null && tileWrapper.getBoosterName().equals("Exit")){
+            if(exitSet) return false;
+            else exitSet = true;
+        }
+        return true;
+    }
+
     public void SetGridCell(int i, int j, ConstructorTileWrapper tileWrapper){
+        CheckPrevious(i, j);
         DeleteGridCell(i, j);
         if(tileWrapper != null) {
+            if(!CheckSetted(tileWrapper)) return;
             if (grid.get(i).get(j) != null) grid.get(i).get(j).setWrapper(tileWrapper);
             else grid.get(i).set(j, new ObservableConstructorTileWrapper(tileWrapper));
             RegisterCallback.Apply(i, j, grid);
@@ -113,14 +151,17 @@ public class ContructorModel {
     public String GetWriteError(){
         if(grid == null) return "Level grid is not set";
         if(writer.getFileNameAppendix() == null) return "File name is not set";
+        if(!exitSet) return "No exit";
+        if(!bombermanSet) return "No bomberman";
         return null;
      }
 
     public boolean CheckIfPlacementIsAvailable(int y, int x, ConstructorTileWrapper tile){
         boolean borderPlacement = x == 0 || y == 0 || y == grid.size()-1 || x == grid.getFirst().size()-1;
         boolean validBoosterPlacement = true;
-        if(tile.getBoosterName() != null){
-            validBoosterPlacement = grid.get(y).get(x) != null && (grid.get(y).get(x).getWrapper().getName() == "Wooden");
+        if(tile != null && tile.getBoosterName() != null){
+            validBoosterPlacement = (grid.get(y).get(x) != null && grid.get(y).get(x).getWrapper() != null &&
+                    grid.get(y).get(x).getWrapper().getName() == "Wooden");
         }
         return !borderPlacement && validBoosterPlacement;
     }

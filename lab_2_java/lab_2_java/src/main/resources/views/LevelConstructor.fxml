@@ -8,15 +8,21 @@
       <ScrollPane fx:id="scrollPane" />
       <VBox fx:id="rightVBox" alignment="TOP_CENTER" fillWidth="false" minHeight="200.0" minWidth="100.0">
          <children>
+            <HBox fx:id="backButtonBox">
+               <children>
+                  <Separator visible="false" HBox.hgrow="ALWAYS" />
+                  <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#LoadMainMenu" text="Back" />
+               </children>
+            </HBox>
             <Label fx:id="levelNameLabel" alignment="CENTER" prefHeight="38.0" prefWidth="196.0" text="Level name" VBox.vgrow="ALWAYS" />
             <HBox>
                <children>
                   <Separator prefWidth="200.0" visible="false" HBox.hgrow="ALWAYS" />
-                  <TextField fx:id="levelNameTextField" alignment="CENTER" minWidth="150.0" prefHeight="24.0" prefWidth="300.0" promptText="name" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="levelNameTextField" alignment="CENTER" minWidth="150.0" prefHeight="24.0" prefWidth="300.0" HBox.hgrow="ALWAYS" />
                   <Separator prefWidth="200.0" visible="false" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <Button fx:id="nameSaveButton" mnemonicParsing="false" onAction="#SaveName" text="Сохранить" />
+            <Button fx:id="nameSaveButton" mnemonicParsing="false" onAction="#SaveName" text="save" />
             <HBox fx:id="labelsHBox" prefHeight="27.0" prefWidth="196.0">
                <children>
                   <Separator visible="false" HBox.hgrow="ALWAYS" />
@@ -33,7 +39,7 @@
                   <TextField fx:id="colsTextField" alignment="CENTER" minWidth="60.0" prefWidth="60.0" HBox.hgrow="SOMETIMES" />
                   <Separator visible="false" HBox.hgrow="ALWAYS" />
                </children></HBox>
-            <Button fx:id="coordsSaveButton" mnemonicParsing="false" onAction="#SaveSize" text="Сохранить" />
+            <Button fx:id="coordsSaveButton" mnemonicParsing="false" onAction="#SaveSize" text="save" />
             <ScrollPane fx:id="tilesMenuScrollPane">
                <content>
                   <GridPane fx:id="tilesMenuGrid" prefHeight="0.0" prefWidth="182.0">
@@ -45,7 +51,7 @@
                   </GridPane>
                </content>
             </ScrollPane>
-            <Button fx:id="saveLevelButton" mnemonicParsing="false" onAction="#SaveLevel" prefHeight="36.0" prefWidth="105.0" text="Сохранить" />
+            <Button fx:id="saveLevelButton" mnemonicParsing="false" onAction="#SaveLevel" prefHeight="36.0" prefWidth="105.0" text="save" />
          </children>
       </VBox>
   </items>

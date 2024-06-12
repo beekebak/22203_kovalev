@@ -1,2 +1,6 @@
 Bomberman = com.lab_2_java.Entities.Creatures.Bomberman
 Slime = com.lab_2_java.Entities.Creatures.Enemies.Slime
+Ghost = com.lab_2_java.Entities.Creatures.Enemies.Ghost
+Dragon = com.lab_2_java.Entities.Creatures.Enemies.Dragon
+Ogre = com.lab_2_java.Entities.Creatures.Enemies.Ogre
+Goblin = com.lab_2_java.Entities.Creatures.Enemies.Goblin

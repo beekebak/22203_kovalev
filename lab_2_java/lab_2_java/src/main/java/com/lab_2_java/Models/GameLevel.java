@@ -1,40 +1,89 @@
 package com.lab_2_java.Models;
 
+import com.lab_2_java.Controllers.LevelSwitcher;
 import com.lab_2_java.Entities.Creatures.Creature;
 import com.lab_2_java.Entities.Tiles.BombTile;
 import com.lab_2_java.Entities.Tiles.Boosters.Booster;
+import com.lab_2_java.Entities.Tiles.Boosters.Exit;
 import com.lab_2_java.Entities.Tiles.ExplosionTile;
 import com.lab_2_java.Entities.Tiles.BreakableTile;
 import com.lab_2_java.Levelio.LevelReader;
-import com.lab_2_java.Utility.MovingCollisionChecker;
-import com.lab_2_java.Utility.SolidCollisionChecker;
+import com.lab_2_java.Utility.*;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.image.Image;
 
+import java.nio.file.Path;
 import java.util.*;
 
 import static com.lab_2_java.Utility.CoordinatesConverter.*;
 import com.lab_2_java.Entities.Creatures.Bomberman;
 import com.lab_2_java.Entities.Tiles.Tile;
+import javafx.util.Callback;
 
 public class GameLevel {
     private final Image backGround = new Image("/sprites/background.png");
     private Bomberman bomberman;
+    private Exit exit;
     private List<Creature> enemies;
     private List<List<TileWrapper>> gameGrid;
     private int frameRateCounter = 0;
-
+    private SimpleIntegerProperty enemyCounter;
+    private static final Callback<Void, Void> endLevel = new LevelSwitcher.LoadLevelEndDialog();
     public List<Creature> getEnemies() {
         return enemies;
+    }
+
+    public static class TileWrapper{
+        private Tile tile;
+        public SimpleBooleanProperty IsPresent() {
+            return isNull;
+        }
+
+        private final SimpleBooleanProperty isNull;
+
+        public TileWrapper(Tile tile) {
+            this.tile = tile;
+            isNull = new SimpleBooleanProperty(false);
+            if(tile == null) isNull.set(true);
+        }
+
+        public Tile getTile() {
+            return tile;
+        }
+        public SimpleBooleanProperty IsNull() {
+            return isNull;
+        }
+        public void setTile(Tile tile) {
+            this.tile = tile;
+            if(tile == null) isNull.set(true);
+            else isNull.set(false);
+        }
     }
 
     public GameLevel(String path){
         InitializeGame(path);
         SolidCollisionChecker.setLevel(this);
-        bomberman.GetProperty().addListener(observable -> {
-            System.out.println("DEAD");
+        PathfindingAlgorithm.setLevel(this);
+        BombLookingAlgorithm.setLevel(this);
+        bomberman.GetProperty().addListener(new ChangeListener<>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                bomberman.GetProperty().removeListener(this);
+                endLevel.call(null);
+            }
         });
+    }
+
+    public static class LevelWinEnder implements Callback<Void, Void>{
+        @Override
+        public Void call(Void param) {
+            endLevel.call(null);
+            return null;
+        }
     }
 
     private void HandleCreatureCollisionsWithCreature(Creature collider, Creature collided){
@@ -72,33 +121,6 @@ public class GameLevel {
         return LevelReader.CheckPath(levelLoadingPath);
     }
 
-    public static class TileWrapper{
-        private Tile tile;
-        public SimpleBooleanProperty IsPresent() {
-            return isNull;
-        }
-
-        private final SimpleBooleanProperty isNull;
-
-        public TileWrapper(Tile tile) {
-            this.tile = tile;
-            isNull = new SimpleBooleanProperty(false);
-            if(tile == null) isNull.set(true);
-        }
-
-        public Tile getTile() {
-            return tile;
-        }
-        public SimpleBooleanProperty IsNull() {
-            return isNull;
-        }
-        public void setTile(Tile tile) {
-            this.tile = tile;
-            if(tile == null) isNull.set(true);
-            else isNull.set(false);
-        }
-    }
-
     private void RegisterBreakableTile(BreakableTile tile, int i, int j){
         tile.isBrokenProperty().addListener(observable -> {
             if(tile.getUnderlyingTile() != null) {
@@ -113,6 +135,30 @@ public class GameLevel {
         });
     }
 
+    private void RegisterEnemies(){
+        for(var enemy:enemies){
+            enemy.IsAlive().addListener(new ChangeListener<>() {
+                @Override
+                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                    enemy.IsAlive().removeListener(this);
+                    enemyCounter.setValue(enemyCounter.getValue()-1);
+                }
+            });
+        }
+    }
+
+    private Exit FindExit(){
+        for(int i = 0; i < gameGrid.size(); i++){
+            for(int j = 0; j < gameGrid.getFirst().size(); j++){
+                if(gameGrid.get(i).get(j).getTile() instanceof BreakableTile &&
+                        ((BreakableTile) gameGrid.get(i).get(j).getTile()).getUnderlyingTile() instanceof Exit){
+                    return (Exit)((BreakableTile) gameGrid.get(i).get(j).getTile()).getUnderlyingTile();
+                }
+            }
+        }
+        throw new RuntimeException("no exit");
+    }
+
     public void InitializeGame(String path){
         LevelReader levelReader = new LevelReader(path);
         gameGrid = levelReader.InitializeGrid();
@@ -123,8 +169,14 @@ public class GameLevel {
                 }
             }
         }
+        exit = FindExit();
         bomberman = (Bomberman) levelReader.InitializePlayer();
         enemies = levelReader.InitializeEnemies();
+        enemyCounter = new SimpleIntegerProperty(enemies.size());
+        enemyCounter.addListener((observable -> {
+            if(enemyCounter.get() == 0) exit.setOpened(true);
+        }));
+        RegisterEnemies();
     }
 
     public Image getCellImage(int viewX, int viewY){
@@ -145,6 +197,15 @@ public class GameLevel {
         }
         return gameGrid.get(ConvertViewCoordinateToGridCoordinate(y)).
                 get(ConvertViewCoordinateToGridCoordinate(x)).getTile();
+    }
+
+    public Tile getCellContainment(int x, int y){
+        if(gameGrid.get(x).
+                get(y).getTile() == null){
+            return null;
+        }
+        return gameGrid.get(x).
+                get(y).getTile();
     }
 
     public int GetGridColumnsCount(){
@@ -227,5 +288,23 @@ public class GameLevel {
         timer.schedule(bombSolidationTask, 0L, 50L);
         bomb.isBrokenProperty().addListener(observable -> {timer.cancel();});
         bomb.isBrokenProperty().addListener(observable -> {StartExplosion(row, col);});
+    }
+
+    public PathInfo GetRange(Creature from, Creature to, SolidityType type){
+        int startX = CoordinatesConverter.ConvertViewCoordinateToGridCoordinate(from.getYValue()+ from.getCenterYShift());
+        int startY = CoordinatesConverter.ConvertViewCoordinateToGridCoordinate(from.getXValue()+ from.getCenterXShift());
+        int endX = CoordinatesConverter.ConvertViewCoordinateToGridCoordinate(to.getYValue()+to.getCenterYShift());
+        int endY = CoordinatesConverter.ConvertViewCoordinateToGridCoordinate(to.getXValue()+to.getCenterXShift());
+        return PathfindingAlgorithm.AlgorithmImplementation(startX, startY, endX, endY,
+                gameGrid.size(), gameGrid.getFirst().size(), type);
+    }
+
+    public PathInfo GetRange(Creature from, SolidityType type){
+        return GetRange(from, bomberman, type);
+    }
+
+    public SolidityType getSolidityType(int x, int y){
+        if(gameGrid.get(x).get(y).getTile() == null) return SolidityType.PERVIOUS;
+        return gameGrid.get(x).get(y).getTile().getSolidity();
     }
 }

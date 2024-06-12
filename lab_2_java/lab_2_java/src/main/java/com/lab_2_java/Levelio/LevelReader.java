@@ -77,9 +77,6 @@ public class LevelReader {
     public Creature InitializePlayer(){
         return bomberman;
     }
-    public void InitializeBackground(){
-
-    }
 
     public static boolean CheckPath(String path) {
         File file = new File(path);

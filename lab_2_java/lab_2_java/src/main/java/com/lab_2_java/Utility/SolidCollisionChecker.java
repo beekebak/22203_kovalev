@@ -13,7 +13,7 @@ public class SolidCollisionChecker {
         gameLevel = level;
     }
 
-    public static boolean CheckMoveValidity(Creature creature, int dx, int dy){
+    public static boolean CheckMoveValidity(Creature creature, int dx, int dy, SolidityType penetration){
         int leftX = creature.getXValue()+creature.getCenterXShift()+dx-creature.getXSize();
         int rightX = creature.getXValue()+creature.getCenterXShift()+dx+creature.getXSize();
         int upperY = creature.getYValue()+creature.getCenterYShift()+dy-creature.getYSize();
@@ -23,7 +23,8 @@ public class SolidCollisionChecker {
         for(int i = 0; i < Xcoords.length; i++){
             for(int j = 0; j < Ycoords.length; j++){
                 Tile containmentOfRequestedCell = gameLevel.getCellContainmentFromView(Xcoords[i], Ycoords[j]);
-                if(containmentOfRequestedCell != null && (containmentOfRequestedCell).isSolid()) {
+                if(containmentOfRequestedCell != null &&
+                   containmentOfRequestedCell.getSolidity().ordinal() > penetration.ordinal()) {
                     return false;
                 }
             }

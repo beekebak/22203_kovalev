@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lab_2_java.Controllers.LevelEndDialogController">
+   <children>
+      <VBox fx:id="vbox" layoutX="-1.0" layoutY="-1.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Separator orientation="VERTICAL" VBox.vgrow="ALWAYS" />
+            <ButtonBar fx:id="buttonBox" prefHeight="90.0" prefWidth="478.0">
+              <buttons>
+                  <Button mnemonicParsing="false" onAction="#OpenMenuButtonEvent" prefHeight="56.0" text="Main menu" />
+                  <Button mnemonicParsing="false" onAction="#OpenLevelsMenuButtonEvent" prefHeight="55.0" text="Levels" />
+              </buttons>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets right="20.0" />
+               </padding>
+            </ButtonBar>
+            <Separator orientation="VERTICAL" prefHeight="50.0" visible="false" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

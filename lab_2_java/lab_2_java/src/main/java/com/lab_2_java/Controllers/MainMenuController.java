@@ -17,23 +17,23 @@ import static java.lang.Math.min;
 
 public class MainMenuController implements Initializable {
     @FXML
-    Button gameStartButton;
+    private Button gameStartButton;
     @FXML
-    Label gameName;
+    private Label gameName;
     @FXML
-    HBox labelHBox;
+    private HBox labelHBox;
     @FXML
-    HBox startHBox;
+    private HBox startHBox;
     @FXML
-    VBox mainVBox;
+    private VBox mainVBox;
     @FXML
-    HBox constructorHBox;
+    private HBox constructorHBox;
     @FXML
-    Button constructorButton;
+    private Button constructorButton;
 
     @FXML
     private void StartGame(){
-        mainMenuCallback.call(null);
+        levelsMenuCallback.call(null);
     }
 
     @FXML
@@ -41,7 +41,7 @@ public class MainMenuController implements Initializable {
         constructorCallback.call(null);
     }
 
-    private Callback<Void, Void> mainMenuCallback = new LevelSwitcher.LoadLevelsMenu();
+    private Callback<Void, Void> levelsMenuCallback = new LevelSwitcher.LoadLevelsMenu();
     private Callback<Void, Void> constructorCallback = new LevelSwitcher.LoadConstructor();
 
     @Override

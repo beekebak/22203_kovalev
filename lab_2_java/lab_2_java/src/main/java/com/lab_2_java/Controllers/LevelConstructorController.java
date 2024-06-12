@@ -39,9 +39,18 @@ public class LevelConstructorController implements Initializable {
     private GridPane tilesMenuGrid;
     @FXML
     private ScrollPane scrollPane;
+    @FXML
+    private HBox backButtonBox;
     private GridPane gridView = new GridPane();
     private final ToggleGroup entitySelectButtonsGroup = new ToggleGroup();
     private final ContructorModel model = new ContructorModel(new RegisterCallback());
+
+    private Callback<Void, Void> backToMenuCallback = new LevelSwitcher.LoadMainMenu();
+
+    @FXML
+    private void LoadMainMenu(){
+        backToMenuCallback.call(null);
+    }
 
     @FXML
     private void SaveName(){
@@ -145,6 +154,7 @@ public class LevelConstructorController implements Initializable {
         tilesMenuScrollPane.prefWidthProperty().bind(rightVBox.widthProperty().divide(4).multiply(3));
         tilesMenuGrid.prefWidthProperty().bind(tilesMenuScrollPane.widthProperty().subtract(100));
         tilesMenuScrollPane.prefHeightProperty().bind(rightVBox.heightProperty().subtract(200));
+        backButtonBox.prefWidthProperty().bind(rightVBox.widthProperty());
         while(gridView.getColumnCount() > 0){
             gridView.getColumnConstraints().remove(gridView.getColumnCount()-1);
         }

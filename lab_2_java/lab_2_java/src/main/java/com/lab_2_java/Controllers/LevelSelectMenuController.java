@@ -16,19 +16,24 @@ import static java.lang.Math.min;
 
 public class LevelSelectMenuController implements Initializable {
     @FXML
-    GridPane grid;
+    private GridPane grid;
     @FXML
-    Button userLevelsButton;
+    private Button userLevelsButton;
     @FXML
-    VBox mainVBox;
+    private VBox mainVBox;
 
     Callback<String, Void> startLevelCallback = new LevelSwitcher.LoadLevel();
     Callback<Void, Void> loadUserLevelsMenuCallback = new LevelSwitcher.LoadUserLevelsMenu();
+    Callback<Void, Void> loadMainMenu = new LevelSwitcher.LoadMainMenu();
     @FXML
     private void UserLevelsButtonEvent(){
         loadUserLevelsMenuCallback.call(null);
     }
 
+    @FXML
+    private void LoadMainMenu(){
+        loadMainMenu.call(null);
+    }
     private void CampaignLevelButtonEvent(String name){
         startLevelCallback.call("src/main/resources/levels/campaign_levels/"+name+".json");
     }

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
@@ -16,11 +17,18 @@ import static java.lang.Math.min;
 
 public class UserLevelSelectMenuController implements Initializable {
     @FXML
-    VBox levelContainer;
+    private VBox levelContainer;
     @FXML
-    ScrollPane mainScrollPane;
+    private ScrollPane mainScrollPane;
 
     Callback<String, Void> startLevelCallback = new LevelSwitcher.LoadLevel();
+
+    Callback<Void, Void> backToCampaingLevelsCallback = new LevelSwitcher.LoadLevelsMenu();
+
+    @FXML
+    private void LoadLevelsMenu(){
+        backToCampaingLevelsCallback.call(null);
+    }
 
     private void UserLevelButtonEvent(String name){
         startLevelCallback.call("src/main/resources/levels/user_levels/"+name+".json");

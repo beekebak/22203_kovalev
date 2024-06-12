@@ -19,10 +19,12 @@ import static java.lang.Math.max;
 
 public class MainGameFieldController{
     @FXML
-    Pane fullView;
+    private Pane fullView;
     @FXML
-    Circle camera;
-    Canvas backgroundCanvas;
+    private Circle camera;
+    private Canvas backgroundCanvas;
+
+    private GameLevel gameLevel;
 
     @FXML
     private void HandleKeyEvent(KeyEvent e){
@@ -49,8 +51,6 @@ public class MainGameFieldController{
     private void ActionKeyEvent(KeyEvent e){
         gameLevel.BombEvent();
     }
-
-    private GameLevel gameLevel;
 
     private void RegisterTileImageView(int i, int j){
         ImageView cellView = new ImageView(gameLevel.getCellImage(i,j));

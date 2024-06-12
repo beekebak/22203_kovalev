@@ -1,6 +1,7 @@
 package com.lab_2_java.Entities.Tiles;
 
 import com.lab_2_java.Entities.Tiles.UnbreakableTile;
+import com.lab_2_java.Utility.SolidityType;
 import javafx.scene.image.Image;
 
 public class ExplosionTile extends UnbreakableTile {
@@ -9,7 +10,7 @@ public class ExplosionTile extends UnbreakableTile {
     }
 
     @Override
-    public boolean isSolid() {
-        return false;
+    public SolidityType getSolidity() {
+        return SolidityType.PERVIOUS;
     }
 }

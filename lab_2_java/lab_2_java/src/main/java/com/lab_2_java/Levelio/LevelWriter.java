@@ -32,7 +32,7 @@ public class LevelWriter {
         for(int i = 0; i < grid.size(); i++) serializableTilesGrid.add(new ArrayList<>(Collections.
                 nCopies(grid.getFirst().size(), null)));
         for(int i = 0; i < grid.size(); i++){
-            for(int j = 0; j < grid.size(); j++){
+            for(int j = 0; j < grid.getFirst().size(); j++){
                 if(grid.get(i).get(j) != null && grid.get(i).get(j).getWrapper() != null){
                     serializableTilesGrid.get(i).set(j, new SerializableTileWrapper(
                             grid.get(i).get(j).getWrapper().getName(), grid.get(i).get(j).getWrapper().getTypeName(),

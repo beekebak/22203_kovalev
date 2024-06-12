@@ -6,6 +6,7 @@ import com.lab_2_java.Entities.Tiles.BombTile;
 import com.lab_2_java.Entities.Tiles.ExplosionTile;
 import com.lab_2_java.Utility.SolidCollisionChecker;
 import com.lab_2_java.Utility.MoveDirections;
+import com.lab_2_java.Utility.SolidityType;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.image.Image;
 
@@ -33,7 +34,7 @@ public class Bomberman extends Creature {
     }
 
     public Bomberman(int xCoord, int yCoord){
-        super(8, xCoord, yCoord);
+        super(6, xCoord, yCoord);
         super.xSize = 12;
         super.ySize = 18;
         super.centerXShift = 16;
@@ -64,11 +65,11 @@ public class Bomberman extends Creature {
             case LEFT -> dx = -speed;
             case RIGHT -> dx = speed;
         }
-        if(SolidCollisionChecker.CheckMoveValidity(this, dx, dy)) {
+        if(SolidCollisionChecker.CheckMoveValidity(this, dx, dy, SolidityType.PERVIOUS)) {
             setX(getXValue() + dx);
             setY(getYValue() + dy);
         }
-        else while(SolidCollisionChecker.CheckMoveValidity(this, dx/4, dy/4)) {
+        else while(SolidCollisionChecker.CheckMoveValidity(this, dx/4, dy/4, SolidityType.PERVIOUS)) {
             setX(getXValue() + dx/4);
             setY(getYValue() + dy/4);
         }

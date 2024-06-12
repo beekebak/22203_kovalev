@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -43,8 +44,6 @@ public class LevelSwitcher {
             }
             catch (IOException e) {}
             mainStage.getScene().setRoot(levelMenu);
-            mainStage.setHeight(mainStage.getScene().getHeight());
-            mainStage.setWidth(mainStage.getScene().getWidth());
             return null;
         }
     }
@@ -58,8 +57,6 @@ public class LevelSwitcher {
             }
             catch (IOException e) {}
             mainStage.getScene().setRoot(levelConstructor);
-            mainStage.setHeight(mainStage.getScene().getHeight());
-            mainStage.setWidth(mainStage.getScene().getWidth());
             return null;
         }
     }
@@ -73,8 +70,32 @@ public class LevelSwitcher {
             }
             catch (IOException e) {}
             mainStage.getScene().setRoot(userLevelMenu);
-            mainStage.setHeight(mainStage.getScene().getHeight());
-            mainStage.setWidth(mainStage.getScene().getWidth());
+            return null;
+        }
+    }
+
+    public static class LoadLevelEndDialog implements Callback <Void, Void> {
+        @Override
+        public Void call(Void param){
+            Parent levelEndDialog = null;
+            try {
+                levelEndDialog = FXMLLoader.load(getClass().getResource("/views/LevelEndDialog.fxml"));
+            }
+            catch (IOException e) {}
+            mainStage.getScene().setRoot(levelEndDialog);
+            return null;
+        }
+    }
+
+    public static class LoadMainMenu implements Callback<Void, Void>{
+        @Override
+        public Void call(Void param){
+            Parent mainMenu = null;
+            try{
+                mainMenu = FXMLLoader.load(getClass().getResource("/views/MainMenu.fxml"));
+            }
+            catch (IOException e){}
+            mainStage.getScene().setRoot(mainMenu);
             return null;
         }
     }
@@ -85,7 +106,6 @@ public class LevelSwitcher {
     }
     public void Start() throws IOException {
         Parent mainMenu = FXMLLoader.load(getClass().getResource("/views/MainMenu.fxml"));
-        //Parent mainMenu = FXMLLoader.load(getClass().getResource("/views/UserLevelSelectMenu.fxml"));
         mainStage.setTitle("Bomberman");
         mainStage.setScene(new Scene(mainMenu));
         mainStage.show();

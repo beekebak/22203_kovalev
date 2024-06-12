@@ -1,6 +1,7 @@
 package com.lab_2_java.Entities.Tiles;
 
 import com.lab_2_java.Entities.Entity;
+import com.lab_2_java.Utility.SolidityType;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.scene.image.Image;
@@ -12,7 +13,7 @@ import java.util.concurrent.Executors;
 
 public class BombTile extends BreakableTile{
     private static final Timer timer = new Timer();
-    private boolean solid = false;
+    private SolidityType solid = SolidityType.PERVIOUS;
 
     public BombTile(){
         super.sprite = new Image("/sprites/bomb.png");
@@ -35,11 +36,11 @@ public class BombTile extends BreakableTile{
     }
 
     @Override
-    public boolean isSolid() {
+    public SolidityType getSolidity() {
         return solid;
     }
 
     public void MakeSolid(){
-        solid = true;
+        solid = SolidityType.SOFT;
     }
 }
