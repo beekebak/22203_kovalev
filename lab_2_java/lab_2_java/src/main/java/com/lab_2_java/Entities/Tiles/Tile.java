@@ -1,7 +1,7 @@
 package com.lab_2_java.Entities.Tiles;
 
 import com.lab_2_java.Entities.Entity;
-import com.lab_2_java.Utility.SolidityType;
+import com.lab_2_java.CollisionHandlers.SolidityType;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.image.Image;
 

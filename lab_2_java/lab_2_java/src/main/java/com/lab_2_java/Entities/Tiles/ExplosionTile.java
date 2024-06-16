@@ -1,7 +1,6 @@
 package com.lab_2_java.Entities.Tiles;
 
-import com.lab_2_java.Entities.Tiles.UnbreakableTile;
-import com.lab_2_java.Utility.SolidityType;
+import com.lab_2_java.CollisionHandlers.SolidityType;
 import javafx.scene.image.Image;
 
 public class ExplosionTile extends UnbreakableTile {

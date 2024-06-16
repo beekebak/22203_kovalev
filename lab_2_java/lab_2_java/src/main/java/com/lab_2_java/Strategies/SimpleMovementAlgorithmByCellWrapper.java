@@ -2,7 +2,7 @@ package com.lab_2_java.Strategies;
 
 import com.lab_2_java.Entities.Creatures.Enemies.Enemy;
 import com.lab_2_java.Utility.MoveDirections;
-import com.lab_2_java.Utility.SolidityType;
+import com.lab_2_java.CollisionHandlers.SolidityType;
 
 import java.util.Arrays;
 import java.util.List;

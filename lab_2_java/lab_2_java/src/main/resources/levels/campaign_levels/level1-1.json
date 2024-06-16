@@ -1,0 +1,675 @@
+{
+  "grid" : [
+    [
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      }
+    ],
+    [
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Bomberman",
+        "type" : "Creature",
+        "boosterName" : null
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      }
+    ],
+    [
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : "Exit"
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      }
+    ],
+    [
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      }
+    ],
+    [
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : "BombPowerBooster"
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      }
+    ],
+    [
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      }
+    ],
+    [
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Slime",
+        "type" : "Creature",
+        "boosterName" : null
+      },
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      }
+    ],
+    [
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "name" : "Slime",
+        "type" : "Creature",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      }
+    ],
+    [
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      }
+    ],
+    [
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      }
+    ],
+    [
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : "BombPowerBooster"
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Wooden",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      null,
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      }
+    ],
+    [
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Slime",
+        "type" : "Creature",
+        "boosterName" : null
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "name" : "Slime",
+        "type" : "Creature",
+        "boosterName" : null
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      }
+    ],
+    [
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      },
+      {
+        "name" : "Metal",
+        "type" : "Tile",
+        "boosterName" : null
+      }
+    ]
+  ]
+}

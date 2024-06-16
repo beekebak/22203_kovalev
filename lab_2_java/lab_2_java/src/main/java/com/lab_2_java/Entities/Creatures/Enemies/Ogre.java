@@ -3,10 +3,9 @@ package com.lab_2_java.Entities.Creatures.Enemies;
 import com.lab_2_java.Strategies.MovementAlgorithm;
 import com.lab_2_java.Strategies.SimpleMovementAlgorithmByCellWrapper;
 import com.lab_2_java.Utility.CoordinatesConverter;
-import com.lab_2_java.Utility.SolidityType;
+import com.lab_2_java.CollisionHandlers.SolidityType;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
-import org.w3c.dom.ranges.Range;
 
 import java.util.Random;
 import java.util.Timer;
@@ -16,7 +15,7 @@ public class Ogre extends Enemy{
     private final MovementAlgorithm movementStrategy;
     {
         Random random = new Random();
-        int changeDirectionFrequency = random.nextInt(0,5);
+        int changeDirectionFrequency = random.nextInt(1,5);
         movementStrategy = new SimpleMovementAlgorithmByCellWrapper(
                 CoordinatesConverter.getCellSize()/speed*changeDirectionFrequency);
     }

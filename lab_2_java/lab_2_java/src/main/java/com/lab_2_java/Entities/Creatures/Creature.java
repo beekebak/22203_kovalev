@@ -1,7 +1,6 @@
 package com.lab_2_java.Entities.Creatures;
 
 import com.lab_2_java.Entities.Entity;
-import com.lab_2_java.Utility.SolidCollisionChecker;
 import javafx.beans.property.*;
 
 public abstract class Creature implements Entity {

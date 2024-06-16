@@ -3,7 +3,7 @@ package com.lab_2_java.Entities.Creatures.Enemies;
 import com.lab_2_java.Strategies.LimitedPathfindingAlgorithm;
 import com.lab_2_java.Strategies.MovementAlgorithm;
 import com.lab_2_java.Utility.CoordinatesConverter;
-import com.lab_2_java.Utility.SolidityType;
+import com.lab_2_java.CollisionHandlers.SolidityType;
 import javafx.scene.image.Image;
 
 public class Dragon extends Enemy{

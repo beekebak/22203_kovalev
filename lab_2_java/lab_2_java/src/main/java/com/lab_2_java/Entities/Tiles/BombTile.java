@@ -1,15 +1,12 @@
 package com.lab_2_java.Entities.Tiles;
 
 import com.lab_2_java.Entities.Entity;
-import com.lab_2_java.Utility.SolidityType;
+import com.lab_2_java.CollisionHandlers.SolidityType;
 import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.scene.image.Image;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class BombTile extends BreakableTile{
     private static final Timer timer = new Timer();

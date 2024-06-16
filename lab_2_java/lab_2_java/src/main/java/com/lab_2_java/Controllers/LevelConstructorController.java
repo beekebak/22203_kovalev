@@ -1,7 +1,7 @@
 package com.lab_2_java.Controllers;
 
 import com.lab_2_java.Models.ContructorModel;
-import com.lab_2_java.Utility.ObservableConstructorTileWrapper;
+import com.lab_2_java.TileWrappers.ObservableConstructorTileWrapper;
 import com.lab_2_java.Utility.TriCallback;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

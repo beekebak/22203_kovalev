@@ -1,4 +1,4 @@
-package com.lab_2_java.Utility;
+package com.lab_2_java.TileWrappers;
 
 import javafx.scene.image.Image;
 

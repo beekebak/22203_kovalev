@@ -1,9 +1,11 @@
-package com.lab_2_java.Utility;
+package com.lab_2_java.Algorithms;
 
 import com.lab_2_java.Entities.Creatures.Creature;
 import com.lab_2_java.Entities.Tiles.BombTile;
 import com.lab_2_java.Entities.Tiles.Tile;
 import com.lab_2_java.Models.GameLevel;
+import com.lab_2_java.Utility.CoordinatesConverter;
+import com.lab_2_java.Utility.MoveDirections;
 
 public class BombLookingAlgorithm {
     private static GameLevel level;

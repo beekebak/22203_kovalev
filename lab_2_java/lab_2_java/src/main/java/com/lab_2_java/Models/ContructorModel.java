@@ -1,8 +1,8 @@
 package com.lab_2_java.Models;
 
 import com.lab_2_java.Levelio.LevelWriter;
-import com.lab_2_java.Utility.ConstructorTileWrapper;
-import com.lab_2_java.Utility.ObservableConstructorTileWrapper;
+import com.lab_2_java.TileWrappers.ConstructorTileWrapper;
+import com.lab_2_java.TileWrappers.ObservableConstructorTileWrapper;
 import com.lab_2_java.Utility.TriCallback;
 import javafx.scene.image.Image;
 
@@ -161,7 +161,7 @@ public class ContructorModel {
         boolean validBoosterPlacement = true;
         if(tile != null && tile.getBoosterName() != null){
             validBoosterPlacement = (grid.get(y).get(x) != null && grid.get(y).get(x).getWrapper() != null &&
-                    grid.get(y).get(x).getWrapper().getName() == "Wooden");
+                    grid.get(y).get(x).getWrapper().getName().equals("Wooden"));
         }
         return !borderPlacement && validBoosterPlacement;
     }

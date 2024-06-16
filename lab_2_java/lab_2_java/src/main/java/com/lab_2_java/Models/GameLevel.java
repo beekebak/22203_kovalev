@@ -1,6 +1,13 @@
 package com.lab_2_java.Models;
 
+import com.lab_2_java.Algorithms.BombLookingAlgorithm;
+import com.lab_2_java.Algorithms.PathInfo;
+import com.lab_2_java.Algorithms.PathfindingAlgorithm;
+import com.lab_2_java.CollisionHandlers.MovingCollisionChecker;
+import com.lab_2_java.CollisionHandlers.SolidCollisionChecker;
+import com.lab_2_java.CollisionHandlers.SolidityType;
 import com.lab_2_java.Controllers.LevelSwitcher;
+import com.lab_2_java.Controllers.MainGameFieldController;
 import com.lab_2_java.Entities.Creatures.Creature;
 import com.lab_2_java.Entities.Tiles.BombTile;
 import com.lab_2_java.Entities.Tiles.Boosters.Booster;
@@ -16,7 +23,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.image.Image;
 
-import java.nio.file.Path;
 import java.util.*;
 
 import static com.lab_2_java.Utility.CoordinatesConverter.*;
@@ -32,7 +38,7 @@ public class GameLevel {
     private List<List<TileWrapper>> gameGrid;
     private int frameRateCounter = 0;
     private SimpleIntegerProperty enemyCounter;
-    private static final Callback<Void, Void> endLevel = new LevelSwitcher.LoadLevelEndDialog();
+    private static Callback<Void, Void> endLevel;
     public List<Creature> getEnemies() {
         return enemies;
     }
@@ -64,7 +70,8 @@ public class GameLevel {
         }
     }
 
-    public GameLevel(String path){
+    public GameLevel(String path, Callback<Void, Void> endLevel){
+        this.endLevel = endLevel;
         InitializeGame(path);
         SolidCollisionChecker.setLevel(this);
         PathfindingAlgorithm.setLevel(this);
@@ -111,6 +118,12 @@ public class GameLevel {
                 collidedTiles = SolidCollisionChecker.FindCollidedCells(enemy);
                 for(var tile:collidedTiles){
                     HandleCreatureCollisionWithTile(enemy, tile);
+                }
+            }
+            var iter = enemies.iterator();
+            while(iter.hasNext()){
+                if(!iter.next().IsAlive().get()){
+                    iter.remove();
                 }
             }
         }

@@ -1,9 +1,9 @@
 package com.lab_2_java.Strategies;
 
 import com.lab_2_java.Entities.Creatures.Enemies.Enemy;
-import com.lab_2_java.Utility.BombLookingAlgorithm;
+import com.lab_2_java.Algorithms.BombLookingAlgorithm;
 import com.lab_2_java.Utility.MoveDirections;
-import com.lab_2_java.Utility.SolidityType;
+import com.lab_2_java.CollisionHandlers.SolidityType;
 
 public class BombCheckingSimpleStrategy extends MovementAlgorithm {
     private MovementAlgorithm algorithm;

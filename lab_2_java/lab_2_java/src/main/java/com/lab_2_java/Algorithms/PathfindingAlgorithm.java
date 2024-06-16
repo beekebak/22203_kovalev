@@ -1,7 +1,9 @@
-package com.lab_2_java.Utility;
+package com.lab_2_java.Algorithms;
 
+import com.lab_2_java.CollisionHandlers.SolidityType;
 import com.lab_2_java.Entities.Creatures.Creature;
 import com.lab_2_java.Models.GameLevel;
+import com.lab_2_java.Utility.MoveDirections;
 
 import java.util.Iterator;
 import java.util.PriorityQueue;

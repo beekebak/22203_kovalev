@@ -1,4 +1,4 @@
-package com.lab_2_java.Utility;
+package com.lab_2_java.CollisionHandlers;
 
 import com.lab_2_java.Entities.Creatures.Creature;
 import javafx.scene.shape.Rectangle;

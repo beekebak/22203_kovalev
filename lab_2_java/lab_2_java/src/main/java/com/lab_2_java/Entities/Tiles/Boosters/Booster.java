@@ -4,7 +4,7 @@ import com.lab_2_java.Entities.Creatures.Bomberman;
 import com.lab_2_java.Entities.Entity;
 import com.lab_2_java.Entities.Tiles.BreakableTile;
 import com.lab_2_java.Entities.Tiles.ExplosionTile;
-import com.lab_2_java.Utility.SolidityType;
+import com.lab_2_java.CollisionHandlers.SolidityType;
 
 import java.util.Timer;
 import java.util.TimerTask;

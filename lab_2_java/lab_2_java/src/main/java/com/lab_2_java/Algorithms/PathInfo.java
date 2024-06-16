@@ -1,4 +1,6 @@
-package com.lab_2_java.Utility;
+package com.lab_2_java.Algorithms;
+
+import com.lab_2_java.Utility.MoveDirections;
 
 public class PathInfo {
     public int size;

@@ -3,19 +3,19 @@ package com.lab_2_java.Entities.Creatures.Enemies;
 import com.lab_2_java.Strategies.BombCheckingSimpleStrategy;
 import com.lab_2_java.Strategies.MovementAlgorithm;
 import com.lab_2_java.Utility.CoordinatesConverter;
-import com.lab_2_java.Utility.SolidityType;
+import com.lab_2_java.CollisionHandlers.SolidityType;
 import javafx.scene.image.Image;
 
 import java.util.Random;
 
 public class Goblin extends Enemy{
-    private static int bombCheckingRadius = 6;
+    private static final int bombCheckingRadius = 3;
     private final MovementAlgorithm movementStrategy;
     {
         Random random = new Random();
-        int changeDirectionFrequency = random.nextInt(0,5);
+        int changeDirectionFrequency = random.nextInt(1,5);
         movementStrategy = new BombCheckingSimpleStrategy(
-            CoordinatesConverter.getCellSize() / speed * 100, bombCheckingRadius);
+            CoordinatesConverter.getCellSize() / speed * changeDirectionFrequency, bombCheckingRadius);
     }
     private final Image sprite = new Image("/sprites/goblin.png");
     public Goblin(int xCoord, int yCoord){

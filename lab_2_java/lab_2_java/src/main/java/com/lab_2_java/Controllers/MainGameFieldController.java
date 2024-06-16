@@ -14,6 +14,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Callback;
 
 import static java.lang.Math.max;
 
@@ -23,8 +24,18 @@ public class MainGameFieldController{
     @FXML
     private Circle camera;
     private Canvas backgroundCanvas;
-
+    private AnimationTimer frameUpdater;
     private GameLevel gameLevel;
+
+    public class EndLevel implements Callback<Void, Void> {
+        @Override
+        public Void call(Void unused) {
+            frameUpdater.stop();
+            Callback<Void, Void> endLevel = new LevelSwitcher.LoadLevelEndDialog();
+            endLevel.call(null);
+            return null;
+        }
+    }
 
     @FXML
     private void HandleKeyEvent(KeyEvent e){
@@ -73,7 +84,7 @@ public class MainGameFieldController{
     }
 
     public void StartLevel(String path, Scene levelScene) {
-        gameLevel = new GameLevel(path);
+        gameLevel = new GameLevel(path, new EndLevel());
         Rectangle rect = new Rectangle(1, 1);
         rect.xProperty().bindBidirectional(camera.layoutXProperty());
         rect.yProperty().bindBidirectional(camera.layoutYProperty());
@@ -125,7 +136,7 @@ public class MainGameFieldController{
             RegisterEnemyImageView(effi);
         }
 
-        AnimationTimer frameUpdater = new AnimationTimer() {
+        frameUpdater = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 gameLevel.UpdateLevel();

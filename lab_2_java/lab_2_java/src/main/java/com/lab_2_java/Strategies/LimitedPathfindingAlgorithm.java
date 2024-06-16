@@ -1,8 +1,9 @@
 package com.lab_2_java.Strategies;
 
+import com.lab_2_java.Algorithms.PathfindingAlgorithm;
 import com.lab_2_java.Entities.Creatures.Enemies.Enemy;
-import com.lab_2_java.Utility.PathInfo;
-import com.lab_2_java.Utility.SolidityType;
+import com.lab_2_java.Algorithms.PathInfo;
+import com.lab_2_java.CollisionHandlers.SolidityType;
 
 public class LimitedPathfindingAlgorithm extends MovementAlgorithm {
     private ProxyPathfindingAlgorithm pathfindingStrategyImplementation;
@@ -28,7 +29,7 @@ public class LimitedPathfindingAlgorithm extends MovementAlgorithm {
             simpleAlgorithmStillMoves = !defaultStrategyImplementation.Done();
             return;
         }
-        PathInfo info = com.lab_2_java.Utility.PathfindingAlgorithm.GetRangeToBomberman(creature, type);
+        PathInfo info = PathfindingAlgorithm.GetRangeToBomberman(creature, type);
         if(info.size < visionLength){
             pathfindingAlgorithmStillMoves = true;
         }

@@ -3,7 +3,7 @@ package com.lab_2_java.Entities.Tiles.Boosters;
 import com.lab_2_java.Entities.Creatures.Bomberman;
 import com.lab_2_java.Entities.Entity;
 import com.lab_2_java.Models.GameLevel;
-import com.lab_2_java.Utility.SolidityType;
+import com.lab_2_java.CollisionHandlers.SolidityType;
 import javafx.scene.image.Image;
 import javafx.util.Callback;
 

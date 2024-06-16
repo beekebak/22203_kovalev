@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.util.DefaultIndenter;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.lab_2_java.Utility.ObservableConstructorTileWrapper;
+import com.lab_2_java.TileWrappers.ObservableConstructorTileWrapper;
 
 import java.io.File;
 import java.util.ArrayList;
