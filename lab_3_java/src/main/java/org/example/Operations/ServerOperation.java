@@ -32,7 +32,7 @@ public class ServerOperation extends Operation {
                 channel.write(ByteBuffer.wrap(checkChunkPresence(input).getBytes()));
             } else if (input.startsWith("GET")) {
                 ByteBuffer output = getChunk(input);
-                if (output == null) channel.write(ByteBuffer.wrap("BAD REQUEST".getBytes()));
+                if (output == null) return OperationState.CANCELLED;
                 else channel.write(output);
             } else {
                 channel.write(ByteBuffer.wrap("BAD REQUEST".getBytes()));

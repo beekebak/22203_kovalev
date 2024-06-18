@@ -47,32 +47,42 @@ public class ClientFileHandler implements Closeable {
             while (keyIterator.hasNext()) {
                 SelectionKey key = keyIterator.next();
                 if (key.isConnectable()) {
-                    try {
-                        if (!((SocketChannel) key.channel()).finishConnect()) continue;
-                        OperationState state = keyToChunkLoaderMap.get(key).initializeHandover(key);
-                        if (state == OperationState.CANCELLED) {
-                            keyToChunkLoaderMap.remove(key);
-                            try {
-                                key.channel().close();
-                            } catch (IOException ignored) {}
-                            key.cancel();
-                        }
-                    } catch(NullPointerException exception){
-                        exception.printStackTrace();
+                    if (!((SocketChannel) key.channel()).finishConnect()) continue;
+                    OperationState state = keyToChunkLoaderMap.get(key).initializeHandover(key);
+                    if (state == OperationState.CANCELLED) {
+                        chunkPresenceMap.replace(keyToChunkLoaderMap.get(key).getOffset(), ChunkState.EMPTY);
+                        keyToChunkLoaderMap.remove(key);
+                        key.channel().close();
+                        key.cancel();
+                    } else{
+                        chunkPresenceMap.replace(keyToChunkLoaderMap.get(key).getOffset(), ChunkState.REQUESTED);
                     }
                 }
                 else if (key.isReadable()) {
-                    OperationState state = keyToChunkLoaderMap.get(key).getChunk(key, keyToChunkLoaderMap);
-                    if(state == OperationState.ANSWERED_CHECK_YES || state == OperationState.REQUESTED_CHECK) continue;
-                    if (state == OperationState.DONE) {
-                        unloadedChunksCount--;
-                        chunkPresenceMap.replace(keyToChunkLoaderMap.get(key).getOffset(), ChunkState.GOT);
-                    } else if (state == OperationState.CANCELLED) {
-                        chunkPresenceMap.replace(keyToChunkLoaderMap.get(key).getOffset(), ChunkState.EMPTY);
+                    ChunkLoader loader = keyToChunkLoaderMap.get(key);
+                    OperationState state = loader.getChunk(key, keyToChunkLoaderMap);
+                    if(state == OperationState.ANSWERED_CHECK_NO){
+                        key.channel().close();
+                        keyToChunkLoaderMap.remove(key);
+                        key.cancel();
+                        chunkPresenceMap.replace(loader.getOffset(), ChunkState.EMPTY);
+                        state = loader.registerConnection(keyToChunkLoaderMap);
+                        if(state == OperationState.INITIALIZED_CONNECTION){
+                            chunkPresenceMap.replace(loader.getOffset(), ChunkState.REQUESTED);
+                        }
                     }
-                    keyToChunkLoaderMap.remove(key);
-                    key.channel().close();
-                    key.cancel();
+                    else if (state == OperationState.DONE) {
+                        unloadedChunksCount--;
+                        chunkPresenceMap.replace(loader.getOffset(), ChunkState.GOT);
+                        keyToChunkLoaderMap.remove(key);
+                        key.channel().close();
+                        key.cancel();
+                    } else if (state == OperationState.CANCELLED) {
+                        chunkPresenceMap.replace(loader.getOffset(), ChunkState.EMPTY);
+                        keyToChunkLoaderMap.remove(key);
+                        key.channel().close();
+                        key.cancel();
+                    }
                 }
                 keyIterator.remove();
             }
@@ -85,10 +95,13 @@ public class ClientFileHandler implements Closeable {
                 } catch (InterruptedException exception) {
                     throw new RuntimeException(exception);
                 }
+                if(chunkPresenceMap.get(offset) != ChunkState.EMPTY){
+                    currentSize--;
+                    continue;
+                }
                 ChunkLoader loader = new ChunkLoader(chunkSize, selector, file, peers, offset);
                 OperationState state = loader.registerConnection(keyToChunkLoaderMap);
                 if (state == OperationState.CANCELLED) currentSize--;
-                else chunkPresenceMap.replace(offset, ChunkState.REQUESTED);
             }
         }
         try {

@@ -73,13 +73,6 @@ public class ChunkLoader {
                 startingPeerNumber = (startingPeerNumber + 1) % peers.size();
                 triedPeerNumber++;
                 if(triedPeerNumber == peers.size()) return OperationState.CANCELLED;
-                try{
-                    key.channel().close();
-                } catch(IOException ignored) {}
-                keyToChunkLoaderMap.remove(key);
-                key.cancel();
-                lastState = registerConnection(keyToChunkLoaderMap);
-                return lastState;
             };
         } catch (Exception e) {
             lastState = OperationState.CANCELLED;
