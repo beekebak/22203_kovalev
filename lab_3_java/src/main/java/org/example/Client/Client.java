@@ -25,7 +25,9 @@ public class Client {
     }
 
     public void startClient(){
-        try(ClientFileHandler fileHandler = new ClientFileHandler(filePath, chunkSize, peers, chunkPresenceMap)){
+        boolean log = false;
+        if(filePath.equals("/home/beekebak/lab3_test/lab3_client0/book.pdf")) log = true;
+        try(ClientFileHandler fileHandler = new ClientFileHandler(filePath, chunkSize, peers, chunkPresenceMap, log)){
             fileHandler.downloadFile();
         } catch (Exception ignored) {
             try {

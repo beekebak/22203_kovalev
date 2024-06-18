@@ -6,16 +6,15 @@ import org.example.Utility.FileParser;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Server {
     private final int port;
-    private FileParser parser;
     private final String filePath;
     private ConcurrentMap<Integer, ChunkState> chunkPresenceMap;
     private int chunkSize;
 
     public Server(int port, String filePath, String cfgPath){
+        FileParser parser;
         this.filePath = filePath;
         this.port = port;
         try {

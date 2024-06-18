@@ -1,6 +1,5 @@
 package org.example.Server;
 
-import lombok.Setter;
 import org.example.Operations.OperationState;
 import org.example.Operations.ServerOperation;
 import org.example.Utility.ChunkState;
@@ -20,7 +19,7 @@ public class ServerFileHandler implements AutoCloseable{
     private final ServerSocketChannel listeningSocket;
     private final ConcurrentMap<Integer, ChunkState> chunkPresenceMap;
     private final int bufferSize;
-    private AtomicBoolean stopFlag;
+    private final AtomicBoolean stopFlag;
 
     public void setStopFlag(boolean flag){
         stopFlag.set(flag);
@@ -43,7 +42,7 @@ public class ServerFileHandler implements AutoCloseable{
         listeningSocket.register(selector, SelectionKey.OP_ACCEPT);
         while(true){
             if(stopFlag.get()) return;
-            selector.select();
+            selector.select(1);
             Set<SelectionKey> selectedKeys = selector.selectedKeys();
             Iterator<SelectionKey> iter = selectedKeys.iterator();
             while (iter.hasNext()) {
@@ -68,14 +67,12 @@ public class ServerFileHandler implements AutoCloseable{
         socket.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
     }
 
-    private void handleInput(SelectionKey key) {
+    private void handleInput(SelectionKey key) throws IOException {
         ServerOperation serverOperation = new ServerOperation(bufferSize, key, file, chunkPresenceMap);
         OperationState state = serverOperation.handleInput();
         if(state == OperationState.CANCELLED){
-            try{
-                key.channel().close();
-                key.cancel();
-            } catch(IOException ignored) {}
+            key.channel().close();
+            key.cancel();
         }
     }
 

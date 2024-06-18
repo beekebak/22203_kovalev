@@ -1,5 +1,7 @@
 package org.example.Client;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.Utility.ChunkState;
 import org.example.Operations.OperationState;
 
@@ -20,17 +22,23 @@ public class ClientFileHandler implements Closeable {
     private final Selector selector;
     private final ConcurrentMap<Integer, ChunkState> chunkPresenceMap;
     private final BlockingQueue<Integer> chunksToRegister;
+    private final BlockingQueue<Integer> chunksToRelease;
     private final int chunkSize;
     private int unloadedChunksCount;
     private final List<InetSocketAddress> peers;
     private final Map<SelectionKey, ChunkLoader> keyToChunkLoaderMap;
+    private static final Logger logger = LogManager.getLogger();
+    private final Set<Integer> duplicates = new HashSet<>();
+    private boolean log;
     public ClientFileHandler(String filepath, int chunkSize, List<InetSocketAddress> peers,
-                             ConcurrentMap<Integer, ChunkState> chunkPresenceMap)
+                             ConcurrentMap<Integer, ChunkState> chunkPresenceMap, boolean log)
             throws IOException {
+        this.log = log;
         file = new RandomAccessFile(filepath, "rw");
         selector = Selector.open();
         this.chunkPresenceMap = chunkPresenceMap;
         chunksToRegister = new ArrayBlockingQueue<>(20);
+        chunksToRelease = new ArrayBlockingQueue<>(20);
         this.chunkSize = chunkSize;
         unloadedChunksCount = chunkPresenceMap.size();
         this.peers = peers;
@@ -38,7 +46,7 @@ public class ClientFileHandler implements Closeable {
     }
 
     public void downloadFile() throws IOException {
-        Thread fileLoaderThread = new Thread(new FileLoader(chunkPresenceMap, chunksToRegister));
+        Thread fileLoaderThread = new Thread(new FileLoader(chunkPresenceMap, chunksToRegister, chunksToRelease));
         fileLoaderThread.start();
         while (unloadedChunksCount > 0) {
             selector.select(1000);
@@ -50,11 +58,13 @@ public class ClientFileHandler implements Closeable {
                     if (!((SocketChannel) key.channel()).finishConnect()) continue;
                     OperationState state = keyToChunkLoaderMap.get(key).initializeHandover(key);
                     if (state == OperationState.CANCELLED) {
+                        log("Cancelled after connection before request chunk " + keyToChunkLoaderMap.get(key).getOffset());
                         chunkPresenceMap.replace(keyToChunkLoaderMap.get(key).getOffset(), ChunkState.EMPTY);
                         keyToChunkLoaderMap.remove(key);
                         key.channel().close();
                         key.cancel();
                     } else{
+                        log("requested after connection chunk " + keyToChunkLoaderMap.get(key).getOffset());
                         chunkPresenceMap.replace(keyToChunkLoaderMap.get(key).getOffset(), ChunkState.REQUESTED);
                     }
                 }
@@ -62,22 +72,29 @@ public class ClientFileHandler implements Closeable {
                     ChunkLoader loader = keyToChunkLoaderMap.get(key);
                     OperationState state = loader.getChunk(key, keyToChunkLoaderMap);
                     if(state == OperationState.ANSWERED_CHECK_NO){
-                        key.channel().close();
-                        keyToChunkLoaderMap.remove(key);
-                        key.cancel();
+                        log("cancelled after request new connection chunk " + keyToChunkLoaderMap.get(key).getOffset());
                         chunkPresenceMap.replace(loader.getOffset(), ChunkState.EMPTY);
+                        keyToChunkLoaderMap.remove(key);
+                        key.channel().close();
+                        key.cancel();
                         state = loader.registerConnection(keyToChunkLoaderMap);
                         if(state == OperationState.INITIALIZED_CONNECTION){
                             chunkPresenceMap.replace(loader.getOffset(), ChunkState.REQUESTED);
                         }
                     }
                     else if (state == OperationState.DONE) {
-                        unloadedChunksCount--;
+                        log("done chunk " + keyToChunkLoaderMap.get(key).getOffset());
+                        if(chunkPresenceMap.get(loader.getOffset()) != ChunkState.GOT){
+                            unloadedChunksCount--;
+                            if(duplicates.contains(keyToChunkLoaderMap.get(key).getOffset())) System.out.println(keyToChunkLoaderMap.get(key).getOffset());
+                            else duplicates.add(keyToChunkLoaderMap.get(key).getOffset());
+                        }
                         chunkPresenceMap.replace(loader.getOffset(), ChunkState.GOT);
                         keyToChunkLoaderMap.remove(key);
                         key.channel().close();
                         key.cancel();
                     } else if (state == OperationState.CANCELLED) {
+                        log("cancelled while waiting input chunk " + keyToChunkLoaderMap.get(key).getOffset());
                         chunkPresenceMap.replace(loader.getOffset(), ChunkState.EMPTY);
                         keyToChunkLoaderMap.remove(key);
                         key.channel().close();
@@ -87,6 +104,10 @@ public class ClientFileHandler implements Closeable {
                 keyIterator.remove();
             }
             int currentSize = selector.keys().size();
+            Set<Integer> activeChunksNumbers = new HashSet<>();
+            for(var chunk:keyToChunkLoaderMap.values()){
+                activeChunksNumbers.add(chunk.getOffset());
+            }
             while (currentSize < 50 && !chunksToRegister.isEmpty()) {
                 currentSize++;
                 int offset;
@@ -95,18 +116,40 @@ public class ClientFileHandler implements Closeable {
                 } catch (InterruptedException exception) {
                     throw new RuntimeException(exception);
                 }
-                if(chunkPresenceMap.get(offset) != ChunkState.EMPTY){
+                if(chunkPresenceMap.get(offset) != ChunkState.EMPTY || activeChunksNumbers.contains(offset)){
                     currentSize--;
                     continue;
                 }
                 ChunkLoader loader = new ChunkLoader(chunkSize, selector, file, peers, offset);
                 OperationState state = loader.registerConnection(keyToChunkLoaderMap);
-                if (state == OperationState.CANCELLED) currentSize--;
+                activeChunksNumbers.add(offset);
+                if (state == OperationState.CANCELLED) {
+                    currentSize--;
+                    log("tried to start but failed chunk " + offset);
+                }
+                else log("started chunk " + offset);
+            }
+            while(!chunksToRelease.isEmpty()){
+                int offset;
+                try {
+                    offset = chunksToRelease.take();
+                } catch (InterruptedException exception) {
+                    throw new RuntimeException(exception);
+                }
+                if(!activeChunksNumbers.contains(offset) && chunkPresenceMap.get(offset) == ChunkState.REQUESTED) {
+                    chunkPresenceMap.replace(offset, ChunkState.EMPTY);
+                    log("cleared hanging requested chunk " + offset);
+                }
             }
         }
         try {
             fileLoaderThread.join();
         } catch(InterruptedException ignored){}
+    }
+
+    private void log(String msg){
+        if(!log) return;
+        logger.info(msg);
     }
 
     @Override

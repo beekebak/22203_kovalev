@@ -1,7 +1,5 @@
 package org.example.Utility;
 
-import org.example.Utility.ChunkState;
-
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
@@ -39,7 +37,7 @@ public class FileParser {
 
     public List<InetSocketAddress> getPeers() throws IOException {
         List<InetSocketAddress> answer = new ArrayList<>();
-        String peer = "";
+        String peer;
         while(true){
             peer = reader.readLine();
             if(peer == null) break;

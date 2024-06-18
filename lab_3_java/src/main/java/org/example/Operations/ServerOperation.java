@@ -40,7 +40,7 @@ public class ServerOperation extends Operation {
             return state = OperationState.DONE;
         } catch (IOException exception){
             handleError("no input");
-            return state;
+            return state = OperationState.CANCELLED;
         }
     }
 

@@ -10,6 +10,7 @@ import java.util.concurrent.ConcurrentMap;
 public class FileLoader implements Runnable {
     private ConcurrentMap<Integer, ChunkState> chunkPresenceMap;
     private BlockingQueue<Integer> chunksToRegister;
+    private BlockingQueue<Integer> chunksToRelease;
 
     @Override
     public void run() {
@@ -17,12 +18,11 @@ public class FileLoader implements Runnable {
             boolean fileIsLoaded = true;
             for (var chunk : chunkPresenceMap.entrySet()) {
                 if (chunk.getValue() == ChunkState.REQUESTED) {
+                    chunksToRelease.offer(chunk.getKey());
                     fileIsLoaded = false;
                 }
                 else if (chunk.getValue() == ChunkState.EMPTY) {
-                    try {
-                        chunksToRegister.put(chunk.getKey());
-                    } catch (InterruptedException ignored) {}
+                    chunksToRegister.offer(chunk.getKey());
                     fileIsLoaded = false;
                 }
             }
