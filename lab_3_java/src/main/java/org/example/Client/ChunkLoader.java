@@ -65,7 +65,7 @@ public class ChunkLoader {
         return lastState;
     }
 
-    public OperationState getChunk(SelectionKey key, Map<SelectionKey, ChunkLoader> keyToChunkLoaderMap){
+    public OperationState getChunk(SelectionKey key){
         try{
             ClientOperation operation = new ClientOperation(chunkSize, key, file, offset, lastState);
             lastState = operation.handleInput();
@@ -73,7 +73,7 @@ public class ChunkLoader {
                 startingPeerNumber = (startingPeerNumber + 1) % peers.size();
                 triedPeerNumber++;
                 if(triedPeerNumber == peers.size()) return OperationState.CANCELLED;
-            };
+            }
         } catch (Exception e) {
             lastState = OperationState.CANCELLED;
         }

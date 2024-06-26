@@ -39,8 +39,9 @@ public class ClientOperation extends Operation {
         }
     }
 
-    private void handleGetAnswer() throws IOException{
-        String input = StandardCharsets.UTF_8.decode(buffer).toString();
+    private void handleGetAnswer(int readSize) throws IOException{
+        String buffered_input = StandardCharsets.US_ASCII.decode(buffer).toString();
+        String input = buffered_input.substring(0, readSize-1);
         if(input.equals("BAD REQUEST")) {
             state = OperationState.CANCELLED;
             return;
@@ -72,7 +73,7 @@ public class ClientOperation extends Operation {
             if (state == OperationState.REQUESTED_CHECK) {
                 handleCheckAnswer();
             } else if (state == OperationState.ANSWERED_CHECK_YES) {
-                handleGetAnswer();
+                handleGetAnswer(readSize);
             } else {
                 handleError("unexpected answer");
             }
