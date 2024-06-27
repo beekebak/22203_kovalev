@@ -1,5 +1,8 @@
 package org.example.Operations;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
@@ -9,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 
 public class ClientOperation extends Operation {
     private final int offset;
+    private static final Logger logger = LogManager.getLogger();
 
     public ClientOperation(long chunkSize, SelectionKey key, RandomAccessFile file, int offset, OperationState state){
         super(chunkSize, key, file);
@@ -39,13 +43,8 @@ public class ClientOperation extends Operation {
         }
     }
 
-    private void handleGetAnswer(int readSize) throws IOException{
-        String buffered_input = StandardCharsets.US_ASCII.decode(buffer).toString();
-        String input = buffered_input.substring(0, readSize-1);
-        if(input.equals("BAD REQUEST")) {
-            state = OperationState.CANCELLED;
-            return;
-        }
+    private void handleGetAnswer() throws IOException{
+        logger.info("recieved from socket chunk " + offset + " start " + buffer.position() + " end " + buffer.limit());
         file.seek(offset * chunkSize);
         file.write(buffer.array());
         state = OperationState.DONE;
@@ -65,15 +64,19 @@ public class ClientOperation extends Operation {
         try {
             SocketChannel inputChannel = (SocketChannel) key.channel();
             buffer.clear();
-            int readSize = inputChannel.read(buffer);
-            if (readSize == -1) {
-                handleError("no answer");
+            while(true) {
+                int readSize = inputChannel.read(buffer);
+                if (readSize == -1) {
+                    handleError("no answer");
+                    break;
+                }
+                if(readSize == 0) break;
             }
             buffer.flip();
             if (state == OperationState.REQUESTED_CHECK) {
                 handleCheckAnswer();
             } else if (state == OperationState.ANSWERED_CHECK_YES) {
-                handleGetAnswer(readSize);
+                handleGetAnswer();
             } else {
                 handleError("unexpected answer");
             }

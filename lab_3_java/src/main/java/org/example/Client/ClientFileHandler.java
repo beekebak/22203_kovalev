@@ -24,8 +24,8 @@ public class ClientFileHandler implements Closeable {
     private final ConcurrentMap<Integer, ChunkState> chunkPresenceMap;
     private final BlockingQueue<Integer> chunksToRegister;
     private final BlockingQueue<Integer> chunksToRelease;
-    private final int chunkSize;
-    private int unloadedChunksCount;
+    private final long chunkSize;
+    private long unloadedChunksCount;
     private List<InetSocketAddress> peers;
     private final Map<SelectionKey, ChunkLoader> keyToChunkLoaderMap;
     private static final Logger logger = LogManager.getLogger();
@@ -33,7 +33,7 @@ public class ClientFileHandler implements Closeable {
     private final PeerChecker peerChecker;
     private final AtomicBoolean peersCheckIsNeeded = new AtomicBoolean(true);
 
-    public ClientFileHandler(String filepath, int chunkSize, List<InetSocketAddress> peers,
+    public ClientFileHandler(String filepath, long chunkSize, List<InetSocketAddress> peers, long unloadedChunksCount,
                              ConcurrentMap<Integer, ChunkState> chunkPresenceMap, boolean log)
             throws IOException {
         this.log = log;
@@ -43,7 +43,7 @@ public class ClientFileHandler implements Closeable {
         chunksToRegister = new ArrayBlockingQueue<>(20);
         chunksToRelease = new ArrayBlockingQueue<>(20);
         this.chunkSize = chunkSize;
-        unloadedChunksCount = chunkPresenceMap.size();
+        this.unloadedChunksCount = unloadedChunksCount;
         peerChecker = new PeerChecker(peers);
         keyToChunkLoaderMap = new HashMap<>();
         checkPeers();
@@ -110,7 +110,7 @@ public class ClientFileHandler implements Closeable {
     }
 
     private void fillSelector(int currentSize, Set<Integer> activeChunksNumbers){
-        while (currentSize < 50 && !chunksToRegister.isEmpty()) {
+        while (currentSize < 20 && !chunksToRegister.isEmpty()) {
             currentSize++;
             int offset;
             try {
@@ -168,7 +168,7 @@ public class ClientFileHandler implements Closeable {
             public void run() {
                 peersCheckIsNeeded.set(true);
             }
-        }, 0, 60*1000);
+        }, 0, 30*1000);
         while (unloadedChunksCount > 0) {
             try {
                 if (peersCheckIsNeeded.get()) checkPeers();

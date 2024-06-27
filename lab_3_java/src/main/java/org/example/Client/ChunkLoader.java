@@ -7,6 +7,7 @@ import org.example.Operations.OperationState;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.net.InetSocketAddress;
+import java.net.StandardSocketOptions;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
@@ -39,6 +40,7 @@ public class ChunkLoader {
         SocketChannel socket = null;
         try {
             socket = SocketChannel.open();
+            socket.setOption(StandardSocketOptions.SO_RCVBUF, (int)chunkSize);
             socket.configureBlocking(false);
             socket.connect(peers.get(startingPeerNumber));
             SelectionKey key = socket.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE |

@@ -1,5 +1,7 @@
 package org.example.Operations;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.Utility.ChunkState;
 
 import java.io.IOException;
@@ -12,7 +14,8 @@ import java.util.concurrent.ConcurrentMap;
 
 public class ServerOperation extends Operation {
     private final ConcurrentMap<Integer, ChunkState> chunkPresenceMap;
-    public ServerOperation(int bufferSize, SelectionKey key, RandomAccessFile file,
+    private static final Logger logger = LogManager.getLogger();
+    public ServerOperation(long bufferSize, SelectionKey key, RandomAccessFile file,
                            ConcurrentMap<Integer, ChunkState> chunkPresenceMap) {
         super(bufferSize, key, file);
         this.chunkPresenceMap = chunkPresenceMap;
@@ -33,9 +36,21 @@ public class ServerOperation extends Operation {
             } else if (input.startsWith("GET")) {
                 ByteBuffer output = getChunk(input);
                 if (output == null) return OperationState.CANCELLED;
-                else channel.write(output);
+                else {
+                    while(output.hasRemaining()) {
+                        int bytesWritten = channel.write(output);
+                        if(bytesWritten == -1) return OperationState.CANCELLED;
+                        int requestedChunkNumber;
+                        try {
+                            requestedChunkNumber = Integer.parseInt(input.substring(4));
+                        } catch(NumberFormatException exception){
+                            return null;
+                        }
+                        logger.info("sent to socket chunk " + requestedChunkNumber + " total " + bytesWritten);
+                    }
+                }
             } else {
-                channel.write(ByteBuffer.wrap("BAD REQUEST".getBytes()));
+                return state = OperationState.CANCELLED;
             }
             return state = OperationState.DONE;
         } catch (IOException exception){

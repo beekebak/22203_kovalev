@@ -10,18 +10,14 @@ import java.util.concurrent.ConcurrentMap;
 public class Server {
     private final int port;
     private final String filePath;
-    private ConcurrentMap<Integer, ChunkState> chunkPresenceMap;
-    private int chunkSize;
+    private final ConcurrentMap<Integer, ChunkState> chunkPresenceMap;
+    private final long chunkSize;
 
-    public Server(int port, String filePath, String cfgPath){
-        FileParser parser;
+    public Server(int port, String filePath, FileParser parser){
         this.filePath = filePath;
         this.port = port;
-        try {
-            parser = new FileParser(cfgPath);
-            chunkPresenceMap = parser.getMap();
-            chunkSize = parser.getChunkSize();
-        } catch(Exception ignored) {}
+        this.chunkSize = parser.getChunkSize();
+        this.chunkPresenceMap = parser.getChunkStateMap();
     }
 
     public void startServer() {

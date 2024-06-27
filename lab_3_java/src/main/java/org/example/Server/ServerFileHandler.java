@@ -7,6 +7,7 @@ import org.example.Utility.ChunkState;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.net.InetSocketAddress;
+import java.net.StandardSocketOptions;
 import java.nio.channels.*;
 import java.util.Iterator;
 import java.util.Set;
@@ -18,14 +19,14 @@ public class ServerFileHandler implements AutoCloseable{
     private final Selector selector;
     private final ServerSocketChannel listeningSocket;
     private final ConcurrentMap<Integer, ChunkState> chunkPresenceMap;
-    private final int bufferSize;
+    private final long bufferSize;
     private final AtomicBoolean stopFlag;
 
     public void setStopFlag(boolean flag){
         stopFlag.set(flag);
     }
 
-    public ServerFileHandler(ConcurrentMap<Integer, ChunkState> chunkPresenceMap, int bufferSize, String filePath,
+    public ServerFileHandler(ConcurrentMap<Integer, ChunkState> chunkPresenceMap, long bufferSize, String filePath,
                              boolean stopFlag)
             throws IOException {
         this.file = new RandomAccessFile(filePath, "rw");
@@ -63,6 +64,7 @@ public class ServerFileHandler implements AutoCloseable{
 
     private void acceptConnection() throws IOException {
         SocketChannel socket = listeningSocket.accept();
+        socket.setOption(StandardSocketOptions.SO_SNDBUF, (int)bufferSize);
         socket.configureBlocking(false);
         socket.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
     }
