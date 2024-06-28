@@ -13,12 +13,16 @@ public abstract class Operation {
     protected OperationState state;
     protected SocketChannel socket;
 
-    public Operation(long chunkSize, SelectionKey key, RandomAccessFile file) {
+    public Operation(long chunkSize, SelectionKey key, RandomAccessFile file, ByteBuffer buffer) {
         this.chunkSize = chunkSize;
-        buffer = ByteBuffer.allocate((int) chunkSize);
+        this.buffer = buffer;
         this.file = file;
         this.key = key;
         socket = (SocketChannel) key.channel();
+    }
+
+    public Operation(long chunkSize, SelectionKey key, RandomAccessFile file){
+        this(chunkSize, key, file, ByteBuffer.allocate((int)chunkSize));
     }
 
     protected void handleError(String msg){

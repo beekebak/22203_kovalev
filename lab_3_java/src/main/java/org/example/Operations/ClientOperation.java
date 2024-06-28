@@ -14,8 +14,9 @@ public class ClientOperation extends Operation {
     private final int offset;
     private static final Logger logger = LogManager.getLogger();
 
-    public ClientOperation(long chunkSize, SelectionKey key, RandomAccessFile file, int offset, OperationState state){
-        super(chunkSize, key, file);
+    public ClientOperation(long chunkSize, SelectionKey key, RandomAccessFile file, int offset, ByteBuffer buffer,
+                           OperationState state){
+        super(chunkSize, key, file, buffer);
         this.state = state;
         this.offset = offset;
     }
@@ -45,9 +46,14 @@ public class ClientOperation extends Operation {
 
     private void handleGetAnswer() throws IOException{
         logger.info("recieved from socket chunk " + offset + " start " + buffer.position() + " end " + buffer.limit());
-        file.seek(offset * chunkSize);
-        file.write(buffer.array());
-        state = OperationState.DONE;
+        if(chunkSize != buffer.limit()){
+            state = OperationState.SENDING_PROCESS;
+        }
+        else {
+            file.seek(offset * chunkSize);
+            file.write(buffer.array());
+            state = OperationState.DONE;
+        }
     }
 
     public OperationState initializeChunkHandover() {
@@ -63,7 +69,8 @@ public class ClientOperation extends Operation {
     public OperationState handleInput(){
         try {
             SocketChannel inputChannel = (SocketChannel) key.channel();
-            buffer.clear();
+            if(state == OperationState.SENDING_PROCESS) buffer.compact();
+            else buffer.clear();
             while(true) {
                 int readSize = inputChannel.read(buffer);
                 if (readSize == -1) {
@@ -75,7 +82,7 @@ public class ClientOperation extends Operation {
             buffer.flip();
             if (state == OperationState.REQUESTED_CHECK) {
                 handleCheckAnswer();
-            } else if (state == OperationState.ANSWERED_CHECK_YES) {
+            } else if (state == OperationState.ANSWERED_CHECK_YES || state == OperationState.SENDING_PROCESS) {
                 handleGetAnswer();
             } else {
                 handleError("unexpected answer");

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.net.InetSocketAddress;
 import java.net.StandardSocketOptions;
+import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
@@ -24,6 +25,7 @@ public class ChunkLoader {
     private int startingPeerNumber;
     private int triedPeerNumber;
     private OperationState lastState;
+    private ByteBuffer buffer;
 
     public ChunkLoader(long chunkSize, Selector selector, RandomAccessFile file, List<InetSocketAddress> peers,
                        int offset){
@@ -32,6 +34,7 @@ public class ChunkLoader {
         this.file = file;
         this.peers = peers;
         this.offset = offset;
+        buffer = ByteBuffer.allocate((int) chunkSize);
         Random random = new Random();
         startingPeerNumber = peers.size() > 1 ? random.nextInt(0, peers.size()-1) : 0;
     }
@@ -59,7 +62,7 @@ public class ChunkLoader {
 
     public OperationState initializeHandover(SelectionKey key){
         try{
-            ClientOperation operation = new ClientOperation(chunkSize, key, file, offset, lastState);
+            ClientOperation operation = new ClientOperation(chunkSize, key, file, offset, buffer, lastState);
             lastState = operation.initializeChunkHandover();
         } catch (Exception e) {
             lastState = OperationState.CANCELLED;
@@ -69,7 +72,7 @@ public class ChunkLoader {
 
     public OperationState getChunk(SelectionKey key){
         try{
-            ClientOperation operation = new ClientOperation(chunkSize, key, file, offset, lastState);
+            ClientOperation operation = new ClientOperation(chunkSize, key, file, offset, buffer, lastState);
             lastState = operation.handleInput();
             if (lastState == OperationState.ANSWERED_CHECK_NO) {
                 startingPeerNumber = (startingPeerNumber + 1) % peers.size();

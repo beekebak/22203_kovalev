@@ -5,6 +5,7 @@ public enum OperationState {
     REQUESTED_CHECK,
     ANSWERED_CHECK_YES,
     ANSWERED_CHECK_NO,
+    SENDING_PROCESS,
     DONE,
     CANCELLED,
 }
