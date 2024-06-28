@@ -25,7 +25,7 @@ public class ChunkLoader {
     private int startingPeerNumber;
     private int triedPeerNumber;
     private OperationState lastState;
-    private ByteBuffer buffer;
+    private final ByteBuffer buffer;
 
     public ChunkLoader(long chunkSize, Selector selector, RandomAccessFile file, List<InetSocketAddress> peers,
                        int offset){
@@ -43,7 +43,7 @@ public class ChunkLoader {
         SocketChannel socket = null;
         try {
             socket = SocketChannel.open();
-            socket.setOption(StandardSocketOptions.SO_RCVBUF, (int)chunkSize);
+            socket.setOption(StandardSocketOptions.SO_RCVBUF, (int) chunkSize);
             socket.configureBlocking(false);
             socket.connect(peers.get(startingPeerNumber));
             SelectionKey key = socket.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE |

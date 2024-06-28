@@ -1,7 +1,5 @@
 package org.example.Client;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.example.Utility.ChunkState;
 import org.example.Operations.OperationState;
 
@@ -28,15 +26,12 @@ public class ClientFileHandler implements Closeable {
     private long unloadedChunksCount;
     private List<InetSocketAddress> peers;
     private final Map<SelectionKey, ChunkLoader> keyToChunkLoaderMap;
-    private static final Logger logger = LogManager.getLogger();
-    private final boolean log;
     private final PeerChecker peerChecker;
     private final AtomicBoolean peersCheckIsNeeded = new AtomicBoolean(true);
 
     public ClientFileHandler(String filepath, long chunkSize, List<InetSocketAddress> peers, long unloadedChunksCount,
-                             ConcurrentMap<Integer, ChunkState> chunkPresenceMap, boolean log)
+                             ConcurrentMap<Integer, ChunkState> chunkPresenceMap)
             throws IOException {
-        this.log = log;
         file = new RandomAccessFile(filepath, "rw");
         selector = Selector.open();
         this.chunkPresenceMap = chunkPresenceMap;
@@ -58,19 +53,14 @@ public class ClientFileHandler implements Closeable {
         if (!((SocketChannel) key.channel()).finishConnect()) return;
         OperationState state = keyToChunkLoaderMap.get(key).initializeHandover(key);
         if (state == OperationState.CANCELLED) {
-            log("Cancelled after connection before request chunk " + keyToChunkLoaderMap.get(key).getOffset());
             chunkPresenceMap.replace(keyToChunkLoaderMap.get(key).getOffset(), ChunkState.EMPTY);
             keyToChunkLoaderMap.remove(key);
             key.channel().close();
             key.cancel();
-        } else{
-            log("requested after connection chunk " + keyToChunkLoaderMap.get(key).getOffset());
-            chunkPresenceMap.replace(keyToChunkLoaderMap.get(key).getOffset(), ChunkState.REQUESTED);
-        }
+        } else chunkPresenceMap.replace(keyToChunkLoaderMap.get(key).getOffset(), ChunkState.REQUESTED);
     }
 
     private void handleRejectedRequest(ChunkLoader loader, SelectionKey key) throws IOException {
-        log("cancelled after request new connection chunk " + keyToChunkLoaderMap.get(key).getOffset());
         handleCancelledConnection(loader, key);
         OperationState state = loader.registerConnection(keyToChunkLoaderMap);
         if(state == OperationState.INITIALIZED_CONNECTION){
@@ -79,7 +69,6 @@ public class ClientFileHandler implements Closeable {
     }
 
     private void handleDoneRequest(ChunkLoader loader, SelectionKey key) throws IOException{
-        log("done chunk " + keyToChunkLoaderMap.get(key).getOffset());
         if(chunkPresenceMap.get(loader.getOffset()) != ChunkState.GOT) unloadedChunksCount--;
         chunkPresenceMap.replace(loader.getOffset(), ChunkState.GOT);
         keyToChunkLoaderMap.remove(key);
@@ -88,7 +77,6 @@ public class ClientFileHandler implements Closeable {
     }
 
     private void handleCancelledConnection(ChunkLoader loader, SelectionKey key) throws IOException{
-        log("cancelled while waiting input chunk " + keyToChunkLoaderMap.get(key).getOffset());
         peersCheckIsNeeded.set(true);
         chunkPresenceMap.replace(loader.getOffset(), ChunkState.EMPTY);
         keyToChunkLoaderMap.remove(key);
@@ -127,9 +115,7 @@ public class ClientFileHandler implements Closeable {
             activeChunksNumbers.add(offset);
             if (state == OperationState.CANCELLED) {
                 currentSize--;
-                log("tried to start but failed chunk " + offset);
             }
-            else log("started chunk " + offset);
         }
     }
 
@@ -143,7 +129,6 @@ public class ClientFileHandler implements Closeable {
             }
             if(!activeChunksNumbers.contains(offset) && chunkPresenceMap.get(offset) == ChunkState.REQUESTED) {
                 chunkPresenceMap.replace(offset, ChunkState.EMPTY);
-                log("cleared hanging requested chunk " + offset);
             }
         }
     }
@@ -182,11 +167,7 @@ public class ClientFileHandler implements Closeable {
         try {
             fileLoaderThread.join();
         } catch(InterruptedException ignored){}
-    }
-
-    private void log(String msg){
-        if(!log) return;
-        logger.info(msg);
+        timer.cancel();
     }
 
     @Override

@@ -1,8 +1,5 @@
 package org.example.Operations;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
@@ -12,7 +9,6 @@ import java.nio.charset.StandardCharsets;
 
 public class ClientOperation extends Operation {
     private final int offset;
-    private static final Logger logger = LogManager.getLogger();
 
     public ClientOperation(long chunkSize, SelectionKey key, RandomAccessFile file, int offset, ByteBuffer buffer,
                            OperationState state){
@@ -45,7 +41,6 @@ public class ClientOperation extends Operation {
     }
 
     private void handleGetAnswer() throws IOException{
-        logger.info("recieved from socket chunk " + offset + " start " + buffer.position() + " end " + buffer.limit());
         if(chunkSize != buffer.limit()){
             state = OperationState.SENDING_PROCESS;
         }

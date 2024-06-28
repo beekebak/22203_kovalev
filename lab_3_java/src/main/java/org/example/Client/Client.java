@@ -3,7 +3,6 @@ package org.example.Client;
 import org.example.Utility.ChunkState;
 import org.example.Utility.FileParser;
 
-import java.io.File;
 import java.net.InetSocketAddress;
 import java.util.List;
 import java.util.concurrent.ConcurrentMap;
@@ -26,10 +25,8 @@ public class Client {
     }
 
     public void startClient(){
-        boolean log = false;
-        if(filePath.equals("/home/beekebak/lab3_test/lab3_client0/book.pdf")) log = true;
         try(ClientFileHandler fileHandler = new ClientFileHandler(filePath, chunkSize, peers, unloadedChunksCount,
-                chunkPresenceMap, log)){
+                chunkPresenceMap)){
             fileHandler.downloadFile();
         } catch (Exception ignored) {
             try {
