@@ -1,5 +1,6 @@
 package org.example.Server;
 
+import org.example.Operations.Operation;
 import org.example.Operations.OperationState;
 import org.example.Operations.ServerOperation;
 import org.example.Utility.ChunkState;
@@ -9,6 +10,7 @@ import java.io.RandomAccessFile;
 import java.net.InetSocketAddress;
 import java.net.StandardSocketOptions;
 import java.nio.channels.*;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentMap;
@@ -21,6 +23,7 @@ public class ServerFileHandler implements AutoCloseable{
     private final ConcurrentMap<Integer, ChunkState> chunkPresenceMap;
     private final long bufferSize;
     private final AtomicBoolean stopFlag;
+    private final Set<ServerOperation> unfinishedOperations;
 
     public void setStopFlag(boolean flag){
         stopFlag.set(flag);
@@ -35,6 +38,7 @@ public class ServerFileHandler implements AutoCloseable{
         this.chunkPresenceMap = chunkPresenceMap;
         this.bufferSize = bufferSize;
         this.stopFlag = new AtomicBoolean(stopFlag);
+        unfinishedOperations = new HashSet<>();
     }
 
     public void startServer(int socketPort) throws IOException {
@@ -50,6 +54,12 @@ public class ServerFileHandler implements AutoCloseable{
                 SelectionKey key = iter.next();
                 handleKey(key);
                 iter.remove();
+            }
+            var undoneOpsIter = unfinishedOperations.iterator();
+            while (undoneOpsIter.hasNext()) {
+                ServerOperation operation = undoneOpsIter.next();
+                OperationState result = operation.writeToSocket();
+                if(result == OperationState.DONE || result == OperationState.CANCELLED) undoneOpsIter.remove();
             }
         }
     }
@@ -75,6 +85,10 @@ public class ServerFileHandler implements AutoCloseable{
         if(state == OperationState.CANCELLED){
             key.channel().close();
             key.cancel();
+        }
+        else if(state == OperationState.SENDING_PROCESS){
+            key.cancel();
+            unfinishedOperations.add(serverOperation);
         }
     }
 

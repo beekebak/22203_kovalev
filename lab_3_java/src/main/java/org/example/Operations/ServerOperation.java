@@ -14,16 +14,29 @@ import java.util.concurrent.ConcurrentMap;
 
 public class ServerOperation extends Operation {
     private final ConcurrentMap<Integer, ChunkState> chunkPresenceMap;
-    private static final Logger logger = LogManager.getLogger();
+    private SocketChannel channel = null;
     public ServerOperation(long bufferSize, SelectionKey key, RandomAccessFile file,
                            ConcurrentMap<Integer, ChunkState> chunkPresenceMap) {
         super(bufferSize, key, file);
         this.chunkPresenceMap = chunkPresenceMap;
     }
 
+    public OperationState writeToSocket(){
+        try {
+            while (buffer.hasRemaining()) {
+                int bytesWritten = channel.write(buffer);
+                if (bytesWritten == -1) return OperationState.CANCELLED;
+                if (bytesWritten == 0) return OperationState.SENDING_PROCESS;
+            }
+            return OperationState.DONE;
+        } catch(IOException ignored) {
+            return OperationState.CANCELLED;
+        }
+    }
+
     public OperationState handleInput(){
         try {
-            SocketChannel channel = (SocketChannel) key.channel();
+            channel = (SocketChannel) key.channel();
             buffer.clear();
             int readSize = channel.read(buffer);
             if (readSize == -1) {
@@ -34,21 +47,10 @@ public class ServerOperation extends Operation {
             if (input.startsWith("CHECK")) {
                 channel.write(ByteBuffer.wrap(checkChunkPresence(input).getBytes()));
             } else if (input.startsWith("GET")) {
-                ByteBuffer output = getChunk(input);
-                if (output == null) return OperationState.CANCELLED;
-                else {
-                    while(output.hasRemaining()) {
-                        int bytesWritten = channel.write(output);
-                        if(bytesWritten == -1) return OperationState.CANCELLED;
-                        int requestedChunkNumber;
-                        try {
-                            requestedChunkNumber = Integer.parseInt(input.substring(4));
-                        } catch(NumberFormatException exception){
-                            return null;
-                        }
-                        logger.info("sent to socket chunk " + requestedChunkNumber + " total " + bytesWritten);
-                    }
-                }
+                buffer.clear();
+                buffer = getChunk(input);
+                if (buffer == null) return OperationState.CANCELLED;
+                else return writeToSocket();
             } else {
                 return state = OperationState.CANCELLED;
             }
